@@ -5,12 +5,25 @@ public class Insurer {
 	public String insurerName;
 	public String insurerFamily;
 	public String insurerPassword;
+	public String role;
+	
+	public Insurer () {
+		
+	}
 	
 	public Insurer(String insurerId, String insurerName, String insurerFamily, String insurerPassword) {
 		this.insurerId = insurerId;
 		this.insurerName = insurerName;
 		this.insurerFamily = insurerFamily;
 		this.insurerPassword = insurerPassword;
+	}
+	
+	public Insurer(String insurerId, String insurerName, String insurerFamily, String insurerPassword, String role) {
+		this.insurerId = insurerId;
+		this.insurerName = insurerName;
+		this.insurerFamily = insurerFamily;
+		this.insurerPassword = insurerPassword;
+		this.role = role;
 	}
 
 	public String getInsurerId() {
@@ -44,5 +57,12 @@ public class Insurer {
 	public void setInsurerPassword(String insurerPassword) {
 		this.insurerPassword = insurerPassword;
 	}
-	
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
 }

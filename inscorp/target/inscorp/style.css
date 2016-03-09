@@ -6,6 +6,8 @@
 
 body{
 	background-color: #8ea4a9;
+	font-size: 14px;
+	line-height: 18px;
 }
 
 .shell { 
@@ -13,10 +15,13 @@ body{
 	margin: 0 auto;
 }
 
+input { font-size: 14px; }
+
 h3 {
 	text-align: center;	
 }
 
+/* Menu */
 .menu {
 	background-color: #030303;
     width: 100%;
@@ -96,3 +101,16 @@ h3 {
 	margin-left: 30px;
 	margin-top: 20px;
 }
+
+.form-section { padding-bottom: 10px; }
+.form-row { padding-bottom: 5px; }
+.form-row-inner { min-width: 280px; display: inline-block; }
+.form-row-inner + .form-row-inner { min-width: 250px; }
+.form-row-inner + .form-row-inner + .form-row-inner { min-width: 150px; }
+.form-row-inner-long { min-width: 400px; display: inline-block; }
+.form-row label, .form-row input { display: inline-block; }
+.form-row label { line-height: 22px; text-align: left; }
+.form-row label:first-child { min-width: 145px; }
+.form-row-inner + .form-row-inner label:first-child { min-width: 160px; }
+.form-row-inner + .form-row-inner + .form-row-inner label:first-child { min-width: 50px; }
+.form-row input { border: 1px solid #000; padding: 2px; }

@@ -74,84 +74,101 @@
 			<div class="shell">
 				<h3>Сключване на застраховка "Каско"</h3>
 				<form method="post">
-					<table width="100%">
-						<tr>
-							<td><label>№ на застраховка</label></td>
-							<td><input type="text" class="field" name="insurenceID" placeholder="№ на застраховка" size="30"></td>
-						</tr>
-						<tr>
-							<td><h4>Застрахован</h4></td>
-						</tr>
-						<tr>
-							<td><label for="insuredName">Собственик</label></td>
-							<td><input type="text" class="field" name="insuredFirstName" placeholder="Име" size="30"></td>
-							<td><input type="text" class="field" name="insuredSecondName" placeholder="Презиме" size="30"></td>
-							<td><input type="text" class="field" name="insuredLastName" placeholder="Фамилия" size="30"></td>
-						</tr>
-						<tr>
-							<td><label for="EGN">ЕГН</label></td>
-							<td><input type="text" class="field" name="EGN" placeholder="ЕГН" size="30"></td>
-							<td><label for="mobilePhone">Мобилен телефон</label>
-							<td><label>+359</label></td>
-							<td><input type="text" class="field" name="mobilePhone" placeholder="Мобилен телефон" size="30"></td>
-						</tr>
-						<tr>
-							<td><label for="address">Адрес на собственика</label></td>
-							<td><input type="text" class="field" name="address" placeholder="гр. ж.к. ул. бл. вх. ет. ап." size="50"></td>
-							<td><label for="pKod">Пощенски код</label></td>
-							<td><input type="text" class="field" name="pKod" placeholder="Пощенски код" size="20"></td>
-						</tr>
-						<tr>
-							<td><h4>Данни за МПС</h4></td>
-						</tr>
-						<tr>
-							<td><label for="registrationNumber">Регистрационен №</label></td>
-							<td><input type="text" class="field" name="registrationNumber" placeholder="Регистрационен №" size="20"></td>
-						</tr>
-						<tr>
-							<td><label for="vehicleType">Вид МПС</label></td>
-							<td><select id="vehicleType" name="vehicleType"></select></td>
-						</tr>
-						<tr>
-							<td><label for="ramaN">Рама №</label></td>
-							<td><input type="text" class="field" name="ramaN" placeholder="Рама №" size="30"></td>
-						</tr>
-						<tr>
-							<td><label for="vehicleBrand">Марка</label></td>
-							<td><select id="vehicleBrand" name="vehicleBrand"></select></td>
-							<td><label>Модел</label></td>
-							<td><input type="text" class="field" name="vehicleModel" placeholder="Модел" size="30"></td>
-							<td><label>Цвят</label></td>
-							<td><select id="vehicleColor" name=""></select></td>
-						</tr>
-						<tr>
-							<td><label>Година на производство</label>
-							<td><select id="year" name="year"></select></td>
-						</tr>
-						<tr>
-							<td><label>Дата на първа регистрация</label>
-							<td><input type="text" class="field" name="vehicleFirstReg" placeholder="Дата на първа регистрация" id="datepicker" size="30"></td>
-						</tr>
-						<tr>
-							<td><label>Обем на двигателя</label>
-							<td><select id="vehicleEngine" name="vehicleEngine"></select></td>
-						</tr>
-						<tr>
-							<td><label>Брой места</label></td>
-							<td><select id="vehiclePlaces" name="vehiclePlaces"></select></td>
-						</tr>
-						<tr>
-							<td><label>Застрахоателна сума</label></td>
-							<td><input type="text" class="field" name="vehicleInsValue" placeholder="Застрахователна сума" size="30"></td>
-						</tr>
-						<tr>
-							<td><label>Застрахователна премия</label></td>
-							<td><input type="text" class="field" name="vehicleInsPremiq" placeholder="Застрахователна премия" size="30"></td>
-						</tr>
-						<tr>
-							<td><input type="submit" value="Сключи застраховка"></td>
-						</tr>
-					</table>
+					<div class="form-section">
+						<div class="form-row">
+							<label>№ на застраховка</label>
+							<input type="text" class="field" name="insurenceID" placeholder="№ на застраховка" size="30">
+						</div>
+					</div>
+					<div class="form-section">
+						<h4>Застрахован</h4>
+						<div class="form-row">
+							<label>Собственик</label>
+							<input type="text" class="field" name="insuredFirstName" placeholder="Име" size="30">
+							<input type="text" class="field" name="insuredSecondName" placeholder="Презиме" size="30">
+							<input type="text" class="field" name="insuredLastName" placeholder="Фамилия" size="30">
+						</div>
+						<div class="form-row">
+							<label for="EGN">ЕГН</label>
+							<input type="text" class="field" name="EGN" placeholder="ЕГН" size="30">
+						</div>
+						<div class="form-row">
+							<label for="mobilePhone">Мобилен телефон</label>
+							<input type="text" class="field" name="mobilePhone" placeholder="Мобилен телефон" size="30">
+						</div>
+						<div class="form-row">
+							<div class="form-row-inner form-row-inner-long">
+								<label for="address">Адрес на собственика</label>
+								<input type="text" class="field" name="address" placeholder="гр. ж.к. ул. бл. вх. ет. ап." size="50">
+							</div>
+							<div class="form-row-inner">
+								<label for="pKod">Пощенски код</label>
+								<input type="text" class="field" name="pKod" placeholder="Пощенски код" size="20">
+							</div>
+						</div>
+					</div>
+					<div class="form-section">
+						<h4>Данни за МПС</h4>
+						<div class="form-row">
+							<label for="registrationNumber">Регистрационен №</label>
+							<input type="text" class="field" name="registrationNumber" placeholder="Регистрационен №" size="20">
+						</div>
+						
+						<div class="form-row">
+							<div class="form-row-inner">
+								<label for="vehicleType">Вид МПС</label>
+								<select id="vehicleType" name="vehicleType"></select>
+							</div>
+							<div class="form-row-inner">
+								<label for="ramaN">Рама №</label>
+								<input type="text" class="field" name="ramaN" placeholder="Рама №" size="30">
+							</div>
+						</div>
+						
+						<div class="form-row">
+							<div class="form-row-inner">
+								<label for="vehicleBrand">Марка</label>
+								<select id="vehicleBrand" name="vehicleBrand"></select>
+							</div>
+							<div class="form-row-inner">
+								<label>Модел</label>
+								<input type="text" class="field" name="vehicleModel" placeholder="Модел" size="30">
+							</div>
+							<div class="form-row-inner">
+								<label>Цвят</label>
+								<select id="vehicleColor" name=""></select>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-row-inner">
+								<label>Година на производство</label>
+								<select id="year" name="year"></select>
+							</div>
+							<div class="form-row-inner">
+								<label>Дата на първа регистрация</label>
+								<input type="text" class="field" name="vehicleFirstReg" placeholder="Дата на първа регистрация" id="datepicker" size="30">
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-row-inner">
+								<label>Обем на двигателя</label>
+								<select id="vehicleEngine" name="vehicleEngine"></select>
+							</div>
+							<div class="form-row-inner">
+								<label>Брой места</label>
+								<select id="vehiclePlaces" name="vehiclePlaces"></select>
+							</div>
+						</div>
+						<div class="form-row">
+							<label>Застрахоателна сума</label>
+							<input type="text" class="field" name="vehicleInsValue" placeholder="Застрахователна сума" size="30">
+						</div>
+						<div class="form-row">
+							<label>Застрахователна премия</label>
+							<input type="text" class="field" name="vehicleInsPremiq" placeholder="Застрахователна премия" size="30">
+						</div>
+					</div>
+					<input type="submit" value="Сключи застраховка">
 				</form>
 			</div>
 		</div>

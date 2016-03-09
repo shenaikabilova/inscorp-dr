@@ -1,2 +1,7 @@
-model\Insurer.class
+dao\InsurerDAO.class
+dao\InsurerDAOImps.class
+dao\KaskoDAOImpl.class
 model\Kasko.class
+Example.class
+dao\KaskoDAO.class
+model\Insurer.class

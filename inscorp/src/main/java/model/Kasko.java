@@ -3,6 +3,7 @@ package model;
 import java.util.Date;
 
 public class Kasko {
+	public String insurerId;
 	public String insKaskoId;
 	public String insurenceFirstName;
 	public String insurenceSecondName;
@@ -23,6 +24,10 @@ public class Kasko {
 	public int vehiclePlaceNumber;
 	public float vehicleInsurenceValue;
 	public float vehicleInsurencePremiq;
+	
+	public Kasko() {
+		
+	}
 	
 	public Kasko(String insKaskoId, String insurenceFirstName, String insurenceSecondName, String insurenceFamily, 
 			String insurenceEGN, String insurenceMobilePhone, String insurenceAddress, int insurencePK, 
@@ -49,6 +54,42 @@ public class Kasko {
 		this.vehiclePlaceNumber = vehiclePlaceNumber;
 		this.vehicleInsurenceValue = vehicleInsurenceValue;
 		this.vehicleInsurencePremiq = vehicleInsurencePremiq;
+	}
+
+	public Kasko(String insurerId, String insKaskoId, String insurenceFirstName, String insurenceSecondName, String insurenceFamily, 
+			String insurenceEGN, String insurenceMobilePhone, String insurenceAddress, int insurencePK, 
+			String vehicleRegistrationNumber, String vehicleType, String vehicleRama, String vehicleBranch, 
+			String vehicleModel, String vehicleColor, int vehicleYear, Date vehicleFirstRegistration, float vehicleEngine, 
+			int vehiclePlaceNumber, float vehicleInsurenceValue, float vehicleInsurencePremiq) {
+		this.insurerId = insurerId;
+		this.insKaskoId = insKaskoId;
+		this.insurenceFirstName = insurenceFirstName;
+		this.insurenceSecondName = insurenceSecondName;
+		this.insurenceFamily = insurenceFamily;
+		this.insurenceEGN = insurenceEGN;
+		this.insurenceMobilePhone = insurenceMobilePhone;
+		this.insurenceAddress = insurenceAddress;
+		this.insurencePK = insurencePK;
+		this.vehicleRegistrationNumber = vehicleRegistrationNumber;
+		this.vehicleType = vehicleType;
+		this.vehicleRama = vehicleRama;
+		this.vehicleBranch = vehicleBranch;
+		this.vehicleModel = vehicleModel;
+		this.vehicleColor = vehicleColor;
+		this.vehicleYear = vehicleYear;
+		this.vehicleFirstRegistration = vehicleFirstRegistration;
+		this.vehicleEngine = vehicleEngine;
+		this.vehiclePlaceNumber = vehiclePlaceNumber;
+		this.vehicleInsurenceValue = vehicleInsurenceValue;
+		this.vehicleInsurencePremiq = vehicleInsurencePremiq;
+	}
+	
+	public String getInsurerId() {
+		return insurerId;
+	}
+
+	public void setInsurerId(String insurerId) {
+		this.insurerId = insurerId;
 	}
 
 	public String getInsKaskoId() {
