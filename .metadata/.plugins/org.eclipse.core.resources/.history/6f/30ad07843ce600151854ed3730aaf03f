@@ -1,0 +1,94 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import model.Kasko;
+
+public class KaskoDAOImpl implements KaskoDAO{
+
+	@Override
+	public List<Kasko> listKasko() {
+		List<Kasko> listKasko;
+		
+		try(Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Insurence", "root", "123456")) {
+			final String QUERY = "SELECT INSURENCE_ID, INSURENCE_FIRST_NAME, INSURENCE_SECOND_NAME,"
+					+ "INSURENCE_FAMILY, INSURENCE_EGN, INSURENCE_MOBILE_PHONE, INSURENCE_ADDRESS, INSURENCE_PK, "
+					+ "VEHICLE_REGISTRATION_NUMBER, VEHICLE_TYPE, VEHICLE_RAMA, VEHICLE_BRANCH, VEHICLE_MODEL,"
+					+ "VEHICLE_COLOR, VEHICLE_YEAR, VEHICLE_FIRST_REGISTRATION, VEHICLE_ENGINE, VEHICLE_PLACE_NUMBER,"
+					+ "VEHICLE_INSURANCE_VALUE, VEHICLE_INSURANCE_PREMIQ FROM kasko";
+			final String QUERY_COUNT = "SELECT COUNT(*) as count FROM kasko";
+			
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
+			PreparedStatement preparedStetmentCount = connection.prepareStatement(QUERY_COUNT);
+			
+			ResultSet resultSet = preparedStatement.executeQuery();
+			ResultSet resultSetCount = preparedStetmentCount.executeQuery();
+			
+			int count = resultSetCount.getInt("count");
+			
+			listKasko = new ArrayList<Kasko>(count);
+			
+			while(resultSet.next()) {
+				String insKaskoId = resultSet.getString("INSURER_ID");
+				String insurenceFirstName = resultSet.getString("INSURENCE_FIRST_NAME");
+				String insurenceSecondName = resultSet.getString("INSURENCR_SECOND_NAME");
+				String insurenceFamily = resultSet.getString("INSURECE_FAMILY");
+				String insurenceEGN = resultSet.getString("INSURENCE_EGN");
+				String insurenceMobilePhone = resultSet.getString("INSURENCE_MOBILE_PHONE");
+				String insurenceAddress = resultSet.getString("INSURENCE_ADDRESS");
+				int insurencePK = resultSet.getInt("INSURENCE_PK");
+				String vehicleRegistrationNumber = resultSet.getString("VEHICLE_REGISTRATION_NUMBER");
+				String vehicleType = resultSet.getString("VEHICLE_TYPE");
+				String vehicleRama = resultSet.getString("VEHICLE_RAMA");
+				String vehicleBranch = resultSet.getString("VEHICLE_BRANCH");
+				String vehicleModel = resultSet.getString("VEHICLE_MODEL");
+				String vehicleColor = resultSet.getString("VEHICLE_COLOR");
+				int vehicleYear = resultSet.getInt("VEHICLE_YEAR");
+				Date vehicleFirstRegistration = resultSet.getDate("VEHICLE_FIRST_REGISTRATION");
+				float vehicleEngine = resultSet.getFloat("VEHICLE_ENGINE");
+				int vehiclePlaceNumber = resultSet.getInt("VEHICLE_PLACE_NUMBER");
+				float vehicleInsurenceValue = resultSet.getFloat("VEHICLE_INSURANCE_VALUE");
+				float vehicleInsurencePremiq = resultSet.getFloat("VEHICLE_INSURANCE_PREMIQ");
+				
+				listKasko = new ArrayList<Kasko>(new Kasko(insKaskoId, insurenceFirstName, insurenceSecondName, 
+						insurenceFamily, insurenceEGN, insurenceMobilePhone, insurenceAddress, insurencePK, 
+						vehicleRegistrationNumber, vehicleType, vehicleRama, vehicleBranch, vehicleModel, vehicleColor, 
+						vehicleYear, vehicleFirstRegistration, vehicleEngine, vehiclePlaceNumber, vehicleInsurenceValue, 
+						vehicleInsurencePremiq));
+			}
+		} catch (Exception e) {
+			return new ArrayList<Kasko>(0);
+		}
+	}
+
+	@Override
+	public void insertKasko(Kasko kasko) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteKasko(String kaskoID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateKasko(Kasko kasko) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Kasko searchKasko(String kaskoID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

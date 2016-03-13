@@ -1,0 +1,11 @@
+body{
+	background-color: lightblue;
+}
+
+.menu {
+	
+}
+
+#loginForm {
+	text-align: center;	
+}

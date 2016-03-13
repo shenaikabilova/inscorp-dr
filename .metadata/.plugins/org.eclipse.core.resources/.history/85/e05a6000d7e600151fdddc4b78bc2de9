@@ -1,0 +1,13 @@
+import model.Insurer;
+import dao.InsurerDAO;
+import dao.InsurerDAOImps;
+
+public class Example {
+	public static void main(String[] args) {
+		InsurerDAO ins = new InsurerDAOImps();
+		Insurer insurer1 = new Insurer("000001", "Shenai", "Kabilova", "123456");
+		Insurer insurer2 = new Insurer("000002", "Ivan", "Ivanov", "123456", "user");
+		
+		ins.update(insurer1);
+	}
+}

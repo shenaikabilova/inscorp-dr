@@ -1,0 +1,7 @@
+package servlet;
+
+@SuppressWarnings("serial")
+@WebServlet("/SimpleServlet")
+public class SimpleServlet extends HttpServlet {
+	
+}

@@ -1,0 +1,57 @@
+<html>
+	<head>
+		<title>InsuranceCorporation</title>
+		<%@ page contentType="text/html; charset=UTF-8" %>
+		<link href = "adminPanel.css" type="text/css" rel = "stylesheet"/>
+	</head>
+	
+	<body>
+		<div class="menu">
+			<ul class="menu-nav">
+				<li><a href="adminPanelAddInsurer.jsp">Добави</a>
+					<ul>
+						<li><a href="adminPanelAddInsurer.jsp">Застрахователен агент</a></li>
+					</ul>
+				</li>
+				<li><a href="adminPanelSettings.jsp">Настройки</a></li>
+				<li><a href="adminPanelInsurers.jsp">Застрахователни агенти</a></li>
+				<li><a href="#">Изход</a></li>
+			</ul>
+		</div>
+		
+		<div class="adminpanelSettings"> 
+			<div class="shell">
+				<form action="post">
+					<table>
+						<tr>
+							<td><h3>Настройки на администратора</h3></td>
+						</tr>
+						<tr>
+							<td><label for="admin">ID</label></td>
+							<td><input type="text" name="insurerID" placeholder="ID" size="30"></td>
+						</tr>
+						<tr>
+							<td><label for="adminName">Име</label></td>
+							<td><input type="text" name="adminName" placeholder="Име" size="30"></td>
+						</tr>
+						<tr>
+							<td><label for="adminEmail">Е-майл</label></td>
+							<td><input type="text" name="adminEmail" placeholder="Е-майл" size="30"></td>
+						</tr>
+						<tr>
+							<td><label for="password1">Парола</label></td>
+							<td><input type="password" name="password1" placeholder="Парола" size="30"></td>
+						</tr>
+						<tr>
+							<td><label for="password2">Повторете парола</label></td>
+							<td><input type="password" name="password2" placeholder="Повторете паролата" size="30"></td>
+						</tr>
+						<tr>
+							<td><input type="submit" value="Промени"></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>

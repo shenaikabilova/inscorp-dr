@@ -1,0 +1,51 @@
+@CHARSET "UTF-8";
+
+body{
+	background-color: #d3d3d3;
+}
+
+.menu {
+	background-color: #030303;
+    height: 40px;	
+    margin-left: -8px;
+    margin-right: -8px;
+    margin-top: -16px;
+}
+
+.menu-nav li {
+	list-style: none;
+	background-color: gray;
+}
+
+.menu-nav li a {
+	text-decoration: none;
+	color: #fff;
+	display: block;
+	padding: 10px 30px;
+	background: #030303;
+}
+
+.menu-nav li, .menu-nav li a{
+	float: left;
+}
+
+.menu-nav li {
+	position: relative;
+}
+
+.menu-nav li ul {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	top: 100%;
+	display: none;
+}
+
+.menu-nav li:hover > ul {
+	display: block;	
+}
+
+.addInsurer, .adminPanelSettings {
+	margin-left: 30px;
+	margin-top: 20px;
+}

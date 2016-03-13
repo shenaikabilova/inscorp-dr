@@ -1,0 +1,8 @@
+package dao;
+
+import model.Insurer;
+
+public interface InsurerDAO {
+	piblic List<Insurer> listInsurers();
+	public Insurer searchUserName (String username);
+}

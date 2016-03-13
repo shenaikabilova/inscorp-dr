@@ -1,7 +1,9 @@
 dao\InsurerDAO.class
-dao\InsurerDAOImps.class
+servlet\Logout.class
 dao\KaskoDAOImpl.class
 model\Kasko.class
 Example.class
+servlet\Login.class
+dao\InsurerDAOImpl.class
 dao\KaskoDAO.class
 model\Insurer.class

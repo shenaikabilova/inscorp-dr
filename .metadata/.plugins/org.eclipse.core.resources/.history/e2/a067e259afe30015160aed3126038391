@@ -1,0 +1,8 @@
+package inscorp;
+
+public class Insurer {
+	public String insurerId;
+	public String insurerName;
+	public String insurerFamily;
+	public String insurerPassword;
+}

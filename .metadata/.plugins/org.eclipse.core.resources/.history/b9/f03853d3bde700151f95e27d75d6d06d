@@ -1,0 +1,22 @@
+package servlet;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import model.Insurer;
+import dao.InsurerDAO;
+import dao.InsurerDAOImpl;
+
+@SuppressWarnings("serial")
+@WebServlet("/SimpleServlet")
+public class SimpleServlet extends HttpServlet {
+	
+	public void doGet (HttpServletRequest request, HttpServletResponse response) {
+		Insurer insurer = new Insurer("1", "user1", "user1", "user1");
+		InsurerDAO ins = new InsurerDAOImpl();
+		ins.insert(insurer);
+		ins.listInsurers();
+	}
+}

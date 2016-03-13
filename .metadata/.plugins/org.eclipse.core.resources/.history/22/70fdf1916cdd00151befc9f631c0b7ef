@@ -1,0 +1,11 @@
+body{
+	background-color: lightblue;
+}
+
+.menu {
+	
+}
+
+table {
+	text-align: center;	
+}

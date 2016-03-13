@@ -1,0 +1,25 @@
+<html>
+	<head>
+		<title>InsuranceCorporation</title>
+		<%@ page contentType="text/html; charset=UTF-8" %>
+		<link href = "login.css" type="text/css" rel = "stylesheet"/>
+	</head>
+	
+	<body>
+		<div class="menu">
+			
+		</div>
+		
+		<div class="login">
+			<form class="loginForm">
+				<table>
+				<label for="userName">Потребителско име </label>
+				<input type="text" placeholder="Потребителско име"><br/>
+				<label for="password">Парола</label>
+				<input type="password" placeholder="Парола"><br/>
+				<input type="submit" value="Вход">
+				</table>
+			</form>
+		</div>
+	</body>
+</html>

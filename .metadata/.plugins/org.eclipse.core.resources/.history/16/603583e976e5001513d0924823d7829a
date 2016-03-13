@@ -1,0 +1,8 @@
+import dao.InsurerDAO;
+import dao.InsurerDAOImps;
+
+public class Example {
+	public static void main(String[] args) {
+		InsurerDAO ins = new InsurerDAOImps();
+	}
+}

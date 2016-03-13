@@ -10,7 +10,7 @@
 		
 		<div class="login">
 			<div class="shell">
-				<form method="post">
+				<form action="login" method="post">
 				<h3>Вход за потребители</h3>
 					<table width="100%">
 						<tr>

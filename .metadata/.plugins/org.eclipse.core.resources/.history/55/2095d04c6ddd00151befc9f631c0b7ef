@@ -1,0 +1,14 @@
+body{
+	background-color: lightblue;
+}
+
+.menu {
+	
+}
+
+.login{
+	margin-left: 1000px;
+	margin-top: -200px;
+	text-align: justify;
+	padding-right: 10px;
+}

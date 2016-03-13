@@ -1,0 +1,5 @@
+package dao;
+
+public interface InsurerDAO {
+	public Insurer searchUserName (String username);
+}

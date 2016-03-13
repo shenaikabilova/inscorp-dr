@@ -1,0 +1,11 @@
+body{
+	background-color: lightblue;
+}
+
+.menu {
+	
+}
+
+.login h3{
+	text-align: center;	
+}

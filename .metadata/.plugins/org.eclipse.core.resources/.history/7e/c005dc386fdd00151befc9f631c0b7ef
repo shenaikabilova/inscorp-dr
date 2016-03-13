@@ -1,0 +1,15 @@
+body{
+	background-color: lightblue;
+}
+
+.menu {
+	background: gray;
+}
+
+.loginFormTable{
+	margin: 0px auto;
+}
+
+.loginFormtable h3 {
+	text-align: center;
+}
