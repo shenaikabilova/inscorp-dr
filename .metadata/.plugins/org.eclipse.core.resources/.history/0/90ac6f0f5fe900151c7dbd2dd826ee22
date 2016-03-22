@@ -1,0 +1,12 @@
+/**
+ * 
+ */
+package dao;
+
+/**
+ * @author shenaikabilova
+ *
+ */
+public class TypeVehicleDAOImpl implements TypeVehicleDAO {
+
+}

@@ -1,0 +1,29 @@
+<%@page import="java.util.List"%>
+<%@page import="dao.VehicleTypeDAOImpl"%>
+<%@page import="dao.VehicleTypeDAO"%>
+<%@page import="model.VehicleType"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+
+<%-- <% 
+//   		VehicleTypeDAO types = new VehicleTypeDAOImpl();
+//   		for(VehicleType type : types.listAllVehicleTypes()) {
+//   			out.println(type.getVehicleType());
+// 	  		request.setAttribute("type", type.getVehicleType());
+//   		}	
+<%-- %> --%>
+  	
+<html>
+  <head>
+  	<%@ page contentType="text/html; charset=UTF-8" %>
+   </head>
+  <body>
+	<select>
+	<%
+		VehicleTypeDAO types = new VehicleTypeDAOImpl();
+		for(VehicleType type : types.listAllVehicleTypes()) { %>
+			<option><c:out value="type.getVehicleType()" /></option>
+  			
+		<%} %>
+	</select>	
+  </body>
+</html>

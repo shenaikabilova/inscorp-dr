@@ -1,7 +1,0 @@
-package dao;
-
-import java.awt.List;
-
-public interface KaskoDAO {
-	public List<Kasko> listKasko();
-}

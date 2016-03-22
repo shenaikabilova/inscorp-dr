@@ -1,0 +1,47 @@
+/**
+ * 
+ */
+package dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
+import model.VehicleType;
+
+/**
+ * @author shenaikabilova
+ *
+ */
+public class TypeVehicleDAOImpl implements TypeVehicleDAO {
+
+	/* (non-Javadoc)
+	 * @see dao.TypeVehicleDAO#listAllVehicleTypes()
+	 */
+	@Override
+	public List<TypeVehicleDAO> listAllVehicleTypes() {
+		List<VehicleType> listAllVehileType;
+		
+		try(Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Insurence", "root", "123456")){
+			final String QUERY = "SELECT VEHICLE_TYPE FROM vehicle_types;";
+			final String QUERY_COUNT = "SELECT COUNT(*) as count FROM vehicle_types";
+			
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
+			PreparedStatement preparedStetmentCount = connection.prepareStatement(QUERY_COUNT);
+			
+			ResultSet resultSet = preparedStatement.executeQuery();
+			ResultSet resultSetCount = preparedStetmentCount.executeQuery();
+			
+			int count = resultSet.getInt("count");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return listAllVehicleTypes;
+	}
+
+}

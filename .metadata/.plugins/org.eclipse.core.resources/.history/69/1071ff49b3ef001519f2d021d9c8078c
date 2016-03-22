@@ -1,0 +1,36 @@
+<%@page import="dao.VehicleTypeDAOImpl"%>
+<%@page import="dao.VehicleTypeDAO"%>
+<%@page import="model.VehicleType"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+
+<html>
+  <head>
+   </head>
+  <body>
+<%--   	<% --%>
+<!-- //   		VehicleTypeDAO types = new VehicleTypeDAOImpl(); -->
+<!-- //   		request.setAttribute("type", types.listAllVehicleTypes()); -->
+<%--   	%> --%>
+  			
+<!--   	<form action="/example" method="get"> -->
+<%--   		<c:forEach var="item" items="dao.VehicleTypeDAOImpl().listAllVehicleTypes()"> --%>
+<%--   			<%=request.getAttribute("${item}")%> --%>
+<%-- <%-- 			<option><c:out value="${type}"/></option> --%> --%>
+<%--   		</c:forEach> --%>
+<!--   	</form> -->
+
+  	
+<%--   	<%VehicleTypeDAO v = new VehicleTypeDAOImpl();%> --%>
+<!--   	<select> -->
+<%-- 	<%for (VehicleType vt : v.listAllVehicleTypes())  --%>
+<%-- 		String prom=vt.getVehicleType();%> --%>
+<!-- 		<option>i</option> -->
+	
+<!--   	</select> -->
+<!-- <!--   	<select> --> 
+<%-- <%-- 		<c:forEach var="item" items="${vehicleTypes}" varStatus="status"> --%> 
+<%-- <%-- 			<option>${item.vehicleType}</option> --%> 
+<%-- <%-- 		</c:forEach> --%> 
+<!-- <!-- 	</select> --> 
+  </body>
+</html>

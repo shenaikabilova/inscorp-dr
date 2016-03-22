@@ -1,0 +1,28 @@
+/**
+ * 
+ */
+package model;
+
+/**
+ * @author shenaikabilova
+ *
+ */
+public class VehicleType {
+	private String vehicleType;
+	
+	public VehicleType () {
+		
+	}
+	
+	public VehicleType (String typeVehicle) {
+		this.vehicleType = typeVehicle;
+	}
+
+	public String getTypeVehicle() {
+		return vehicleType;
+	}
+
+	public void setTypeVehicle(String typeVehicle) {
+		this.vehicleType = typeVehicle;
+	}
+}

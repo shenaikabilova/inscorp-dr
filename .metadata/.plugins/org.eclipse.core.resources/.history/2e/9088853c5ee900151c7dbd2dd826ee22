@@ -1,0 +1,14 @@
+/**
+ * 
+ */
+package dao;
+
+import java.util.List;
+
+/**
+ * @author shenaikabilova
+ *
+ */
+public interface TypeVehicleDAO {
+	public List<TypeVehicle> listAllVehicleTypes();
+}

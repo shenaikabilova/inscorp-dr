@@ -2,28 +2,32 @@ package model;
 
 import java.util.Date;
 
+/**
+ * @author shenaikabilova
+ *
+ */
 public class Kasko {
-	public String insurerId;
-	public String insKaskoId;
-	public String insurenceFirstName;
-	public String insurenceSecondName;
-	public String insurenceFamily;
-	public String insurenceEGN;
-	public String insurenceMobilePhone;
-	public String insurenceAddress;
-	public int insurencePK;
-	public String vehicleRegistrationNumber;
-	public String vehicleType;
-	public String vehicleRama;
-	public String vehicleBranch;
-	public String vehicleModel;
-	public String vehicleColor;
-	public int vehicleYear;
-	public Date vehicleFirstRegistration;
-	public float vehicleEngine;
-	public int vehiclePlaceNumber;
-	public float vehicleInsurenceValue;
-	public float vehicleInsurencePremiq;
+	private String insurerId;
+	private String insKaskoId;
+	private String insurenceFirstName;
+	private String insurenceSecondName;
+	private String insurenceFamily;
+	private String insurenceEGN;
+	private String insurenceMobilePhone;
+	private String insurenceAddress;
+	private int insurencePK;
+	private String vehicleRegistrationNumber;
+	private String vehicleType;
+	private String vehicleRama;
+	private String vehicleBranch;
+	private String vehicleModel;
+	private String vehicleColor;
+	private int vehicleYear;
+	private Date vehicleFirstRegistration;
+	private float vehicleEngine;
+	private int vehiclePlaceNumber;
+	private float vehicleInsurenceValue;
+	private float vehicleInsurencePremiq;
 	
 	public Kasko() {
 		

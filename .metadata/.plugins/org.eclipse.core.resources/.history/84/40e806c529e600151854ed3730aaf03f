@@ -1,7 +1,0 @@
-package dao;
-
-import model.Insurer;
-
-public interface InsurerDAO {
-	public Insurer searchUserName (String username);
-}

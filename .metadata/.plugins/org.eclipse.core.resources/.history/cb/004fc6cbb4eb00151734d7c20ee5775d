@@ -1,0 +1,28 @@
+/**
+ * 
+ */
+package servlet;
+
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.UnavailableException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+
+/**
+ * @author shenaikabilova
+ *
+ */
+
+@WebServlet("/addInsurerNewKasko")
+public class LoadVehicles extends HttpServlet {
+	public void init(ServletConfig config) throws ServletException {
+	      super.init(config);
+	      try {
+	         Class.forName("com.mysql.jdbc.Driver");
+	         }
+	      catch (Exception e) {
+	         throw new UnavailableException(e.getMessage());
+	      }
+	   }
+}

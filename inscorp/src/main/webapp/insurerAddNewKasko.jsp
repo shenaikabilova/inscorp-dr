@@ -1,4 +1,20 @@
 <!DOCTYPE html>
+<%@page import="model.VehicleColor"%>
+<%@page import="dao_jdbc.VehicleColorDAOImpl"%>
+<%@page import="dao_api.VehicleColorDAO"%>
+<%@page import="dao_jdbc.VehicleTypeDAOImpl"%>
+<%@page import="dao_api.VehicleTypeDAO"%>
+<%@page import="model.VehicleType"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+
+<%
+	try {
+	    Class.forName("com.mysql.jdbc.Driver");
+	    }
+	 catch (Exception e) {
+	    throw new UnavailableException(e.getMessage());
+	 }
+%>
 <html>
 	<head>
 		<title>InsuranceCorporation</title>
@@ -128,7 +144,13 @@
 						<div class="form-row">
 							<div class="form-row-inner">
 								<label for="vehicleBrand">Марка</label>
-								<select id="vehicleBrand" name="vehicleBrand"></select>
+								<select>
+								<%
+							   		VehicleTypeDAO types = new VehicleTypeDAOImpl();
+									for(VehicleType type : types.listAllVehicleTypes()) { %>
+										<option><%=type.getVehicleType() %></option>
+									<%} %>
+								</select>
 							</div>
 							<div class="form-row-inner">
 								<label>Модел</label>
@@ -136,7 +158,13 @@
 							</div>
 							<div class="form-row-inner">
 								<label>Цвят</label>
-								<select id="vehicleColor" name=""></select>
+								<select>
+								<%
+									VehicleColorDAO colors = new VehicleColorDAOImpl();
+									for(VehicleColor color : colors.listAllVehicleColors()) { %>
+									<option><%=color.getVehicleColor() %></option>
+								<% } %>
+								</select>
 							</div>
 						</div>
 						<div class="form-row">

@@ -1,9 +1,0 @@
-package servlet;
-
-import javax.servlet.annotation.WebServlet;
-
-@SuppressWarnings("serial")
-@WebServlet("/SimpleServlet")
-public class SimpleServlet extends HttpServlet {
-	
-}

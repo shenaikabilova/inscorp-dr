@@ -13,8 +13,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.InsurerDAOImpl;
+import dao_jdbc.InsurerDAOImpl;
 
+/**
+ * @author shenaikabilova
+ *
+ */
 @SuppressWarnings("serial")
 @WebServlet("/login")
 public class Login extends HttpServlet {

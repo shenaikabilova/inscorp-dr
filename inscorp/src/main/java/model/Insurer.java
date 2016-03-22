@@ -1,11 +1,15 @@
 package model;
 
+/**
+ * @author shenaikabilova
+ *
+ */
 public class Insurer {
-	public String insurerId;
-	public String insurerName;
-	public String insurerFamily;
-	public String insurerPassword;
-	public String role;
+	private String insurerId;
+	private String insurerName;
+	private String insurerFamily;
+	private String insurerPassword;
+	private String role;
 	
 	public Insurer () {
 		

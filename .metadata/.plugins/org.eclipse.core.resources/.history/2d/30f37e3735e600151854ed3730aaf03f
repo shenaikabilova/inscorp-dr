@@ -1,9 +1,0 @@
-package dao;
-
-import java.util.List;
-
-import model.Kasko;
-
-public interface KaskoDAO {
-	public List<Kasko> listKasko();
-}

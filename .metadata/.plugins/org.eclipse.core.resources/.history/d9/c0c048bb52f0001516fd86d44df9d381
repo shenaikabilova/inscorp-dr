@@ -1,0 +1,54 @@
+/**
+ * 
+ */
+package dao_jdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import model.VehicleColor;
+import dao_api.VehicleColorDAO;
+
+/**
+ * @author shenaikabilova
+ *
+ */
+public class VehicleColorDAOImpl implements VehicleColorDAO {
+
+	/* (non-Javadoc)
+	 * @see dao_api.VehicleColorDAO#listAllVehicleColors()
+	 */
+	@Override
+	public List<VehicleColor> listAllVehicleColors() {
+		List<VehicleColor> listAllVehicleColors;
+		
+		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Insurence", "root", "123456")){
+			final String QUERY = "SELECT VEHICLE_COLOR FROM vehicle_colors";
+			final String QUERY_COUNT = "SELECT COUNT(*) as count FROM vehicle_colors";
+			
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
+			PreparedStatement preparedStatementCount = connection.prepareStatement(QUERY_COUNT);
+			
+			ResultSet resultSet = preparedStatement.executeQuery();
+			ResultSet resultSetCount = preparedStatementCount.executeQuery();
+			
+			resultSetCount.next();
+			int count = resultSetCount.getInt("count");
+			
+			while(resultSet.next()) {
+				String vehicleColor = resultSet.getString("VEHICLE_COLOR");
+				
+				listAllVehicleColors.add(new VehicleColor(vehicleColor));
+			}
+			
+			return listAllVehicleColors;
+		} catch (Exception e) {
+			return new ArrayList<VehicleColor>(0);
+		}
+	}
+
+}

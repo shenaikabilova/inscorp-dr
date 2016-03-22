@@ -1,0 +1,52 @@
+<%@page import="java.util.List"%>
+<%@page import="dao.VehicleTypeDAOImpl"%>
+<%@page import="dao.VehicleTypeDAO"%>
+<%@page import="model.VehicleType"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+
+<%
+		try {
+		    Class.forName("com.mysql.jdbc.Driver");
+		    }
+		 catch (Exception e) {
+		    throw new UnavailableException(e.getMessage());
+		 }
+
+
+  		VehicleTypeDAO types = new VehicleTypeDAOImpl();
+  		for(VehicleType type : types.listAllVehicleTypes()) {
+  			out.println(type.getVehicleType());
+	  		request.setAttribute("type", type.getVehicleType());
+  		}	
+%>
+  	
+<html>
+  <head>
+  	<%@ page contentType="text/html; charset=UTF-8" %>
+   </head>
+  <body>
+  	
+  			
+	 	<select>
+  		<c:forEach var="item" items="type">
+<%--   			 --%>
+			
+			<option><%=request.getAttribute("${item}.getVehicleType()")%></option>
+  		</c:forEach>
+  	</select>
+
+  	
+<%--   	<%VehicleTypeDAO v = new VehicleTypeDAOImpl();%> --%>
+<!--   	<select> -->
+<%-- 	<%for (VehicleType vt : v.listAllVehicleTypes())  --%>
+<%-- 		String prom=vt.getVehicleType();%> --%>
+<!-- 		<option>i</option> -->
+	
+<!--   	</select> -->
+<!-- <!--   	<select> --> 
+<%-- <%-- 		<c:forEach var="item" items="${vehicleTypes}" varStatus="status"> --%> 
+<%-- <%-- 			<option>${item.vehicleType}</option> --%> 
+<%-- <%-- 		</c:forEach> --%> 
+<!-- <!-- 	</select> --> 
+  </body>
+</html>

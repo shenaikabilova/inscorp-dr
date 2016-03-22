@@ -1,0 +1,14 @@
+/**
+ * 
+ */
+package dao_jdbc;
+
+import dao_api.VehicleColorDAO;
+
+/**
+ * @author shenaikabilova
+ *
+ */
+public class VehicleColorDAOImpl implements VehicleColorDAO {
+
+}
