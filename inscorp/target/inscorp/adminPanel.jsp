@@ -32,6 +32,5 @@
 				<li><a href="login.jsp">Изход</a></li>
 			</ul>
 		</div>
-		<h3></h3>
 	</body>
 </html>

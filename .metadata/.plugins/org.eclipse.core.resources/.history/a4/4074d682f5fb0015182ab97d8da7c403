@@ -1,0 +1,88 @@
+<html>
+	<head>
+	<%
+			String userName = null;
+			Cookie[] cookies = request.getCookies();
+			if(cookies != null) {
+				for(Cookie cookie: cookies) {
+					if(cookie.getName().equals("user")) {
+						userName = cookie.getValue();
+					}
+				}
+			}
+			if(userName == null) {
+				response.sendRedirect("login.jsp");
+			}
+		%>
+		<title><%=userName %></title>
+		<%@ page contentType="text/html; charset=UTF-8" %>
+		<link href = "style.css" type="text/css" rel = "stylesheet"/>
+	</head>
+	
+	<body>
+	<div class="menu">
+			<div class="menu-nav">
+				<ul>
+					<li><a href="insurer.jsp">Нова застраховка</a>
+						<ul>
+							<li><a href="insurerAddNewGO.jsp">Гражданска отговорност</a></li>
+							<li><a href="insurerAddNewKasko.jsp">Каско</a></li>
+						</ul>
+					</li>
+					<li><a href="#">Търсене</a>
+						<ul>
+							<li><a href="#">Гражданска отговорност</a></li>
+							<li><a href="#">Каско</a></li>
+						</ul>
+					</li>
+					<li><a href="insurerSettings.jsp">Настройки</a></li>
+					<li><a href="/logout">Изход</a>
+				</ul>
+			</div>
+		</div>
+		
+		<div class="newGO">
+			<div class="shell">
+				<h3>Сключване на застраховка "Гражданеска отговорност"</h3>
+				<form action="addNewGO" method="post">
+					<div class="form-section">
+						<div class="form-section">
+							<label>Застрахователна полица ГО на МПС</label>
+							<label>№ на полица</label>
+							<input type="text" name="policaN" >						
+						</div>
+						<div class="form-section">
+								<label>Застраховател</label>
+							<input type="text" value=<%=userName%> name="userName" readonly="readonly">
+						</div>
+						
+						<div class="form-section">
+							<h4>Застрахован</h4>
+							<div class="form-row">
+								<label>Тип на клиента</label>
+								<select>
+									<option>Физическо лице</option>
+								</select>
+							</div>
+							<div class="form-row">
+								<div class="form-row">
+							<label>Собственик</label>
+							<input type="text" class="field" name="insuredFirstName" placeholder="Име" size="30">
+							<input type="text" class="field" name="insuredSecondName" placeholder="Презиме" size="30">
+							<input type="text" class="field" name="insuredLastName" placeholder="Фамилия" size="30">
+						</div>
+								<label>ЕГН</label>
+								<input type="text" class="field" name="EGN" placeholder="ЕГН">
+							</div>
+							<div class="form-row">
+								
+							</div>
+						</div>
+					</div>
+					
+					
+				</form>
+			</div>
+		</div>
+	</body>
+</html>

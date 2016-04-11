@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;servlet.AdminPanelServlet.java&apos; to &apos;AdminPanelAddInsurer.java&apos;&#x0D;&#x0A;- Original project: &apos;inscorp&apos;&#x0D;&#x0A;- Original element: &apos;servlet.AdminPanelServlet.java&apos;&#x0D;&#x0A;- Renamed element: &apos;servlet.AdminPanelAddInsurer.java&apos;" description="Rename compilation unit &apos;AdminPanelServlet.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src\/main\/java&lt;servlet{AdminPanelServlet.java" name="AdminPanelAddInsurer.java" references="false" stamp="1459082246522" version="1.0"/>
+</session>

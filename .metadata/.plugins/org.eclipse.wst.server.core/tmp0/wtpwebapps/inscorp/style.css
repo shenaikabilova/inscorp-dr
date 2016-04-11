@@ -66,7 +66,7 @@ h3 {
 	display: block;	
 }
 
-.login td, .adminpanelSettings td, .addInsurer td, .newKasko td, .insurerSettings td {
+.login td, .adminpanelSettings td, .addInsurer td, .newKasko td, .insurerSettings td, .viewInsurers td {
 	padding-bottom: 5px;
 }
 
@@ -82,7 +82,8 @@ h3 {
 	padding-right: 10px;
 }
 
-.login .field, .adminpanelSettings .field, .addInsurer .field, .newKasko .field, .insurerSettings .field{
+.login .field, .adminpanelSettings .field, .addInsurer .field, .newKasko .field, .insurerSettings .field, 
+.viewInsurers .field {
 	padding: 5px;
 	box-shadow: 2px 2px 5px #999;
 	border: 0;
@@ -97,7 +98,7 @@ h3 {
 	cursor: pointer;
 }
 
-.login, .addInsurer, .adminPanelSettings, .newKasko, .insurerSettings {
+.login, .addInsurer, .adminPanelSettings, .newKasko, .insurerSettings, .adminPanelInsurers {
 	margin-left: 30px;
 	margin-top: 20px;
 }

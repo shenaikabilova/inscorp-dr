@@ -1,6 +1,34 @@
 <!DOCTYPE html>
+
+<%@page import="dao_jdbc.InsurerDAOImpl"%>
+<%@page import="dao_api.InsurerDAO"%>
+<%
+	try {
+	    Class.forName("com.mysql.jdbc.Driver");
+	    }
+	 catch (Exception e) {
+	    throw new UnavailableException(e.getMessage());
+	 }
+%>
+
+<%
+			String userName = null;
+			Cookie[] cookies = request.getCookies();
+			if(cookies != null) {
+				for(Cookie cookie: cookies) {
+					if(cookie.getName().equals("user")) {
+						userName = cookie.getValue();
+					}
+				}
+			}
+			if(userName == null) {
+				response.sendRedirect("login.jsp");
+			}
+%>
+
 <html>
 	<head>
+		<title><%=userName %></title>
 		<%@ page contentType="text/html; charset=UTF-8" %>
 		<link href = "style.css" type="text/css" rel = "stylesheet"/>
 	</head>
@@ -12,7 +40,7 @@
 				<ul>
 					<li><a href="insurer.jsp">Нова застраховка</a>
 						<ul>
-							<li><a href="#">Гражданска отговорност</a></li>
+							<li><a href="insurerAddNewGO.jsp">Гражданска отговорност</a></li>
 							<li><a href="insurerAddNewKasko.jsp">Каско</a></li>
 						</ul>
 					</li>
@@ -23,7 +51,7 @@
 						</ul>
 					</li>
 					<li><a href="insurerSettings.jsp">Настройки</a></li>
-					<li><a href="#">Изход</a>
+					<li><a href="/logout">Изход</a>
 				</ul>
 			</div>
 		</div>
@@ -31,7 +59,10 @@
 		
 		<div class="insurerSettings">
 			<div class="shell">
-				<form method="post">
+				<form action="insurerSettings" method="post">
+					<%
+						InsurerDAO insurer = new InsurerDAOImpl();
+					%>
 					<table width="100%">
 						<tr>
 							<td></td>
@@ -39,27 +70,32 @@
 						</tr>
 						<tr>
 							<td><label>ID</label></td>
-							<td><input type="text" class="field" name="insurerID" size="30" readonly="readonly"></td>
+							<td><input type="text" class="field" name="userID" size="30" readonly="readonly"
+							value=<%=insurer.searchUserName(userName).getInsurerId()%>></td>
 						</tr>
 						<tr>
 							<td><label>Име</label></td>
-							<td><input type="text" class="field" name="insurerName" size="30"></td>
+							<td><input type="text" class="field" name="userName" size="30"
+							value=<%=insurer.searchUserName(userName).getInsurerName()%>></td>
 						</tr>
 						<tr>
 							<td><label>Фамилия</label></td>
-							<td><input type="text" class="field" name="insurerFamily" size="30"></td>
+							<td><input type="text" class="field" name="userFamily" size="30"
+							value=<%=insurer.searchUserName(userName).getInsurerFamily()%>></td>
 						</tr>
 						<tr>
 							<td><label>Е-майл</label></td>
-							<td><input type="text" class="field" name="insurerEmail" size="30"></td>
+							<td><input type="text" class="field" name="userEmail" size="30"
+							value=<%=insurer.searchUserName(userName).getInsurerEmail()%>></td>
 						</tr>
 						<tr>
 							<td><label>Парола</label></td>
-							<td><input type="password" class="field" name="insurerPass1" size="30"></td>
+							<td><input type="password" class="field" name="password1" size="30"
+							value=<%=insurer.searchUserName(userName).getInsurerPassword()%>></td>
 						</tr>
 						<tr>
 							<td><label>Повторете парола</label></td>
-							<td><input type="password" class="field" name="insurerPass2" size="30"></td>
+							<td><input type="password" class="field" name="password2" size="30"></td>
 						</tr>
 						<tr>
 							<td></td>

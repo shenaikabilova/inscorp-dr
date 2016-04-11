@@ -1,0 +1,15 @@
+/**
+ * 
+ */
+package servlet;
+
+import javax.servlet.annotation.WebServlet;
+
+/**
+ * @author shenaikabilova
+ *
+ */
+@WebServlet(urlPatterns={"/adminPanelSettings", "/insurerSettings"})
+public class UsersSettingsUpdate {
+
+}

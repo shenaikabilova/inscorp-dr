@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="bussines_logic.KaskoPremiq"%>
 <%@page import="model.VehicleColor"%>
 <%@page import="dao_jdbc.VehicleColorDAOImpl"%>
 <%@page import="dao_api.VehicleColorDAO"%>
@@ -17,7 +18,21 @@
 %>
 <html>
 	<head>
-		<title>InsuranceCorporation</title>
+		<%
+			String userName = null;
+			Cookie[] cookies = request.getCookies();
+			if(cookies != null) {
+				for(Cookie cookie: cookies) {
+					if(cookie.getName().equals("user")) {
+						userName = cookie.getValue();
+					}
+				}
+			}
+			if(userName == null) {
+				response.sendRedirect("login.jsp");
+			}
+		%>
+		<title><%=userName %></title>
 		<%@ page contentType="text/html; charset=UTF-8" %>
 		<link href = "style.css" type="text/css" rel = "stylesheet"/>
 		
@@ -62,6 +77,13 @@
 			    }
 			 }
 		</script>
+		
+		<script>
+			function change() {
+				var insValue = document.getElementById("vehicleInsValue").value;
+				document.getElementById('vehicleInsPremiq').value=insValue*0.05;
+			}
+		</script>
 	</head>
 	
 	<body onload="addList()">
@@ -70,7 +92,7 @@
 				<ul>
 					<li><a href="insurer.jsp">Нова застраховка</a>
 						<ul>
-							<li><a href="#">Гражданска отговорност</a></li>
+							<li><a href="insurerAddNewGO.jsp">Гражданска отговорност</a></li>
 							<li><a href="insurerAddNewKasko.jsp">Каско</a></li>
 						</ul>
 					</li>
@@ -81,7 +103,7 @@
 						</ul>
 					</li>
 					<li><a href="insurerSettings.jsp">Настройки</a></li>
-					<li><a href="#">Изход</a>
+					<li><a href="/logout">Изход</a>
 				</ul>
 			</div>
 		</div>
@@ -89,15 +111,25 @@
 		<div class="newKasko">
 			<div class="shell">
 				<h3>Сключване на застраховка "Каско"</h3>
-				<form method="post">
+				<form action="addNewKasko" method="post">
 					<div class="form-section">
+						<div class="form-section">
+							<label>Застраховател №</label>
+							<input type="text" value=<%=userName%> name="userName" readonly="readonly">
+						</div>
 						<div class="form-row">
-							<label>№ на застраховка</label>
+							<label>№ на полица</label>
 							<input type="text" class="field" name="insurenceID" placeholder="№ на застраховка" size="30">
 						</div>
 					</div>
 					<div class="form-section">
 						<h4>Застрахован</h4>
+						<div class="form-row">
+								<label>Тип на клиента</label>
+								<select>
+									<option>Физическо лице</option>
+								</select>
+							</div>
 						<div class="form-row">
 							<label>Собственик</label>
 							<input type="text" class="field" name="insuredFirstName" placeholder="Име" size="30">
@@ -112,14 +144,20 @@
 							<label for="mobilePhone">Мобилен телефон</label>
 							<input type="text" class="field" name="mobilePhone" placeholder="Мобилен телефон" size="30">
 						</div>
-						<div class="form-row">
-							<div class="form-row-inner form-row-inner-long">
-								<label for="address">Адрес на собственика</label>
-								<input type="text" class="field" name="address" placeholder="гр. ж.к. ул. бл. вх. ет. ап." size="50">
-							</div>
-							<div class="form-row-inner">
-								<label for="pKod">Пощенски код</label>
-								<input type="text" class="field" name="pKod" placeholder="Пощенски код" size="20">
+						<div>
+							<label>Държава</label>
+							<select>
+								<option>България</option>
+							</select>
+							<div class="form-row">
+								<div class="form-row-inner form-row-inner-long">
+									<label for="address">Адрес на собственика</label>
+									<input type="text" class="field" name="address" placeholder="гр. ж.к. ул. бл. вх. ет. ап." size="50">
+								</div> 
+								<div class="form-row-inner">
+									<label for="pKod">Пощенски код</label>
+									<input type="text" class="field" name="pKod" placeholder="Пощенски код" size="20">
+								</div>
 							</div>
 						</div>
 					</div>
@@ -144,7 +182,7 @@
 						<div class="form-row">
 							<div class="form-row-inner">
 								<label for="vehicleBrand">Марка</label>
-								<select>
+								<select id="vehicleBrand">
 								<%
 							   		VehicleTypeDAO types = new VehicleTypeDAOImpl();
 									for(VehicleType type : types.listAllVehicleTypes()) { %>
@@ -158,7 +196,7 @@
 							</div>
 							<div class="form-row-inner">
 								<label>Цвят</label>
-								<select>
+								<select id="vehicleColor">
 								<%
 									VehicleColorDAO colors = new VehicleColorDAOImpl();
 									for(VehicleColor color : colors.listAllVehicleColors()) { %>
@@ -189,11 +227,13 @@
 						</div>
 						<div class="form-row">
 							<label>Застрахоателна сума</label>
-							<input type="text" class="field" name="vehicleInsValue" placeholder="Застрахователна сума" size="30">
+							<input type="text" 
+								onchange="change();" onkeypress="onchange();" onpaste="this.onchange();" oninput="onchange();"
+							class="field" id="vehicleInsValue" name="vehicleInsValue" size="30" value="0">
 						</div>
 						<div class="form-row">
 							<label>Застрахователна премия</label>
-							<input type="text" class="field" name="vehicleInsPremiq" placeholder="Застрахователна премия" size="30">
+							<input type="text" class="field" id="vehicleInsPremiq" name="vehicleInsPremiq" size="30">
 						</div>
 					</div>
 					<input type="submit" value="Сключи застраховка">

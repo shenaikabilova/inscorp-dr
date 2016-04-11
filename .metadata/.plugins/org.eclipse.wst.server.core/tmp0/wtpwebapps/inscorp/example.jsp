@@ -1,6 +1,6 @@
+<%@page import="dao_jdbc.VehicleTypeDAOImpl"%>
+<%@page import="dao_api.VehicleTypeDAO"%>
 <%@page import="java.util.List"%>
-<%@page import="dao.VehicleTypeDAOImpl"%>
-<%@page import="dao.VehicleTypeDAO"%>
 <%@page import="model.VehicleType"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 
@@ -17,19 +17,19 @@
   	<%@ page contentType="text/html; charset=UTF-8" %>
    </head>
   <body>
-	<select>
-	<%
-    try {
-        Class.forName("com.mysql.jdbc.Driver");
-        }
-     catch (Exception e) {
-        throw new UnavailableException(e.getMessage());
-     }
-		VehicleTypeDAO types = new VehicleTypeDAOImpl();
-		for(VehicleType type : types.listAllVehicleTypes()) { %>
-			<option><%=type.getVehicleType() %></option>
+<!-- 	<select> -->
+<%-- 	<% --%>
+<!-- //     try { -->
+<!-- //         Class.forName("com.mysql.jdbc.Driver"); -->
+<!-- //         } -->
+<!-- //      catch (Exception e) { -->
+<!-- //         throw new UnavailableException(e.getMessage()); -->
+<!-- //      } -->
+<!-- // 		VehicleTypeDAO types = new VehicleTypeDAOImpl(); -->
+<%-- 		for(VehicleType type : types.listAllVehicleTypes()) { %> --%>
+<%-- 			<option><%=type.getVehicleType() %></option> --%>
   			
-		<%} %>
-	</select>	
-  </body>
+<%-- 		<%} %> --%>
+<!-- 	</select>	 -->
+<!--   </body> -->
 </html>

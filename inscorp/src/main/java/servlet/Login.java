@@ -30,7 +30,7 @@ public class Login extends HttpServlet {
 	      catch (Exception e) {
 	         throw new UnavailableException(e.getMessage());
 	      }
-	   }
+	}
 	
 	public void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username = request.getParameter("userName");

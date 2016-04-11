@@ -8,6 +8,7 @@ public class Insurer {
 	private String insurerId;
 	private String insurerName;
 	private String insurerFamily;
+	private String insurerEmail;
 	private String insurerPassword;
 	private String role;
 	
@@ -15,17 +16,19 @@ public class Insurer {
 		
 	}
 	
-	public Insurer(String insurerId, String insurerName, String insurerFamily, String insurerPassword) {
+	public Insurer(String insurerId, String insurerName, String insurerFamily, String insurerEmail, String insurerPassword) {
 		this.insurerId = insurerId;
 		this.insurerName = insurerName;
 		this.insurerFamily = insurerFamily;
+		this.insurerEmail = insurerEmail;
 		this.insurerPassword = insurerPassword;
 	}
 	
-	public Insurer(String insurerId, String insurerName, String insurerFamily, String insurerPassword, String role) {
+	public Insurer(String insurerId, String insurerName, String insurerFamily, String insurerEmail, String insurerPassword, String role) {
 		this.insurerId = insurerId;
 		this.insurerName = insurerName;
 		this.insurerFamily = insurerFamily;
+		this.insurerEmail = insurerEmail;
 		this.insurerPassword = insurerPassword;
 		this.role = role;
 	}
@@ -52,6 +55,14 @@ public class Insurer {
 
 	public void setInsurerFamily(String insurerFamily) {
 		this.insurerFamily = insurerFamily;
+	}
+	
+	public String getInsurerEmail() {
+		return insurerEmail;
+	}
+
+	public void setInsurerEmail(String insurerEmail) {
+		this.insurerEmail = insurerEmail;
 	}
 
 	public String getInsurerPassword() {

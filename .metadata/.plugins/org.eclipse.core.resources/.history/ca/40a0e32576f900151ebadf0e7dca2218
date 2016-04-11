@@ -1,0 +1,13 @@
+/**
+ * 
+ */
+package servlet;
+
+/**
+ * @author shenaikabilova
+ *
+ */
+
+public class UsersSettingsUpdate {
+
+}

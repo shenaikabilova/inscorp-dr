@@ -43,6 +43,10 @@
 							<td><input type="text" class="field" name="insurerFamily" placeholder="Фамилия" size="30"></td>
 						</tr>
 						<tr>
+							<td><label>Е-майл</label></td>
+							<td><input type="text" class="field" placeholder="Е-майл" name="e-mail" size="30"></td>
+						</tr>
+						<tr>
 							<td><label for="password1">Парола</label></td>
 							<td><input type="password" class="field" name="password1" placeholder="Парола" size="30"></td>
 						</tr>

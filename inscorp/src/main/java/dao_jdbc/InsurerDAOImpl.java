@@ -21,7 +21,7 @@ public class InsurerDAOImpl implements InsurerDAO{
 		List<Insurer> insurers;
 		
 		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Insurence", "root", "123456")){
-			final String QUERY = "SELECT INSURER_ID, INSURER_NAME, INSURER_FAMILY, INSURER_PASSWORD FROM insurers";
+			final String QUERY = "SELECT INSURER_ID, INSURER_NAME, INSURER_FAMILY, INSURER_EMAIL, INSURER_PASSWORD FROM insurers";
 			final String QUERY_COUNT = "SELECT COUNT(*) as count FROM insurers";
 			
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
@@ -39,10 +39,11 @@ public class InsurerDAOImpl implements InsurerDAO{
 				String insurerID = resultSet.getString("INSURER_ID");
 				String insurerName = resultSet.getString("INSURER_NAME");
 				String insurerFamily = resultSet.getString("INSURER_FAMILY");
+				String insurerEmail = resultSet.getString("INSURER_EMAIL");
 				String insurerPassword = resultSet.getString("INSURER_PASSWORD");
 				
 				
-				insurers.add(new Insurer(insurerID, insurerName, insurerFamily, insurerPassword));
+				insurers.add(new Insurer(insurerID, insurerName, insurerFamily, insurerEmail, insurerPassword));
 			}
 			
 			return insurers;
@@ -54,15 +55,15 @@ public class InsurerDAOImpl implements InsurerDAO{
 	@Override
 	public void insert(Insurer insurer) {
 		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Insurence", "root", "123456")) {
-			final String QUERY = "INSERT INTO insurers(INSURER_ID, INSURER_NAME, INSURER_FAMILY, INSURER_PASSWORD, role) VALUES(?,?,?,?,?)";
+			final String QUERY = "INSERT INTO insurers(INSURER_ID, INSURER_NAME, INSURER_FAMILY, INSURER_EMAIL, INSURER_PASSWORD) VALUES(?,?,?,?,?)";
 			
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
 			
 			preparedStatement.setString(1, insurer.getInsurerId());
 			preparedStatement.setString(2, insurer.getInsurerName());
 			preparedStatement.setString(3, insurer.getInsurerFamily());
-			preparedStatement.setString(4, insurer.getInsurerPassword());
-			preparedStatement.setString(5, "user");
+			preparedStatement.setString(4, insurer.getInsurerEmail());
+			preparedStatement.setString(5, insurer.getInsurerPassword());
 			
 			preparedStatement.executeUpdate();
 			
@@ -87,7 +88,7 @@ public class InsurerDAOImpl implements InsurerDAO{
 	@Override
 	public void update(Insurer insurer) {
 		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Insurence", "root", "123456")) {
-			final String QUERY = "UPDATE insurers SET INSURER_ID=?, INSURER_NAME=?, INSURER_FAMILY=?, INSURER_PASSWORD=? "
+			final String QUERY = "UPDATE insurers SET INSURER_ID=?, INSURER_NAME=?, INSURER_FAMILY=?, INSURER_EMAIL=?, INSURER_PASSWORD=? "
 					+ "WHERE INSURER_ID = '" + insurer.getInsurerId() + "'";
 			
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
@@ -95,7 +96,8 @@ public class InsurerDAOImpl implements InsurerDAO{
 			preparedStatement.setString(1, insurer.getInsurerId());
 			preparedStatement.setString(2, insurer.getInsurerName());
 			preparedStatement.setString(3, insurer.getInsurerFamily());
-			preparedStatement.setString(4, insurer.getInsurerPassword());
+			preparedStatement.setString(4, insurer.getInsurerEmail());
+			preparedStatement.setString(5, insurer.getInsurerPassword());
 			
 			preparedStatement.executeUpdate();
 		}catch (SQLException e) {
@@ -108,7 +110,7 @@ public class InsurerDAOImpl implements InsurerDAO{
 		
 		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Insurence", "root", "123456")){
 
-			final String QUERY = "SELECT INSURER_ID, INSURER_NAME, INSURER_FAMILY, INSURER_PASSWORD, role FROM insurers WHERE INSURER_ID = '" + username + "'";
+			final String QUERY = "SELECT INSURER_ID, INSURER_NAME, INSURER_FAMILY, INSURER_EMAIL, INSURER_PASSWORD, role FROM insurers WHERE INSURER_ID = '" + username + "'";
 			
 			PreparedStatement pr = connection.prepareStatement(QUERY);
 			ResultSet resultSet = pr.executeQuery();
@@ -117,10 +119,11 @@ public class InsurerDAOImpl implements InsurerDAO{
 				String insurerID = resultSet.getString("INSURER_ID");
 				String insurerName = resultSet.getString("INSURER_NAME");
 				String insurerFamily = resultSet.getString("INSURER_FAMILY");
+				String insurerEmail = resultSet.getString("INSURER_EMAIL");
 				String insurerPassword = resultSet.getString("INSURER_PASSWORD");
 				String role = resultSet.getString("role");
 				
-				insurer = new Insurer(insurerID, insurerName, insurerFamily, insurerPassword, role);
+				insurer = new Insurer(insurerID, insurerName, insurerFamily, insurerEmail, insurerPassword, role);
 				
 				return insurer;
 			}

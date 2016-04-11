@@ -1,0 +1,14 @@
+/**
+ * 
+ */
+package dao_jdbc;
+
+import dao_api.GrajdanskaOtgovornostDAO;
+
+/**
+ * @author shenaikabilova
+ *
+ */
+public class GrajdanskaOtgovornostDAOImpl implements GrajdanskaOtgovornostDAO {
+
+}

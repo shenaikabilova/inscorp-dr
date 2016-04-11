@@ -1,0 +1,22 @@
+/**
+ * 
+ */
+package model;
+
+/**
+ * @author shenaikabilova
+ *
+ */
+public class GO {
+	private String insurerID;
+	private String insurenceKaskoID;
+	private String insurenceType;
+	private String insurenceFirstName;
+	private String insurenceSecondName;
+	private String insurenceLastName;
+	private String insurenceEGN;
+	private String insurenceCountry;
+	private String insurenceAddress;
+	private String insurencePK;
+	
+}

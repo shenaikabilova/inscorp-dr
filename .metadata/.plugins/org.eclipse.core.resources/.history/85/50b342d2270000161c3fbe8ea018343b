@@ -1,0 +1,12 @@
+/**
+ * 
+ */
+package servlet;
+
+/**
+ * @author shenaikabilova
+ *
+ */
+public class InsurerAddNewGO {
+
+}

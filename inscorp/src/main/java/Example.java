@@ -21,10 +21,13 @@ public class Example {
 //		for (VehicleType vt : v.listAllVehicleTypes()) {
 //			System.out.println(vt.getVehicleType());
 //		}
+//		
+//		VehicleColorDAO colors = new VehicleColorDAOImpl();
+//		for(VehicleColor color : colors.listAllVehicleColors()) {
+//			System.out.println(color.getVehicleColor());
+//		}
 		
-		VehicleColorDAO colors = new VehicleColorDAOImpl();
-		for(VehicleColor color : colors.listAllVehicleColors()) {
-			System.out.println(color.getVehicleColor());
-		}
+		InsurerDAO insurer = new InsurerDAOImpl();
+		insurer.insert(new Insurer("8", "Иван", "Иванов", "aaa", "123"));
 	}
 }
