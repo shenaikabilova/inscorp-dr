@@ -44,14 +44,14 @@
 					</li>
 					<li><a href="adminPanelSettings.jsp">Настройки</a></li>
 					<li><a href="adminPanelInsurers.jsp">Застрахователни агенти</a></li>
-					<li><a href="#">Изход</a></li>
+					<li><a href="/logout">Изход</a></li>
 				</ul>
 			</div>
 		</div>
 		
 		<div class="adminpanelSettings"> 
 			<div class="shell">
-				<form method="post">
+				<form action="adminPanelSettings" method="post">
 					<table width="100%">
 						<% 
 							InsurerDAO insurer = new InsurerDAOImpl();
@@ -62,19 +62,19 @@
 						</tr>
 						<tr>
 							<td><label for="admin">ID</label></td>
-							<td><input type="text" class="field" name="insurerID" size="30" value=<%=insurer.searchUserName(userName).getInsurerId()%> ></td>
+							<td><input type="text" class="field" name="userID" size="30" value=<%=insurer.searchUserName(userName).getInsurerId()%> ></td>
 						</tr>
 						<tr>
 							<td><label for="adminName">Име</label></td>
-							<td><input type="text" class="field" name="adminName" size="30" value=<%=insurer.searchUserName(userName).getInsurerName()%>></td>
+							<td><input type="text" class="field" name="userName" size="30" value=<%=insurer.searchUserName(userName).getInsurerName()%>></td>
 						</tr>
 						<tr>
 							<td><label>Фамилия</label>
-							<td><input type="text" class="field" name="adminFamily" size="30" value=<%=insurer.searchUserName(userName).getInsurerFamily()%>></td>
+							<td><input type="text" class="field" name="userFamily" size="30" value=<%=insurer.searchUserName(userName).getInsurerFamily()%>></td>
 						</tr>
 						<tr>
 							<td><label for="adminEmail">Е-майл</label></td>
-							<td><input type="text" class="field" name="adminEmail" size="30" value=<%=insurer.searchUserName(userName).getInsurerEmail()%>></td>
+							<td><input type="text" class="field" name="userEmail" size="30" value=<%=insurer.searchUserName(userName).getInsurerEmail()%>></td>
 						</tr>
 						<tr>
 							<td><label for="password1">Парола</label></td>

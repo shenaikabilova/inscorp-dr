@@ -3,13 +3,15 @@
  */
 package model;
 
+import java.util.Date;
+
 /**
  * @author shenaikabilova
  *
  */
 public class GrajdanskaOtgovornost {
 	private String insurerID;
-	private String insurenceKaskoID;
+	private String insurenceGrajdanskaOtgovornostID;
 	private String insurenceType;
 	private String insurenceFirstName;
 	private String insurenceSecondName;
@@ -17,33 +19,33 @@ public class GrajdanskaOtgovornost {
 	private String insurenceEGN;
 	private String insurenceCountry;
 	private String insurenceAddress;
-	private String insurencePK;
+	private int insurencePK;
 	private String insurenceMobilePhone;
 	private String vehicleRegNumber;
 	private String vehicleType;
 	private String vehicleRama;
 	private String vehicleBranch;
 	private String vehicleModel;
-	private String insurenceDateFrom;
-	private String insurenceDateTo;
+	private Date insurenceDateFrom;
+	private Date insurenceDateTo;
 	private int insurenceMonths;
 	private float insurenceValue;
 	private float insurencePremiq;
 	
 	public GrajdanskaOtgovornost () {}
 
-	public GrajdanskaOtgovornost(String insurerID, String insurenceKaskoID, String insurenceType,
+	public GrajdanskaOtgovornost(String insurerID, String insurenceGOID, String insurenceType,
 			String insurenceFirstName, String insurenceSecondName,
 			String insurenceLastName, String insurenceEGN,
 			String insurenceCountry, String insurenceAddress,
-			String insurencePK, String insurenceMobilePhone,
+			int insurencePK, String insurenceMobilePhone,
 			String vehicleRegNumber, String vehicleType, String vehicleRama,
 			String vehicleBranch, String vehicleModel,
-			String insurenceDateFrom, String insurenceDateTo,
+			Date insurenceDateFrom, Date insurenceDateTo,
 			int insurenceMonths, float insurenceValue, float insurencePremiq) {
 		super();
 		this.insurerID = insurerID;
-		this.insurenceKaskoID = insurenceKaskoID;
+		this.insurenceGrajdanskaOtgovornostID = insurenceGOID;
 		this.insurenceType = insurenceType;
 		this.insurenceFirstName = insurenceFirstName;
 		this.insurenceSecondName = insurenceSecondName;
@@ -73,12 +75,12 @@ public class GrajdanskaOtgovornost {
 		this.insurerID = insurerID;
 	}
 
-	public String getInsurenceKaskoID() {
-		return insurenceKaskoID;
+	public String getInsurenceGOID() {
+		return insurenceGrajdanskaOtgovornostID;
 	}
 
-	public void setInsurenceKaskoID(String insurenceKaskoID) {
-		this.insurenceKaskoID = insurenceKaskoID;
+	public void setInsurenceGOID(String insurenceKaskoID) {
+		this.insurenceGrajdanskaOtgovornostID = insurenceKaskoID;
 	}
 
 	public String getInsurenceType() {
@@ -137,11 +139,11 @@ public class GrajdanskaOtgovornost {
 		this.insurenceAddress = insurenceAddress;
 	}
 
-	public String getInsurencePK() {
+	public int getInsurencePK() {
 		return insurencePK;
 	}
 
-	public void setInsurencePK(String insurencePK) {
+	public void setInsurencePK(int insurencePK) {
 		this.insurencePK = insurencePK;
 	}
 
@@ -193,19 +195,19 @@ public class GrajdanskaOtgovornost {
 		this.vehicleModel = vehicleModel;
 	}
 
-	public String getInsurenceDateFrom() {
+	public Date getInsurenceDateFrom() {
 		return insurenceDateFrom;
 	}
 
-	public void setInsurenceDateFrom(String insurenceDateFrom) {
+	public void setInsurenceDateFrom(Date insurenceDateFrom) {
 		this.insurenceDateFrom = insurenceDateFrom;
 	}
 
-	public String getInsurenceDateTo() {
+	public Date getInsurenceDateTo() {
 		return insurenceDateTo;
 	}
 
-	public void setInsurenceDateTo(String insurenceDateTo) {
+	public void setInsurenceDateTo(Date insurenceDateTo) {
 		this.insurenceDateTo = insurenceDateTo;
 	}
 

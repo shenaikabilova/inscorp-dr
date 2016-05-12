@@ -62,20 +62,8 @@
 					</li>
 					<li><a href="#">Търсене</a>
 						<ul>
-							<li><a href="#">Гражданска отговорност</a>
-								<ul>
-									<li><a href="searchGO.jsp">Търсене по №</a></li>
-									<li><a href="#">Търсене по текущ застраховател</a></li>
-									<li><a href="">Изведи всички</a></li>
-								</ul>
-							</li>
-							<li><a href="#">Каско</a>
-								<ul>
-									<li><a href="searchGO.jsp">Търсене по №</a></li>
-									<li><a href="#">Търсене по текущ застраховател</a></li>
-									<li><a href="">Изведи всички</a></li>
-								</ul>
-							</li>
+							<li><a href="#">Гражданска отговорност</a></li>
+							<li><a href="#">Каско</a></li>
 						</ul>
 					</li>
 					<li><a href="insurerSettings.jsp">Настройки</a></li>
@@ -90,21 +78,20 @@
 				<form action="addNewGO" method="post">
 					<div class="form-section">
 						<div class="form-section">
-							<h4>Застрахователна полица ГО на МПС</h4>
-							<div class="form-row">
-								<label>№ на полица</label>
-								<input class="field" type="text" name="policaN" >						
-							</div>
-							<div class="form-row">
-									<label>Застраховател</label>
-								<input class="field" type="text" value=<%=userName%> name="userName" readonly="readonly">
-							</div>
+							<label>Застрахователна полица ГО на МПС</label>
+							<label>№ на полица</label>
+							<input type="text" name="policaN" >						
 						</div>
+						<div class="form-section">
+								<label>Застраховател</label>
+							<input type="text" value=<%=userName%> name="userName" readonly="readonly">
+						</div>
+						
 						<div class="form-section">
 							<h4>Застрахован</h4>
 							<div class="form-row">
 								<label>Тип на клиента</label>
-								<select class="field">
+								<select>
 									<option>Физическо лице</option>
 								</select>
 							</div>
@@ -120,16 +107,12 @@
 							</div>
 							<div class="form-row">
 								<label>Държава</label>
-								<select class="field">
+								<select>
 									<option>България</option>
 								</select>
-							</div>
-							<div class="form-row">
-								<div class="form-row-inner">
+								<div class="form-row-inner form-row-inner-long">
 									<label for="address">Адрес на собственика</label>
 									<input type="text" class="field" name="address" placeholder="гр. ж.к. ул. бл. вх. ет. ап." size="50">
-								</div>
-								<div class="form-row-inner">
 									<label for="pKod">Пощенски код</label>
 									<input type="text" class="field" name="pKod" placeholder="Пощенски код" size="20">
 								</div>
@@ -151,7 +134,7 @@
 						<div class="form-row">
 							<div class="form-row-inner">
 								<label for="vehicleType">Вид МПС</label>
-								<select id="vehicleType" class="field" name="vehicleType"></select>
+								<select id="vehicleType" name="vehicleType"></select>
 							</div>
 							<div class="form-row-inner">
 								<label for="ramaN">Рама №</label>
@@ -162,7 +145,7 @@
 						<div class="form-row">
 							<div class="form-row-inner">
 								<label for="vehicleBrand">Марка</label>
-								<select id="vehicleBrand" class="field">
+								<select id="vehicleBrand">
 								<%
 							   		VehicleTypeDAO types = new VehicleTypeDAOImpl();
 									for(VehicleType type : types.listAllVehicleTypes()) { %>
@@ -180,18 +163,12 @@
 							<label>Дата на сключване</label>
 						</div>
 						<div class="form-row">
-							<div class="form-row-inner">
-								<label>Начало</label>
-								<input class="field" type="text" placeholder="Начална дата" id="datepicker1" name="fromDate">							
-							</div>
-							<div class="form-row-inner">
-								<label>Край</label>
-								<input class="field" type="text" placeholder="Крайна датва" id="datepicker2" name="toDate">							
-							</div>
-						</div>
-						<div class="form-row">
+							<label>Начало</label>
+							<input type="text" placeholder="Начална дата" id="datepicker1" name="fromDate">
+							<label>Край</label>
+							<input type="text" placeholder="Крайна датва" id="datepicker2" name="toDate">
 							<label>Срок</label>
-							<select class="field">
+							<select>
 								<option>3 месеца</option>
 								<option>6 месеца</option>
 								<option>12 месеца</option>
@@ -203,19 +180,19 @@
 						<h4>Застрахователна сума</h4>
 						<div class="form-row">
 							<label>Застрахователна сума</label>
-							<input class="field" type="text">
+							<input type="text">
 						</div>
 						<div class="form-row">
 							<label>Отстъпки</label>
-							<input class="field" type="text">
+							<input type="text">
 						</div>
 						<div class="form-row">
 							<label>Надбавки</label>
-							<input class="field" type="text">
+							<input type="text">
 						</div>
 						<div class="form-row">
 							<label>Застрахователна премия</label>
-							<input class="field" type="text">
+							<input type="text">
 						</div>
 					</div>
 				</div>

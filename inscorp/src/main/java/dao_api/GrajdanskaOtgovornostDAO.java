@@ -6,7 +6,6 @@ package dao_api;
 import java.util.List;
 
 import model.GrajdanskaOtgovornost;
-import model.Kasko;
 
 /**
  * @author shenaikabilova
@@ -17,5 +16,5 @@ public interface GrajdanskaOtgovornostDAO {
 	public void insertGO (GrajdanskaOtgovornost grajdanskaOtgovornost);
 	public void deleteGO (GrajdanskaOtgovornost grajdanskaOtgovornostID);
 	public void updateGO (GrajdanskaOtgovornost grajdanskaOtgovornost);
-	public Kasko searchGO (GrajdanskaOtgovornost grajdanskaOtgovornostID);
+	public GrajdanskaOtgovornost searchGO (GrajdanskaOtgovornost grajdanskaOtgovornostID);
 }

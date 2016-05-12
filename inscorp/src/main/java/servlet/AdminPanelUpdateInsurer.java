@@ -18,7 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  */
 @SuppressWarnings("serial")
-public class InsurerAddNewGO extends HttpServlet {
+@WebServlet("/updateInsurer")
+public class AdminPanelUpdateInsurer extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 	      super.init(config);
 	      try {
@@ -29,8 +30,16 @@ public class InsurerAddNewGO extends HttpServlet {
 	      }
 	}
 	
-	public void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+	
+		String insurerID = request.getParameter("insurerID");
+		String insurerFirstName = request.getParameter("insurerName");
+		String insurerLastName = request.getParameter("insurerFamily");
+		String insurerEmail = request.getParameter("e-mail");
+		String insurerPass1 = request.getParameter("password1");
+		String insurerPass2 = request.getParameter("password2");
 		
-	}
+		
+	}		
 }

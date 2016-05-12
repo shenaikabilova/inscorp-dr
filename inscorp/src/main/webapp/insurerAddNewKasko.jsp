@@ -98,8 +98,20 @@
 					</li>
 					<li><a href="#">Търсене</a>
 						<ul>
-							<li><a href="#">Гражданска отговорност</a></li>
-							<li><a href="#">Каско</a></li>
+							<li><a href="#">Гражданска отговорност</a>
+								<ul>
+									<li><a href="searchGO.jsp">Търсене по №</a></li>
+									<li><a href="#">Търсене по текущ застраховател</a></li>
+									<li><a href="">Изведи всички</a></li>
+								</ul>
+							</li>
+							<li><a href="#">Каско</a>
+								<ul>
+									<li><a href="searchGO.jsp">Търсене по №</a></li>
+									<li><a href="#">Търсене по текущ застраховател</a></li>
+									<li><a href="">Изведи всички</a></li>
+								</ul>
+							</li>
 						</ul>
 					</li>
 					<li><a href="insurerSettings.jsp">Настройки</a></li>
@@ -113,9 +125,9 @@
 				<h3>Сключване на застраховка "Каско"</h3>
 				<form action="addNewKasko" method="post">
 					<div class="form-section">
-						<div class="form-section">
+						<div class="form-row">
 							<label>Застраховател №</label>
-							<input type="text" value=<%=userName%> name="userName" readonly="readonly">
+							<input class="field" type="text" value=<%=userName%> name="userName" readonly="readonly">
 						</div>
 						<div class="form-row">
 							<label>№ на полица</label>
@@ -126,7 +138,7 @@
 						<h4>Застрахован</h4>
 						<div class="form-row">
 								<label>Тип на клиента</label>
-								<select>
+								<select class="field">
 									<option>Физическо лице</option>
 								</select>
 							</div>
@@ -144,20 +156,20 @@
 							<label for="mobilePhone">Мобилен телефон</label>
 							<input type="text" class="field" name="mobilePhone" placeholder="Мобилен телефон" size="30">
 						</div>
-						<div>
+						<div class="form-row">
 							<label>Държава</label>
-							<select>
+							<select class="field">
 								<option>България</option>
 							</select>
-							<div class="form-row">
-								<div class="form-row-inner form-row-inner-long">
-									<label for="address">Адрес на собственика</label>
-									<input type="text" class="field" name="address" placeholder="гр. ж.к. ул. бл. вх. ет. ап." size="50">
-								</div> 
-								<div class="form-row-inner">
-									<label for="pKod">Пощенски код</label>
-									<input type="text" class="field" name="pKod" placeholder="Пощенски код" size="20">
-								</div>
+						</div>
+						<div class="form-row">
+							<div class="form-row-inner">
+								<label for="address">Адрес на собственика</label>
+								<input type="text" class="field" name="address" placeholder="гр. ж.к. ул. бл. вх. ет. ап." size="50">
+							</div> 
+							<div class="form-row-inner">
+								<label for="pKod">Пощенски код</label>
+								<input type="text" class="field" name="pKod" placeholder="Пощенски код" size="20">
 							</div>
 						</div>
 					</div>
@@ -171,7 +183,7 @@
 						<div class="form-row">
 							<div class="form-row-inner">
 								<label for="vehicleType">Вид МПС</label>
-								<select id="vehicleType" name="vehicleType"></select>
+								<select id="vehicleType" class="field" name="vehicleType"></select>
 							</div>
 							<div class="form-row-inner">
 								<label for="ramaN">Рама №</label>
@@ -182,7 +194,7 @@
 						<div class="form-row">
 							<div class="form-row-inner">
 								<label for="vehicleBrand">Марка</label>
-								<select id="vehicleBrand">
+								<select id="vehicleBrand" class="field">
 								<%
 							   		VehicleTypeDAO types = new VehicleTypeDAOImpl();
 									for(VehicleType type : types.listAllVehicleTypes()) { %>
@@ -194,9 +206,11 @@
 								<label>Модел</label>
 								<input type="text" class="field" name="vehicleModel" placeholder="Модел" size="30">
 							</div>
+						</div>
+						<div class="form-row">
 							<div class="form-row-inner">
 								<label>Цвят</label>
-								<select id="vehicleColor">
+								<select id="vehicleColor" class="field">
 								<%
 									VehicleColorDAO colors = new VehicleColorDAOImpl();
 									for(VehicleColor color : colors.listAllVehicleColors()) { %>
@@ -208,7 +222,7 @@
 						<div class="form-row">
 							<div class="form-row-inner">
 								<label>Година на производство</label>
-								<select id="year" name="year"></select>
+								<select id="year" class="field" name="year"></select>
 							</div>
 							<div class="form-row-inner">
 								<label>Дата на първа регистрация</label>
@@ -218,11 +232,11 @@
 						<div class="form-row">
 							<div class="form-row-inner">
 								<label>Обем на двигателя</label>
-								<select id="vehicleEngine" name="vehicleEngine"></select>
+								<select id="vehicleEngine" class="field" name="vehicleEngine"></select>
 							</div>
 							<div class="form-row-inner">
 								<label>Брой места</label>
-								<select id="vehiclePlaces" name="vehiclePlaces"></select>
+								<select id="vehiclePlaces" class="field" name="vehiclePlaces"></select>
 							</div>
 						</div>
 						<div class="form-row">

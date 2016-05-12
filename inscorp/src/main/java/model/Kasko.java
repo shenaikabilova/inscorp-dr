@@ -9,6 +9,7 @@ import java.util.Date;
 public class Kasko {
 	private String insurerId;
 	private String insKaskoId;
+	private String insType;
 	private String insurenceFirstName;
 	private String insurenceSecondName;
 	private String insurenceFamily;

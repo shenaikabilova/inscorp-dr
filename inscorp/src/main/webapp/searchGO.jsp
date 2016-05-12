@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-	<head>
+<head>
 		<%
 			String userName = null;
 			Cookie[] cookies = request.getCookies();
@@ -41,7 +41,7 @@
 							</li>
 							<li><a href="#">Каско</a>
 								<ul>
-									<li><a href="searchGO.jsp">Търсене по №</a></li>
+									<li><a href="/searchGOByID">Търсене по №</a></li>
 									<li><a href="#">Търсене по текущ застраховател</a></li>
 									<li><a href="">Изведи всички</a></li>
 								</ul>
@@ -51,6 +51,20 @@
 					<li><a href="insurerSettings.jsp">Настройки</a></li>
 					<li><a href="/logout">Изход</a>
 				</ul>
+			</div>
+		</div>
+		
+		<div class="searchGO">
+			<div class="shell">
+				<form action="searchByID" method="get">
+					<div class="form-section">
+						<div class="form-row">
+							<label>№ на полица</label>
+							<input class="field" type="text" name="searchByID" placeholder="Въведете № на полица" >
+							<input type="submit" value="Намери" name="searchByID">
+						</div>
+					</div>				
+				</form>	
 			</div>
 		</div>
 	</body>

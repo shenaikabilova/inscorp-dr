@@ -43,17 +43,19 @@
 				</li>
 				<li><a href="adminPanelSettings.jsp">Настройки</a></li>
 				<li><a href="adminPanelInsurers.jsp">Застрахователни агенти</a></li>
-				<li><a href="login.jsp">Изход</a></li>
+				<li><a href="/logout">Изход</a></li>
 			</ul>
 		</div>
 		
-		<div class="viewInsurers">
-			<table>
+		<div class="viewInsurers shell">
+		<form action = "updateInsurer" method="get">
+			<table border="1">
 				<th>ID</th>
 				<th>Име</th>
 				<th>Фамилия</th>
 				<th>Е-майл</th>
 				<th>Парола</th>
+				
 				
 				<%
 					InsurerDAO insurers = new InsurerDAOImpl();
@@ -64,7 +66,12 @@
 						<td><%=insurer.getInsurerFamily()%></td>
 						<td><%=insurer.getInsurerEmail()%></td>
 						<td><%=insurer.getInsurerPassword()%></td>
+						<td><a href="/adminPanelSettings">Промени</a></td>
+						<td><a href="#">Изтрий</a>
+					
+						
 					</tr>
+			</form>
 				<% } %>
 			</table>
 		</div>

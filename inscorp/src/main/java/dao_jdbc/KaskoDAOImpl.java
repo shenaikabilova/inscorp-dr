@@ -86,7 +86,7 @@ public class KaskoDAOImpl implements KaskoDAO{
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
 			
 			preparedStatement.setString(1, kasko.getInsurerId());
-			preparedStatement.setString(1, kasko.getInsKaskoId());
+			preparedStatement.setString(2, kasko.getInsKaskoId());
 			preparedStatement.setString(3, kasko.getInsurenceFirstName());
 			preparedStatement.setString(4, kasko.getInsurenceSecondName());
 			preparedStatement.setString(5, kasko.getInsurenceFamily());
@@ -213,5 +213,4 @@ public class KaskoDAOImpl implements KaskoDAO{
 		}
 		return kasko;
 	}
-
 }

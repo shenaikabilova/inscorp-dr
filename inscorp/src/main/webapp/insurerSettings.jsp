@@ -44,10 +44,22 @@
 							<li><a href="insurerAddNewKasko.jsp">Каско</a></li>
 						</ul>
 					</li>
-					<li><a href="#">Търсене</a>
+				<li><a href="#">Търсене</a>
 						<ul>
-							<li><a href="#">Гражданска отговорност</a></li>
-							<li><a href="#">Каско</a></li>
+							<li><a href="#">Гражданска отговорност</a>
+								<ul>
+									<li><a href="searchGO.jsp">Търсене по №</a></li>
+									<li><a href="#">Търсене по текущ застраховател</a></li>
+									<li><a href="">Изведи всички</a></li>
+								</ul>
+							</li>
+							<li><a href="#">Каско</a>
+								<ul>
+									<li><a href="searchGO.jsp">Търсене по №</a></li>
+									<li><a href="#">Търсене по текущ застраховател</a></li>
+									<li><a href="">Изведи всички</a></li>
+								</ul>
+							</li>
 						</ul>
 					</li>
 					<li><a href="insurerSettings.jsp">Настройки</a></li>

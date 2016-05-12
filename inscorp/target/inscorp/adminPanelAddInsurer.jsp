@@ -1,7 +1,20 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>InsuranceCorporation</title>
+	<head><%
+			String userName = null;
+			Cookie[] cookies = request.getCookies();
+			if(cookies != null) {
+				for(Cookie cookie: cookies) {
+					if(cookie.getName().equals("user")) {
+						userName = cookie.getValue();
+					}
+				}
+			}
+			if(userName == null) {
+				response.sendRedirect("login.jsp");
+			}
+		%>
+		<title><%=userName %></title>
 		<%@ page contentType="text/html; charset=UTF-8" %>
 		<link href = "style.css" type="text/css" rel = "stylesheet"/>
 	</head>
@@ -17,14 +30,14 @@
 					</li>
 					<li><a href="adminPanelSettings.jsp">Настройки</a></li>
 					<li><a href="adminPanelInsurers.jsp">Застрахователни агенти</a></li>
-					<li><a href="#">Изход</a></li>
+					<li><a href="/logout">Изход</a></li>
 				</ul>
 			</div>
 		</div>
 		
 		<div class="addInsurer"> 
 			<div class="shell">
-				<form method="post">
+				<form action="adminPanelAddInsurer" method="post">
 					<table width="100%">
 						<tr>
 							<td></td>

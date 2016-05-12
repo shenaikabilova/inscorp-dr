@@ -19,6 +19,7 @@ import bussines_logic.KaskoPremiq;
  * @author shenaikabilova
  *
  */
+@SuppressWarnings("serial")
 @WebServlet("/value")
 public class KaskoPremiqServlet extends HttpServlet{
 	public void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
