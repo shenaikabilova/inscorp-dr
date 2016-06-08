@@ -20,7 +20,7 @@ public class Kasko {
 	private String vehicleRegistrationNumber;
 	private String vehicleType;
 	private String vehicleRama;
-	private String vehicleBranch;
+	private String vehicleBrand;
 	private String vehicleModel;
 	private String vehicleColor;
 	private int vehicleYear;
@@ -31,12 +31,11 @@ public class Kasko {
 	private float vehicleInsurencePremiq;
 	
 	public Kasko() {
-		
 	}
 	
 	public Kasko(String insKaskoId, String insurenceFirstName, String insurenceSecondName, String insurenceFamily, 
 			String insurenceEGN, String insurenceMobilePhone, String insurenceAddress, int insurencePK, 
-			String vehicleRegistrationNumber, String vehicleType, String vehicleRama, String vehicleBranch, 
+			String vehicleRegistrationNumber, String vehicleType, String vehicleRama, String vehicleBrand, 
 			String vehicleModel, String vehicleColor, int vehicleYear, Date vehicleFirstRegistration, float vehicleEngine, 
 			int vehiclePlaceNumber, float vehicleInsurenceValue, float vehicleInsurencePremiq) {
 		this.insKaskoId = insKaskoId;
@@ -50,7 +49,7 @@ public class Kasko {
 		this.vehicleRegistrationNumber = vehicleRegistrationNumber;
 		this.vehicleType = vehicleType;
 		this.vehicleRama = vehicleRama;
-		this.vehicleBranch = vehicleBranch;
+		this.vehicleBrand = vehicleBrand;
 		this.vehicleModel = vehicleModel;
 		this.vehicleColor = vehicleColor;
 		this.vehicleYear = vehicleYear;
@@ -61,13 +60,14 @@ public class Kasko {
 		this.vehicleInsurencePremiq = vehicleInsurencePremiq;
 	}
 
-	public Kasko(String insurerId, String insKaskoId, String insurenceFirstName, String insurenceSecondName, String insurenceFamily, 
+	public Kasko(String insurerId, String insKaskoId, String insType, String insurenceFirstName, String insurenceSecondName, String insurenceFamily, 
 			String insurenceEGN, String insurenceMobilePhone, String insurenceAddress, int insurencePK, 
-			String vehicleRegistrationNumber, String vehicleType, String vehicleRama, String vehicleBranch, 
+			String vehicleRegistrationNumber, String vehicleType, String vehicleRama, String vehicleBrand, 
 			String vehicleModel, String vehicleColor, int vehicleYear, Date vehicleFirstRegistration, float vehicleEngine, 
 			int vehiclePlaceNumber, float vehicleInsurenceValue, float vehicleInsurencePremiq) {
 		this.insurerId = insurerId;
 		this.insKaskoId = insKaskoId;
+		this.insType = insType;
 		this.insurenceFirstName = insurenceFirstName;
 		this.insurenceSecondName = insurenceSecondName;
 		this.insurenceFamily = insurenceFamily;
@@ -78,7 +78,7 @@ public class Kasko {
 		this.vehicleRegistrationNumber = vehicleRegistrationNumber;
 		this.vehicleType = vehicleType;
 		this.vehicleRama = vehicleRama;
-		this.vehicleBranch = vehicleBranch;
+		this.vehicleBrand = vehicleBrand;
 		this.vehicleModel = vehicleModel;
 		this.vehicleColor = vehicleColor;
 		this.vehicleYear = vehicleYear;
@@ -101,6 +101,14 @@ public class Kasko {
 		return insKaskoId;
 	}
 
+	public void setInsType(String insType) {
+		this.insType = insType;
+	}
+	
+	public String getInsType() {
+		return insType;
+	}
+	
 	public void setInsKaskoId(String insKaskoId) {
 		this.insKaskoId = insKaskoId;
 	}
@@ -185,12 +193,12 @@ public class Kasko {
 		this.vehicleRama = vehicleRama;
 	}
 
-	public String getVehicleBranch() {
-		return vehicleBranch;
+	public String getVehicleBrand() {
+		return vehicleBrand;
 	}
 
-	public void setVehicleBranch(String vehicleBranch) {
-		this.vehicleBranch = vehicleBranch;
+	public void setVehicleBrand(String vehicleBrand) {
+		this.vehicleBrand = vehicleBrand;
 	}
 
 	public String getVehicleModel() {

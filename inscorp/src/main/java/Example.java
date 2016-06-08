@@ -1,12 +1,15 @@
 import model.Insurer;
+import model.Kasko;
 import model.VehicleColor;
-import model.VehicleType;
+import model.VehicleBrand;
 import dao_api.InsurerDAO;
+import dao_api.KaskoDAO;
 import dao_api.VehicleColorDAO;
-import dao_api.VehicleTypeDAO;
+import dao_api.VehicleBrandDAO;
 import dao_jdbc.InsurerDAOImpl;
+import dao_jdbc.KaskoDAOImpl;
 import dao_jdbc.VehicleColorDAOImpl;
-import dao_jdbc.VehicleTypeDAOImpl;
+import dao_jdbc.VehicleBrandDAOImpl;
 
 public class Example {
 	public static void main(String[] args) {
@@ -26,8 +29,16 @@ public class Example {
 //		for(VehicleColor color : colors.listAllVehicleColors()) {
 //			System.out.println(color.getVehicleColor());
 //		}
+//		
+//		InsurerDAO insurer = new InsurerDAOImpl();
+//		insurer.insert(new Insurer("8", "Иван", "Иванов", "aaa", "123"));
 		
-		InsurerDAO insurer = new InsurerDAOImpl();
-		insurer.insert(new Insurer("8", "Иван", "Иванов", "aaa", "123"));
+//		KaskoDAO searchByID = new KaskoDAOImpl();
+//		System.out.println(searchByID.searchKasko("000001").getInsKaskoId());
+		
+		KaskoDAO searchAll = new KaskoDAOImpl();
+		for(Kasko all : searchAll.searchKaskoByInsurer("000001")) {
+			System.out.println(all.getInsKaskoId());
+		}
 	}
 }

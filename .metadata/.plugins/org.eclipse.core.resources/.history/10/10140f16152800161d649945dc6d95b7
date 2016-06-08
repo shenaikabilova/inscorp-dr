@@ -1,0 +1,14 @@
+/**
+ * 
+ */
+package dao_jdbc;
+
+import dao_api.InsurerTypeDAO;
+
+/**
+ * @author shenaikabilova
+ *
+ */
+public class InsurerTypeDAOImpl implements InsurerTypeDAO {
+
+}

@@ -1,0 +1,14 @@
+/**
+ * 
+ */
+package model;
+
+/**
+ * @author shenaikabilova
+ *
+ */
+public class VehicleType {
+	private String vehicleType;
+	
+	
+}

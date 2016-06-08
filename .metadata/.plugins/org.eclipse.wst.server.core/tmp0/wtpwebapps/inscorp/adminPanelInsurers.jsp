@@ -31,6 +31,14 @@
 		<title><%=userName %></title>
 		<%@ page contentType="text/html; charset=UTF-8" %>
 		<link href = "style.css" type="text/css" rel = "stylesheet"/>
+		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+		
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('.viewInsurers ');
+				$.post("foo",JSON.stringify({id:5,name:"Nikos",address:{city:"Athens"}}));
+			});
+		</script>
 	</head>
 	
 	<body>
@@ -47,8 +55,9 @@
 			</ul>
 		</div>
 		
-		<div class="viewInsurers">
-			<table>
+		<div class="viewInsurers shell">
+		<form action = "updateInsurer" method="get">
+			<table border="1">
 				<th>ID</th>
 				<th>Име</th>
 				<th>Фамилия</th>
@@ -64,9 +73,10 @@
 						<td><%=insurer.getInsurerFamily()%></td>
 						<td><%=insurer.getInsurerEmail()%></td>
 						<td><%=insurer.getInsurerPassword()%></td>
-						<td><a href="#">Промени</a></td>
-						<td><a href="#">Изтрий</a>
+						<td><input type="submit" value="Промени" name="update"></td>
+						<td><input type="submit" value="Изтрий" name="delete"></td>
 					</tr>
+			</form>
 				<% } %>
 			</table>
 		</div>

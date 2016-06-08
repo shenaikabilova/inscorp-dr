@@ -14,4 +14,5 @@ public interface KaskoDAO {
 	public void deleteKasko (String kaskoID);
 	public void updateKasko (Kasko kasko);
 	public Kasko searchKasko (String kaskoID);
+	public List<Kasko> searchKaskoByInsurer (String userName);
 }

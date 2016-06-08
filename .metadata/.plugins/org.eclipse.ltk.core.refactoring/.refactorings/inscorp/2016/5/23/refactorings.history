@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename method &apos;model.GrajdanskaOtgovornost.getInsurenceGOID()&apos; to &apos;getinsurenceGrajdanskaOtgovornostID&apos;&#x0D;&#x0A;- Original project: &apos;inscorp&apos;&#x0D;&#x0A;- Original element: &apos;model.GrajdanskaOtgovornost.getInsurenceGOID()&apos;&#x0D;&#x0A;- Renamed element: &apos;model.GrajdanskaOtgovornost.getinsurenceGrajdanskaOtgovornostID()&apos;&#x0D;&#x0A;- Update references to refactored element" delegate="false" deprecate="false" description="Rename method &apos;getInsurenceGOID&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.method" input="/src\/main\/java&lt;model{GrajdanskaOtgovornost.java[GrajdanskaOtgovornost~getInsurenceGOID" name="getinsurenceGrajdanskaOtgovornostID" references="true" stamp="1464638873621" version="1.0"/>
+</session>

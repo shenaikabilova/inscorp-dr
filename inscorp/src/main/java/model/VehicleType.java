@@ -10,19 +10,19 @@ package model;
 public class VehicleType {
 	private String vehicleType;
 	
-	public VehicleType () {
+	public VehicleType() {
 		
 	}
-	
-	public VehicleType (String typeVehicle) {
-		this.vehicleType = typeVehicle;
-	}
 
+	public VehicleType(String vehicleType) {
+		this.vehicleType = vehicleType;
+	}
+	
 	public String getVehicleType() {
 		return vehicleType;
 	}
 
-	public void setVehicleType(String typeVehicle) {
-		this.vehicleType = typeVehicle;
+	public void setVehicleType(String vehicleType) {
+		this.vehicleType = vehicleType;
 	}
 }

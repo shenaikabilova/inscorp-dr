@@ -64,7 +64,6 @@
 				<th>Е-майл</th>
 				<th>Парола</th>
 				
-				
 				<%
 					InsurerDAO insurers = new InsurerDAOImpl();
 					for(Insurer insurer : insurers.listInsurers()) { %>

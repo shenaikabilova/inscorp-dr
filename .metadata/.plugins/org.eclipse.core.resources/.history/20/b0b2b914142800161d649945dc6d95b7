@@ -1,0 +1,15 @@
+/**
+ * 
+ */
+package model;
+
+/**
+ * @author shenaikabilova
+ *
+ */
+public class InsurerType {
+	private String insurerType;
+	
+	public InsurerType() {
+	}
+}

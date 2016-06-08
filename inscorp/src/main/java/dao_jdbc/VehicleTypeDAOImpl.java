@@ -17,17 +17,17 @@ import model.VehicleType;
  * @author shenaikabilova
  *
  */
-public class VehicleTypeDAOImpl implements VehicleTypeDAO {
+public class VehicleTypeDAOImpl implements VehicleTypeDAO{
 
 	/* (non-Javadoc)
-	 * @see dao.TypeVehicleDAO#listAllVehicleTypes()
+	 * @see dao_api.VehicleTypeDAO#listVehicleTypes()
 	 */
 	@Override
-	public List<VehicleType> listAllVehicleTypes() {
+	public List<VehicleType> listVehicleTypes() {
 		List<VehicleType> vehicleTypes;
 		
 		try(Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Insurence", "root", "123456")){
-			final String QUERY = "SELECT VEHICLE_TYPE FROM vehicle_types;";
+			final String QUERY = "SELECT VEHICLE_TYPE FROM vehicle_types";
 			final String QUERY_COUNT = "SELECT COUNT(*) as count FROM vehicle_types";
 			
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
@@ -52,5 +52,4 @@ public class VehicleTypeDAOImpl implements VehicleTypeDAO {
 			return new ArrayList<VehicleType>(0);
 		}
 	}
-
 }

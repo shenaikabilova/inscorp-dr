@@ -1,0 +1,28 @@
+/**
+ * 
+ */
+package model;
+
+/**
+ * @author shenaikabilova
+ *
+ */
+public class VehicleBrand {
+	private String VehicleBrand;
+	
+	public VehicleBrand () {
+		
+	}
+	
+	public VehicleBrand (String typeVehicle) {
+		this.VehicleBrand = typeVehicle;
+	}
+
+	public String getVehicleType() {
+		return VehicleBrand;
+	}
+
+	public void setVehicleType(String typeVehicle) {
+		this.VehicleBrand = typeVehicle;
+	}
+}

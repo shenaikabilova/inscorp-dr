@@ -1,0 +1,14 @@
+/**
+ * 
+ */
+package model;
+
+/**
+ * @author shenaikabilova
+ *
+ */
+public class Contry {
+	private String country;
+	
+	public Country 
+}

@@ -11,7 +11,6 @@ import model.VehicleType;
  * @author shenaikabilova
  *
  */
-
 public interface VehicleTypeDAO {
-	public List<VehicleType> listAllVehicleTypes();
+	public List<VehicleType> listVehicleTypes();
 }

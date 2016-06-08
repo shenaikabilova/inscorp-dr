@@ -16,5 +16,6 @@ public interface GrajdanskaOtgovornostDAO {
 	public void insertGO (GrajdanskaOtgovornost grajdanskaOtgovornost);
 	public void deleteGO (GrajdanskaOtgovornost grajdanskaOtgovornostID);
 	public void updateGO (GrajdanskaOtgovornost grajdanskaOtgovornost);
-	public GrajdanskaOtgovornost searchGO (GrajdanskaOtgovornost grajdanskaOtgovornostID);
+	public GrajdanskaOtgovornost searchGO (String grajdanskaOtgovornostID);
+	public List<GrajdanskaOtgovornost> searchGOByInsurer (String userName);
 }

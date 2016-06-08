@@ -1,0 +1,22 @@
+/**
+ * 
+ */
+package model;
+
+/**
+ * @author shenaikabilova
+ *
+ */
+public class Country {
+	private String country;
+	
+	public Country () {
+		
+	}
+
+	public Country(String country) {
+		super();
+		this.country = country;
+	}
+	
+}

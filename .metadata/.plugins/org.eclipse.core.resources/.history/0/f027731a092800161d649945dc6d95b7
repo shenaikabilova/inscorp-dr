@@ -1,0 +1,12 @@
+/**
+ * 
+ */
+package dao_api;
+
+/**
+ * @author shenaikabilova
+ *
+ */
+public interface VehicleTypeDAO {
+	
+}

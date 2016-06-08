@@ -22,9 +22,10 @@ public class GrajdanskaOtgovornost {
 	private int insurencePK;
 	private String insurenceMobilePhone;
 	private String vehicleRegNumber;
+	private String zone;
 	private String vehicleType;
 	private String vehicleRama;
-	private String vehicleBranch;
+	private String vehicleBrand;
 	private String vehicleModel;
 	private Date insurenceDateFrom;
 	private Date insurenceDateTo;
@@ -39,8 +40,8 @@ public class GrajdanskaOtgovornost {
 			String insurenceLastName, String insurenceEGN,
 			String insurenceCountry, String insurenceAddress,
 			int insurencePK, String insurenceMobilePhone,
-			String vehicleRegNumber, String vehicleType, String vehicleRama,
-			String vehicleBranch, String vehicleModel,
+			String vehicleRegNumber, String zone, String vehicleType, String vehicleRama,
+			String vehicleBrand, String vehicleModel,
 			Date insurenceDateFrom, Date insurenceDateTo,
 			int insurenceMonths, float insurenceValue, float insurencePremiq) {
 		super();
@@ -56,9 +57,10 @@ public class GrajdanskaOtgovornost {
 		this.insurencePK = insurencePK;
 		this.insurenceMobilePhone = insurenceMobilePhone;
 		this.vehicleRegNumber = vehicleRegNumber;
+		this.zone = zone;
 		this.vehicleType = vehicleType;
 		this.vehicleRama = vehicleRama;
-		this.vehicleBranch = vehicleBranch;
+		this.vehicleBrand = vehicleBrand;
 		this.vehicleModel = vehicleModel;
 		this.insurenceDateFrom = insurenceDateFrom;
 		this.insurenceDateTo = insurenceDateTo;
@@ -75,12 +77,13 @@ public class GrajdanskaOtgovornost {
 		this.insurerID = insurerID;
 	}
 
-	public String getInsurenceGOID() {
+	public String getInsurenceGrajdanskaOtgovornostID() {
 		return insurenceGrajdanskaOtgovornostID;
 	}
 
-	public void setInsurenceGOID(String insurenceKaskoID) {
-		this.insurenceGrajdanskaOtgovornostID = insurenceKaskoID;
+	public void setInsurenceGrajdanskaOtgovornostID(
+			String insurenceGrajdanskaOtgovornostID) {
+		this.insurenceGrajdanskaOtgovornostID = insurenceGrajdanskaOtgovornostID;
 	}
 
 	public String getInsurenceType() {
@@ -163,6 +166,14 @@ public class GrajdanskaOtgovornost {
 		this.vehicleRegNumber = vehicleRegNumber;
 	}
 
+	public String getZone() {
+		return zone;
+	}
+
+	public void setZone(String zone) {
+		this.zone = zone;
+	}
+
 	public String getVehicleType() {
 		return vehicleType;
 	}
@@ -179,12 +190,12 @@ public class GrajdanskaOtgovornost {
 		this.vehicleRama = vehicleRama;
 	}
 
-	public String getVehicleBranch() {
-		return vehicleBranch;
+	public String getVehicleBrand() {
+		return vehicleBrand;
 	}
 
-	public void setVehicleBranch(String vehicleBranch) {
-		this.vehicleBranch = vehicleBranch;
+	public void setVehicleBrand(String vehicleBrand) {
+		this.vehicleBrand = vehicleBrand;
 	}
 
 	public String getVehicleModel() {

@@ -13,6 +13,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Insurer;
+import dao_api.InsurerDAO;
+import dao_jdbc.InsurerDAOImpl;
+
 /**
  * @author shenaikabilova
  *
@@ -40,6 +44,14 @@ public class AdminPanelUpdateInsurer extends HttpServlet {
 		String insurerPass1 = request.getParameter("password1");
 		String insurerPass2 = request.getParameter("password2");
 		
+		if(insurerPass1.equals(insurerPass2)) {
+			InsurerDAO insUpdate = new InsurerDAOImpl();
+			insUpdate.update(new Insurer(insurerID, insurerFirstName, insurerLastName, insurerEmail, insurerPass1));
+			
+			response.sendRedirect("/inscorp/insurerSettings.jsp");
+		}
+		else {
 		
-	}		
+		}
+	}
 }

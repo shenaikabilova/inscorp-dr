@@ -1,0 +1,25 @@
+/**
+ * 
+ */
+package dao_api;
+
+import java.util.List;
+
+import model.VehicleType;
+
+/**
+ * @author shenaikabilova
+ *
+ */
+public class VehicleTypeDAOImpl implements VehicleTypeDAO{
+
+	/* (non-Javadoc)
+	 * @see dao_api.VehicleTypeDAO#listVehicleTypes()
+	 */
+	@Override
+	public List<VehicleType> listVehicleTypes() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

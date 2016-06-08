@@ -1,0 +1,12 @@
+/**
+ * 
+ */
+package dao_jdbc;
+
+/**
+ * @author shenaikabilova
+ *
+ */
+public class InsurerDAOUImpl implements ins{
+
+}
