@@ -30,7 +30,7 @@
 					</li>
 					<li><a href="adminPanelSettings.jsp">Настройки</a></li>
 					<li><a href="adminPanelInsurers.jsp">Застрахователни агенти</a></li>
-					<li><a href="/logout">Изход</a></li>
+					<li><a href="logout">Изход</a></li>
 				</ul>
 			</div>
 		</div>

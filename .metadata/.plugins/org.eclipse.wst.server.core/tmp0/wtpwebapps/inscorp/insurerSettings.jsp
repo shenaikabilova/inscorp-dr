@@ -12,18 +12,18 @@
 %>
 
 <%
-			String userName = null;
-			Cookie[] cookies = request.getCookies();
-			if(cookies != null) {
-				for(Cookie cookie: cookies) {
-					if(cookie.getName().equals("user")) {
-						userName = cookie.getValue();
-					}
-				}
+	String userName = null;
+	Cookie[] cookies = request.getCookies();
+	if(cookies != null) {
+		for(Cookie cookie: cookies) {
+			if(cookie.getName().equals("user")) {
+				userName = cookie.getValue();
 			}
-			if(userName == null) {
-				response.sendRedirect("login.jsp");
-			}
+		}
+	}
+	if(userName == null) {
+		response.sendRedirect("login.jsp");
+	}
 %>
 
 <html>
@@ -63,7 +63,7 @@
 						</ul>
 					</li>
 					<li><a href="insurerSettings.jsp">Настройки</a></li>
-					<li><a href="/logout">Изход</a>
+					<li><a href="logout">Изход</a>
 				</ul>
 			</div>
 		</div>

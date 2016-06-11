@@ -31,14 +31,6 @@
 		<title><%=userName %></title>
 		<%@ page contentType="text/html; charset=UTF-8" %>
 		<link href = "style.css" type="text/css" rel = "stylesheet"/>
-		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-		
-		<script type="text/javascript">
-			$(document).ready(function(){
-				$('.viewInsurers ');
-				$.post("foo",JSON.stringify({id:5,name:"Nikos",address:{city:"Athens"}}));
-			});
-		</script>
 	</head>
 	
 	<body>
@@ -51,7 +43,7 @@
 				</li>
 				<li><a href="adminPanelSettings.jsp">Настройки</a></li>
 				<li><a href="adminPanelInsurers.jsp">Застрахователни агенти</a></li>
-				<li><a href="/logout">Изход</a></li>
+				<li><a href="logout">Изход</a></li>
 			</ul>
 		</div>
 		

@@ -134,4 +134,23 @@ public class InsurerDAOImpl implements InsurerDAO{
 		
 		return insurer;
 	}
+	
+	public boolean isUser (String username, String password) {
+		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Insurence", "root", "123456")){
+
+			final String QUERY = "SELECT INSURER_ID, INSURER_PASSWORD FROM insurers WHERE INSURER_ID = '" + username + "' and "
+					+ "INSURER_PASSWORD = '" + password + "'";
+			
+			PreparedStatement pr = connection.prepareStatement(QUERY);
+			ResultSet resultSet = pr.executeQuery();
+			
+			if(resultSet.next()) {
+				return true;
+			}
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 }

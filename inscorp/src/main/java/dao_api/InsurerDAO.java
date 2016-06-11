@@ -14,4 +14,5 @@ public interface InsurerDAO {
 	public void delete(String insurerID);
 	public void update(Insurer insurer);
 	public Insurer searchUserName (String username);
+	public boolean isUser (String username, String password);
 }

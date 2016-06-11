@@ -62,7 +62,7 @@
 						</ul>
 					</li>
 					<li><a href="insurerSettings.jsp">Настройки</a></li>
-					<li><a href="/logout">Изход</a>
+					<li><a href="logout">Изход</a>
 				</ul>
 			</div>
 		</div>

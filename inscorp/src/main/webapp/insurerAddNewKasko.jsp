@@ -49,42 +49,9 @@
 		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
 		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 		<link rel="stylesheet" href="/resources/demos/style.css">
-		<script>
-			$(function() {
-				$( "#datepicker" ).datepicker({
-					dateFormat: "yy-mm-dd",
-					onSelect: function(datetext){
-						$(this).val(datetext); }
-				});
-			});
-		</script>
-		
-		<script type="text/javascript">
-			function addList(){
-				var date = new Date();
-			    var selectVehicleYear = document.getElementById("year");
-			    for(var i = date.getFullYear(); i >= date.getFullYear()-20; --i) {
-				    var option = document.createElement('option');
-				    option.text = option.value = i;
-				    selectVehicleYear.add(option, 0);
-			    }
-			    
-			    var vehicleEngine = [1.4, 1.6, 1.8, 2.0];
-			    var selectVehicleEngine = document.getElementById("vehicleEngine");
-			    for(var i=0; i<vehicleEngine.length; i++) {
-			    	var option = document.createElement('option');
-			    	option.text = option.value = vehicleEngine[i];
-			    	selectVehicleEngine.add(option, 0);
-			    }
-			 }
-		</script>
-		
-		<script>
-			function change() {
-				var insValue = document.getElementById("vehicleInsValue").value;
-				document.getElementById('vehicleInsPremiq').value=insValue*0.05;
-			}
-		</script>
+		<script src="js/Kasko/calendarKasko.js"></script>
+		<script type="text/javascript" src="js/Kasko/setKaskoSettings.js"></script>
+		<script src="js/Kasko/setKaskoValue.js"></script>
 	</head>
 	
 	<body onload="addList()">
@@ -116,7 +83,7 @@
 						</ul>
 					</li>
 					<li><a href="insurerSettings.jsp">Настройки</a></li>
-					<li><a href="/logout">Изход</a>
+					<li><a href="logout">Изход</a>
 				</ul>
 			</div>
 		</div>

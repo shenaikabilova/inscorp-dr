@@ -40,7 +40,6 @@
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
 <fullyQualifiedTypeName name="dao_api.InsurerDAO"/>
-<fullyQualifiedTypeName name="dao_jdbc.InsurerDAOImpl"/>
 <fullyQualifiedTypeName name="model.Insurer"/>
 <fullyQualifiedTypeName name="javax.servlet.annotation.WebListener"/>
 <fullyQualifiedTypeName name="javax.servlet.annotation.WebServlet"/>
@@ -60,4 +59,5 @@
 <fullyQualifiedTypeName name="dao_api.GrajdanskaOtgovornostDAO"/>
 <fullyQualifiedTypeName name="dao_jdbc.GrajdanskaOtgovornostDAOImpl"/>
 <fullyQualifiedTypeName name="model.GrajdanskaOtgovornost"/>
+<fullyQualifiedTypeName name="dao_jdbc.InsurerDAOImpl"/>
 </qualifiedTypeNameHistroy>

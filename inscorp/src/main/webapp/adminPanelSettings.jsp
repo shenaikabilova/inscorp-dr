@@ -12,18 +12,18 @@
 %>
 
 <%
-			String userName = null;
-			Cookie[] cookies = request.getCookies();
-			if(cookies != null) {
-				for(Cookie cookie: cookies) {
-					if(cookie.getName().equals("user")) {
-						userName = cookie.getValue();
-					}
-				}
+	String userName = null;
+	Cookie[] cookies = request.getCookies();
+	if(cookies != null) {
+		for(Cookie cookie: cookies) {
+			if(cookie.getName().equals("user")) {
+				userName = cookie.getValue();
 			}
-			if(userName == null) {
-				response.sendRedirect("login.jsp");
-			}
+		}
+	}
+	if(userName == null) {
+		response.sendRedirect("login.jsp");
+	}
 %>
 		
 <html>
@@ -44,7 +44,7 @@
 					</li>
 					<li><a href="adminPanelSettings.jsp">Настройки</a></li>
 					<li><a href="adminPanelInsurers.jsp">Застрахователни агенти</a></li>
-					<li><a href="/logout">Изход</a></li>
+					<li><a href="logout">Изход</a></li>
 				</ul>
 			</div>
 		</div>
