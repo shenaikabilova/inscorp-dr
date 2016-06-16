@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="javax.servlet.http.Cookie"/>
-<fullyQualifiedTypeName name="java.sql.SQLException"/>
 <fullyQualifiedTypeName name="java.lang.Exception"/>
 <fullyQualifiedTypeName name="dao.TypeVehicleDAO"/>
 <fullyQualifiedTypeName name="dao.TypeVehicleDAOImpl"/>
@@ -60,4 +58,6 @@
 <fullyQualifiedTypeName name="dao_jdbc.GrajdanskaOtgovornostDAOImpl"/>
 <fullyQualifiedTypeName name="model.GrajdanskaOtgovornost"/>
 <fullyQualifiedTypeName name="dao_jdbc.InsurerDAOImpl"/>
+<fullyQualifiedTypeName name="org.apache.naming.factory.SendMailFactory"/>
+<fullyQualifiedTypeName name="servlet.SendMail"/>
 </qualifiedTypeNameHistroy>

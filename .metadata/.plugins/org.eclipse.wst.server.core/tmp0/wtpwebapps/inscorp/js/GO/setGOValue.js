@@ -1,7 +1,6 @@
 function sum() {
 	document.getElementById('vehicleInsValue').value="";
 	switch (document.getElementById("kubici").value) {
-	
 	case "до 1100 куб см":
 		if(document.getElementById('zone').value === "Зона І - София"){
 			document.getElementById('vehicleInsValue').value=162;
@@ -282,3 +281,22 @@ function sum() {
 		}
 		break;
 }}
+
+function setGOPremiq() {
+	var premiq   = document.getElementById("vehicleInsValue").value;
+	var otstapki = document.getElementById("insOtstapki").value;
+	var nadbavki = document.getElementById("insNadbavki").value;
+	
+	if(nadbavki == null || nadbavki == "") {
+		document.getElementById("insNadbavki").value = 0;
+		document.getElementById("insPremiq").value = (parseFloat(premiq)-parseFloat(otstapki)+parseFloat(nadbavki));
+	}
+	if(otstapki == null || otstapki == "") {
+		document.getElementById("insOtstapki").value = 0;
+		document.getElementById("insPremiq").value = (parseFloat(premiq)-parseFloat(otstapki)+parseFloat(nadbavki));
+	}
+	
+	console.log(premiq + " " + otstapki + " " + nadbavki );
+	console.log((parseFloat(premiq)-parseFloat(otstapki)+parseFloat(nadbavki)));
+	document.getElementById("insPremiq").value = (parseFloat(premiq)-parseFloat(otstapki)+parseFloat(nadbavki));
+}

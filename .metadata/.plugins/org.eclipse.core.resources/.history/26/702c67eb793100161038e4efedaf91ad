@@ -1,0 +1,11 @@
+function isValidRegNumber() {
+	//("^[Е|А|В|ВТ|ВН|ВР|ЕВ|ТХ|К|КН|ОВ|М|РА|РК|ЕН|РВ|РР|Р|СС|СН|СМ|СО|[С|СА|СВ]|СТ|Т|Х|Н|У][1-9]{4}[А-Я]{1,2}");
+	var regNumber = document.getElementById("registrationNumber");
+	var regExc = /^[Е|А|В|ВТ|ВН|ВР|ЕВ|ТХ|К|КН|ОВ|М|РА|РК|ЕН|РВ|РР|Р|СС|СН|СМ|СО|[С|СА|СВ]|СТ|Т|Х|Н|У][1-9]{4}[А-Я]{1,2}/;
+	
+	var a = regNumber.match(regExc);
+	console.log(a)
+//	if(!regNumber.match(regExc)) {
+//		alert("error");
+//	}
+}

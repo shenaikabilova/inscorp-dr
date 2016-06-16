@@ -44,9 +44,13 @@ public class AdminPanelAddInsurer extends HttpServlet {
 		String insurerPass1 = request.getParameter("password1");
 		String insurerPass2 = request.getParameter("password2");
 		
+		SendMail sendMain = new SendMail();
+		
 		if (insurerPass1.equals(insurerPass2)) {
 			InsurerDAO addInsurer = new InsurerDAOImpl();
 			addInsurer.insert(new Insurer(insurerID, insurerFirstName, insurerLastName, insurerEmail, insurerPass1));
+			
+			sendMain.sendMail(insurerID, insurerPass1, insurerEmail);
 			
 			response.sendRedirect("/inscorp/adminPanelAddInsurer.jsp");
 		}

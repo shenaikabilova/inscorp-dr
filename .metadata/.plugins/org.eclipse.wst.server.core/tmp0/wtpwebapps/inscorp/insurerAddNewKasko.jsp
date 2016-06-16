@@ -11,7 +11,6 @@
 <%@page import="model.VehicleBrand"%>
 <%@page import="dao_jdbc.VehicleBrandDAOImpl"%>
 <%@page import="dao_api.VehicleBrandDAO"%>
-<%@page import="bussines_logic.KaskoPremiq"%>
 <%@page import="model.VehicleColor"%>
 <%@page import="dao_jdbc.VehicleColorDAOImpl"%>
 <%@page import="dao_api.VehicleColorDAO"%>
@@ -52,6 +51,7 @@
 		<script src="js/Kasko/calendarKasko.js"></script>
 		<script type="text/javascript" src="js/Kasko/setKaskoSettings.js"></script>
 		<script src="js/Kasko/setKaskoValue.js"></script>
+		<script src="js/validate.js"></script>
 	</head>
 	
 	<body onload="addList()">
@@ -95,11 +95,11 @@
 					<div class="form-section">
 						<div class="form-row">
 							<label>Застраховател №</label>
-							<input class="field" type="text" value=<%=userName%> name="userName" readonly="readonly">
+							<input class="field" type="text" value=<%=userName%> name="userName" readonly="readonly" maxlength="6">
 						</div>
 						<div class="form-row">
 							<label>№ на полица</label>
-							<input type="text" class="field" name="insurenceID" placeholder="№ на застраховка" size="30">
+							<input type="text" class="field" name="insurenceID" placeholder="№ на застраховка" size="30" maxlength="6">
 						</div>
 					</div>
 					<div class="form-section">
@@ -116,17 +116,17 @@
 						</div>
 						<div class="form-row">
 							<label>Собственик</label>
-							<input type="text" class="field" name="insuredFirstName" placeholder="Име" size="30">
-							<input type="text" class="field" name="insuredSecondName" placeholder="Презиме" size="30">
-							<input type="text" class="field" name="insuredLastName" placeholder="Фамилия" size="30">
+							<input type="text" class="field" name="insuredFirstName" placeholder="Име" size="30" maxlength="50">
+							<input type="text" class="field" name="insuredSecondName" placeholder="Презиме" size="30" maxlength="50">
+							<input type="text" class="field" name="insuredLastName" placeholder="Фамилия" size="30" maxlength="50">
 						</div>
 						<div class="form-row">
 							<label for="EGN">ЕГН</label>
-							<input type="text" class="field" name="EGN" placeholder="ЕГН" size="30">
+							<input type="text" id="EGN" class="field" name="EGN" placeholder="ЕГН" size="30" maxlength="10">
 						</div>
 						<div class="form-row">
 							<label for="mobilePhone">Мобилен телефон</label>
-							<input type="text" class="field" name="mobilePhone" placeholder="Мобилен телефон" size="30">
+							<input type="text" class="field" name="mobilePhone" placeholder="Мобилен телефон" size="30" maxlength="10">
 						</div>
 						<div class="form-row">
 							<label>Държава</label>
@@ -141,11 +141,11 @@
 						<div class="form-row">
 							<div class="form-row-inner">
 								<label for="address">Адрес на собственика</label>
-								<input type="text" class="field" name="address" placeholder="гр. ж.к. ул. бл. вх. ет. ап." size="50">
+								<input type="text" class="field" name="address" placeholder="гр. ж.к. ул. бл. вх. ет. ап." size="50" maxlength="200">
 							</div> 
 							<div class="form-row-inner">
 								<label for="pKod">Пощенски код</label>
-								<input type="text" class="field" name="pKod" placeholder="Пощенски код" size="20">
+								<input type="text" class="field" name="pKod" placeholder="Пощенски код" size="20" maxlength="4">
 							</div>
 						</div>
 					</div>
@@ -153,7 +153,7 @@
 						<h4>Данни за МПС</h4>
 						<div class="form-row">
 							<label for="registrationNumber">Регистрационен №</label>
-							<input type="text" class="field" name="registrationNumber" placeholder="Регистрационен №" size="20">
+							<input type="text" id="registrationNumber" class="field" name="registrationNumber" placeholder="Регистрационен №" size="20" onchange="isValidRegNumber();" maxlength="8">
 						</div>
 						
 						<div class="form-row">
@@ -169,7 +169,7 @@
 							</div>
 							<div class="form-row-inner">
 								<label for="ramaN">Рама №</label>
-								<input type="text" class="field" name="ramaN" placeholder="Рама №" size="30">
+								<input type="text" class="field" name="ramaN" placeholder="Рама №" size="30" maxlength="17">
 							</div>
 						</div>
 						
@@ -186,7 +186,7 @@
 							</div>
 							<div class="form-row-inner">
 								<label>Модел</label>
-								<input type="text" class="field" name="vehicleModel" placeholder="Модел" size="30">
+								<input type="text" class="field" name="vehicleModel" placeholder="Модел" size="30" maxlength="50">
 							</div>
 						</div>
 						<div class="form-row">

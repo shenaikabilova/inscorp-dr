@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%@page import="dao_jdbc.VehicleBrandDAOImpl"%>
 <%@page import="dao_api.VehicleBrandDAO"%>
 <%@page import="model.VehicleBrand"%>
@@ -37,9 +38,11 @@
 		<script src="js/GO/calendarGO.js"></script>
 		<script src="js/GO/setKubici.js"></script>
 		<script src="js/GO/setGOValue.js"></script>
+		<script src="js/validate.js"></script>
+		<script src="js/GO/onLoad.js"></script>
 	</head>
 	
-	<body>
+	<body onload="onLoad();">
 	<div class="menu">
 			<div class="menu-nav">
 				<ul>
@@ -82,11 +85,11 @@
 							<h4>Застрахователна полица ГО на МПС</h4>
 							<div class="form-row">
 								<label>№ на полица</label>
-								<input class="field" type="text" name="policaN" >						
+								<input class="field" type="text" name="policaN" maxlength="6">						
 							</div>
 							<div class="form-row">
 									<label>Застраховател</label>
-								<input class="field" type="text" value=<%=userName%> name="userName" readonly="readonly">
+								<input class="field" type="text" value=<%=userName%> name="userName" readonly="readonly" maxlength="6">
 							</div>
 						</div>
 						<div class="form-section">
@@ -102,13 +105,13 @@
 							</div>
 							<div class="form-row">
 								<label>Собственик</label>
-								<input type="text" class="field" name="insuredFirstName" placeholder="Име" size="30">
-								<input type="text" class="field" name="insuredSecondName" placeholder="Презиме" size="30">
-								<input type="text" class="field" name="insuredLastName" placeholder="Фамилия" size="30">
+								<input type="text" class="field" name="insuredFirstName" placeholder="Име" size="30" maxlength="50">
+								<input type="text" class="field" name="insuredSecondName" placeholder="Презиме" size="30" maxlength="50"> 
+								<input type="text" class="field" name="insuredLastName" placeholder="Фамилия" size="30" maxlength="50">
 							</div>
 							<div class="form-row">
 								<label>ЕГН</label>
-								<input type="text" class="field" name="EGN" placeholder="ЕГН">
+								<input type="text" class="field" name="EGN" placeholder="ЕГН" maxlength="10">
 							</div>
 							<div class="form-row">
 								<label>Държава</label>
@@ -123,16 +126,16 @@
 							<div class="form-row">
 								<div class="form-row-inner">
 									<label for="address">Адрес на собственика</label>
-									<input type="text" class="field" name="address" placeholder="гр. ж.к. ул. бл. вх. ет. ап." size="50">
+									<input type="text" class="field" name="address" placeholder="гр. ж.к. ул. бл. вх. ет. ап." size="50" maxlength="200">
 								</div>
 								<div class="form-row-inner">
 									<label for="pKod">Пощенски код</label>
-									<input type="text" class="field" name="pKod" placeholder="Пощенски код" size="20">
+									<input type="text" class="field" name="pKod" placeholder="Пощенски код" size="20" maxlength="4">
 								</div>
 							</div>
 							<div class="form-row">
 								<label>Мобилен телефон</label>
-								<input type="text" class="field" name="mobilePhone" placeholder="Мобилен телефон" size="30">
+								<input type="text" class="field" name="mobilePhone" placeholder="Мобилен телефон" size="30" maxlength="10">
 							</div>
 						</div>
 					</div>
@@ -141,7 +144,7 @@
 						<div class="form-row">
 								<div class="form-row">
 									<label for="registrationNumber">Регистрационен №</label>
-									<input type="text" class="field" name="registrationNumber" placeholder="Регистрационен №" size="20">
+									<input type="text" id="registrationNumber" class="field" name="registrationNumber" placeholder="Регистрационен №" size="20" onchange="isValidRegNumber();" maxlength="8">
 								
 									<label for="zone">Зона</label>
 									<select id="zone" class="field" name="zone" onchange="sum();">
@@ -169,7 +172,7 @@
 							</div>
 							<div class="form-row-inner">
 								<label for="ramaN">Рама №</label>
-								<input type="text" class="field" name="ramaN" placeholder="Рама №" size="30">
+								<input type="text" class="field" name="ramaN" placeholder="Рама №" size="30" maxlength="17">
 							</div>
 						</div>
 						
@@ -186,7 +189,7 @@
 							</div>
 							<div class="form-row-inner">
 								<label>Модел</label>
-								<input type="text" class="field" name="vehicleModel" placeholder="Модел" size="30">
+								<input type="text" class="field" name="vehicleModel" placeholder="Модел" size="30" maxlength="50">
 							</div>
 						</div>
 						
@@ -223,15 +226,19 @@
 						</div>
 						<div class="form-row">
 							<label>Отстъпки</label>
-							<input class="field" type="text" name="insOtstapki">
+							<input 
+							onchange="setGOPremiq();" onkeypress="onchange();" onpaste="this.onchange();" oninput="onchange();"
+							class="field" id="insOtstapki" type="text" name="insOtstapki" value="0">
 						</div>
 						<div class="form-row">
 							<label>Надбавки</label>
-							<input class="field" type="text" name="insNadbavki">
+							<input
+							onchange="setGOPremiq();" onkeypress="onchange();" onpaste="this.onchange();" oninput="onchange();"
+							class="field" id=insNadbavki type="text" name="insNadbavki" value="0">
 						</div>
 						<div class="form-row">
 							<label>Застрахователна премия</label>
-							<input class="field" type="text" name="insPremiq">
+							<input class="field" id="insPremiq" type="text" name="insPremiq">
 						</div>
 					</div>
 				</div>
