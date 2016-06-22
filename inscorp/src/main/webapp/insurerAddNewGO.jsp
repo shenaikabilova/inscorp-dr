@@ -206,14 +206,12 @@
 								<input class="field" type="text" placeholder="Крайна датва" id="datepicker2" name="toDate">							
 							</div>
 						</div>
-<!-- 						<div class="form-row"> -->
-<!-- 							<label>Срок</label> -->
-<!-- 							<select id="months" class="field" name="months"> -->
-<!-- 								<option>3 месеца</option> -->
-<!-- 								<option>6 месеца</option> -->
-<!-- 								<option>12 месеца</option> -->
-<!-- 							</select> -->
-<!-- 						</div> -->
+						<div class="form-row">
+							<label>Срок</label>
+							<select id="months" class="field" name="months">
+								<option>12 месеца</option>
+							</select>
+						</div>
 					</div>
 					
 					<div class="form-action">

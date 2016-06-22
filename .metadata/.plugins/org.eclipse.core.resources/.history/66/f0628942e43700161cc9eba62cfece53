@@ -1,0 +1,16 @@
+/**
+ * 
+ */
+package inscorp;
+
+import dao_api.InsurerTypeDAO;
+import model.InsurerType;
+
+/**
+ * @author shenaikabilova
+ *
+ */
+public class InsurerTypeDAOImplTest {
+	private static InsurerType insType = new InsurerType();
+	private static InsurerTypeDAO dao = new InsurerTypeDAOImpl();
+}

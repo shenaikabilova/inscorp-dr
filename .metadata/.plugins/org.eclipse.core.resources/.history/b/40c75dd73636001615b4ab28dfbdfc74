@@ -1,0 +1,2 @@
+<% String message = request.getAttribute("message") %>
+<p>Message: ${message}</p>

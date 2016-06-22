@@ -5,6 +5,7 @@ package servlet;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.UnavailableException;
@@ -55,7 +56,10 @@ public class AdminPanelAddInsurer extends HttpServlet {
 			response.sendRedirect("/inscorp/adminPanelAddInsurer.jsp");
 		}
 		else {
-			
+			String errmsg = "Неуспешна регистрация на застрахователно лице!";
+			request.setAttribute("errmsg", errmsg);
+			RequestDispatcher view = request.getRequestDispatcher("ErrorLogin.jsp");
+			view.forward(request,response);
 		}
 	}
 }

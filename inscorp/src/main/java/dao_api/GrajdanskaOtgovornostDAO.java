@@ -14,7 +14,7 @@ import model.GrajdanskaOtgovornost;
 public interface GrajdanskaOtgovornostDAO {
 	public List<GrajdanskaOtgovornost> listGO();
 	public void insertGO (GrajdanskaOtgovornost grajdanskaOtgovornost);
-	public void deleteGO (GrajdanskaOtgovornost grajdanskaOtgovornostID);
+	public void deleteGO (String grajdanskaOtgovornostID);
 	public void updateGO (GrajdanskaOtgovornost grajdanskaOtgovornost);
 	public GrajdanskaOtgovornost searchGO (String grajdanskaOtgovornostID);
 	public List<GrajdanskaOtgovornost> searchGOByInsurer (String userName);

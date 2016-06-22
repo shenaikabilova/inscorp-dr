@@ -7,6 +7,7 @@
 	</head>
 	
 	<body>
-		Грешно потребителско име или парола!
+		<center><% String message = (String) request.getAttribute("errmsg"); %>
+				<%=message %></center>
 	</body>
 </html>

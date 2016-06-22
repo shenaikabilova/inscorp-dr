@@ -32,7 +32,7 @@ public class GrajdanskaOtgovornostDAOImpl implements GrajdanskaOtgovornostDAO {
 			final String QUERY = "SELECT INSURER_ID, INSURENCE_ID, INSURENCE_TYPE, INSURENCE_FIRST_NAME, "
 					+ "INSURENCE_SECOND_NAME, INSURENCE_LAST_NAME, INSURENCE_EGN, INSURENCE_COUNTRY, "
 					+ "INSURENCE_ADDRESS, INSURENCE_PK, INSURENCE_PHONE, VEHICLE_REG_NUMBER, ZONE, VEHICLE_TYPE, "
-					+ "VEHICLE_RAMA, VEHICLE_BRANCH, INSURENCE_DATEFROM, VEHICLE_MODEL, INSURENCE_DATE_TO, MONTHS, "
+					+ "VEHICLE_RAMA, VEHICLE_BRAND, INSURENCE_DATE_FROM, VEHICLE_MODEL, INSURENCE_DATE_TO, MONTHS, "
 					+ "VALUE, PREMIQ FROM grajdanska_otgovornost";
 			final String QUERY_COUNT = "SELECT COUNT(*) as count FROM grajdanska_otgovornost";
 			
@@ -63,7 +63,7 @@ public class GrajdanskaOtgovornostDAOImpl implements GrajdanskaOtgovornostDAO {
 				String zone = resultSet.getString("ZONE");
 				String vehicleType = resultSet.getString("VEHICLE_TYPE");
 				String vehicleRama = resultSet.getString("VEHICLE_RAMA");
-				String vehicleBranch = resultSet.getString("VEHICLE_BRANCH");
+				String vehicleBranch = resultSet.getString("VEHICLE_BRAND");
 				String vehicleModel = resultSet.getString("VEHICLE_MODEL");
 				Date insurenceDateFrom = resultSet.getDate("INSURENCE_DATE_FROM");
 				Date insurenceDateTo = resultSet.getDate("INSURENCE_DATE_TO");
@@ -91,9 +91,9 @@ public class GrajdanskaOtgovornostDAOImpl implements GrajdanskaOtgovornostDAO {
 		try(Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Insurence", "root", "123456")) {
 			final String QUERY = "INSERT INTO grajdanska_otgovornost(INSURER_ID, INSURENCE_ID, INSURENCE_TYPE, INSURENCE_FIRST_NAME, "
 					+ "INSURENCE_SECOND_NAME, INSURENCE_LAST_NAME, INSURENCE_EGN, INSURENCE_COUNTRY, "
-					+ "INSURENCE_ADDRESS, INSURENCE_PK, INSURENCE_PHONE, VEHICLE_REG_NUMBER, VEHICLE_TYPE, "
-					+ "VEHICLE_RAMA, VEHICLE_BRANCH, VEHICLE_MODEL, INSURENCE_DATEFROM, INSURENCE_DATE_TO, MONTHS, "
-					+ "VALUE, PREMIQ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+					+ "INSURENCE_ADDRESS, INSURENCE_PK, INSURENCE_PHONE, VEHICLE_REG_NUMBER, ZONE, VEHICLE_TYPE, "
+					+ "VEHICLE_RAMA, VEHICLE_BRAND, VEHICLE_MODEL, INSURENCE_DATE_FROM, INSURENCE_DATE_TO, MONTHS, "
+					+ "VALUE, PREMIQ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
 			
@@ -109,15 +109,16 @@ public class GrajdanskaOtgovornostDAOImpl implements GrajdanskaOtgovornostDAO {
 			preparedStatement.setInt(10, grajdanskaOtgovornost.getInsurencePK());
 			preparedStatement.setString(11, grajdanskaOtgovornost.getInsurenceMobilePhone());
 			preparedStatement.setString(12, grajdanskaOtgovornost.getVehicleRegNumber());
-			preparedStatement.setString(13, grajdanskaOtgovornost.getVehicleType());
-			preparedStatement.setString(14, grajdanskaOtgovornost.getVehicleRama());
-			preparedStatement.setString(15, grajdanskaOtgovornost.getVehicleBrand());
-			preparedStatement.setString(16, grajdanskaOtgovornost.getVehicleModel());
-			preparedStatement.setDate(17, new Date(grajdanskaOtgovornost.getInsurenceDateFrom().getTime()));
-			preparedStatement.setDate(18, new Date(grajdanskaOtgovornost.getInsurenceDateTo().getTime()));	
-			preparedStatement.setInt(19, grajdanskaOtgovornost.getInsurenceMonths());
-			preparedStatement.setFloat(20, grajdanskaOtgovornost.getInsurenceValue());
-			preparedStatement.setFloat(21, grajdanskaOtgovornost.getInsurencePremiq());	
+			preparedStatement.setString(13, grajdanskaOtgovornost.getZone());
+			preparedStatement.setString(14, grajdanskaOtgovornost.getVehicleType());
+			preparedStatement.setString(15, grajdanskaOtgovornost.getVehicleRama());
+			preparedStatement.setString(16, grajdanskaOtgovornost.getVehicleBrand());
+			preparedStatement.setString(17, grajdanskaOtgovornost.getVehicleModel());
+			preparedStatement.setDate(18, new Date(grajdanskaOtgovornost.getInsurenceDateFrom().getTime()));
+			preparedStatement.setDate(19, new Date(grajdanskaOtgovornost.getInsurenceDateTo().getTime()));	
+			preparedStatement.setInt(20, grajdanskaOtgovornost.getInsurenceMonths());
+			preparedStatement.setFloat(21, grajdanskaOtgovornost.getInsurenceValue());
+			preparedStatement.setFloat(22, grajdanskaOtgovornost.getInsurencePremiq());	
 			
 			preparedStatement.executeUpdate();
 		}catch (SQLException e) {
@@ -129,9 +130,9 @@ public class GrajdanskaOtgovornostDAOImpl implements GrajdanskaOtgovornostDAO {
 	 * @see dao_api.GrajdanskaOtgovornostDAO#deleteGO(model.GrajdanskaOtgovornost)
 	 */
 	@Override
-	public void deleteGO(GrajdanskaOtgovornost grajdanskaOtgovornostID) {
+	public void deleteGO(String grajdanskaOtgovornostID) {
 		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Insurence", "root", "123456")) {
-			final String QUERY = "DELETE FROM grajdanska_otgovornost WHERE = '" + grajdanskaOtgovornostID + "'";
+			final String QUERY = "DELETE FROM grajdanska_otgovornost WHERE INSURENCE_ID = '" + grajdanskaOtgovornostID + "'";
 			
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
 			
@@ -150,7 +151,7 @@ public class GrajdanskaOtgovornostDAOImpl implements GrajdanskaOtgovornostDAO {
 			final String QUERY = "UPDATE grajdanska_otgovornostINSURER_ID=?, INSURENCE_ID=?, INSURENCE_TYPE=?, INSURENCE_FIRST_NAME=?, "
 					+ "INSURENCE_SECOND_NAME=?, INSURENCE_LAST_NAME=?, INSURENCE_EGN=?, INSURENCE_COUNTRY=?, "
 					+ "INSURENCE_ADDRESS=?, INSURENCE_PK=?, INSURENCE_PHONE=?, VEHICLE_REG_NUMBER=?, VEHICLE_TYPE=?, "
-					+ "VEHICLE_RAMA=?, VEHICLE_BRANCH=?, VEHICLE_MODEL=?, INSURENCE_DATEFROM=?, INSURENCE_DATE_TO=?, MONTHS=?, "
+					+ "VEHICLE_RAMA=?, VEHICLE_BRAND=?, VEHICLE_MODEL=?, INSURENCE_DATE_FROM=?, INSURENCE_DATE_TO=?, MONTHS=?, "
 					+ "VALUE=?, PREMIQ=? ";
 		
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
@@ -194,7 +195,7 @@ public class GrajdanskaOtgovornostDAOImpl implements GrajdanskaOtgovornostDAO {
 			final String QUERY = "SELECT INSURER_ID, INSURENCE_ID, INSURENCE_TYPE, INSURENCE_FIRST_NAME, "
 					+ "INSURENCE_SECOND_NAME, INSURENCE_LAST_NAME, INSURENCE_EGN, INSURENCE_COUNTRY, "
 					+ "INSURENCE_ADDRESS, INSURENCE_PK, INSURENCE_PHONE, VEHICLE_REG_NUMBER, ZONE, VEHICLE_TYPE, "
-					+ "VEHICLE_RAMA, VEHICLE_BRANCH, INSURENCE_DATEFROM, VEHICLE_MODEL, INSURENCE_DATE_TO, MONTHS, "
+					+ "VEHICLE_RAMA, VEHICLE_BRAND, INSURENCE_DATE_FROM, VEHICLE_MODEL, INSURENCE_DATE_TO, MONTHS, "
 					+ "VALUE, PREMIQ FROM grajdanska_otgovornost WHERE INSURENCE_ID = '" + grajdanskaOtgovornostID + "'";
 			
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
@@ -216,7 +217,7 @@ public class GrajdanskaOtgovornostDAOImpl implements GrajdanskaOtgovornostDAO {
 				String zone = resultSet.getString("ZONE");
 				String vehicleType = resultSet.getString("VEHICLE_TYPE");
 				String vehicleRama = resultSet.getString("VEHICLE_RAMA");
-				String vehicleBranch = resultSet.getString("VEHICLE_BRANCH");
+				String vehicleBranch = resultSet.getString("VEHICLE_BRAND");
 				String vehicleModel = resultSet.getString("VEHICLE_MODEL");
 				Date insurenceDateFrom = resultSet.getDate("INSURENCE_DATE_FROM");
 				Date insurenceDateTo = resultSet.getDate("INSURENCE_DATE_TO");
@@ -249,7 +250,7 @@ List<GrajdanskaOtgovornost> listGO;
 			final String QUERY = "SELECT INSURER_ID, INSURENCE_ID, INSURENCE_TYPE, INSURENCE_FIRST_NAME, "
 					+ "INSURENCE_SECOND_NAME, INSURENCE_LAST_NAME, INSURENCE_EGN, INSURENCE_COUNTRY, "
 					+ "INSURENCE_ADDRESS, INSURENCE_PK, INSURENCE_PHONE, VEHICLE_REG_NUMBER, ZONE, VEHICLE_TYPE, "
-					+ "VEHICLE_RAMA, VEHICLE_BRANCH, INSURENCE_DATEFROM, VEHICLE_MODEL, INSURENCE_DATE_TO, MONTHS, "
+					+ "VEHICLE_RAMA, VEHICLE_BRAND, INSURENCE_DATE_FROM, VEHICLE_MODEL, INSURENCE_DATE_TO, MONTHS, "
 					+ "VALUE, PREMIQ FROM grajdanska_otgovornost WHERE INSURER_ID = '" + userName + "'";
 			final String QUERY_COUNT = "SELECT COUNT(*) as count FROM grajdanska_otgovornost";
 			
@@ -280,7 +281,7 @@ List<GrajdanskaOtgovornost> listGO;
 				String zone = resultSet.getString("ZONE");
 				String vehicleType = resultSet.getString("VEHICLE_TYPE");
 				String vehicleRama = resultSet.getString("VEHICLE_RAMA");
-				String vehicleBranch = resultSet.getString("VEHICLE_BRANCH");
+				String vehicleBranch = resultSet.getString("VEHICLE_BRAND");
 				String vehicleModel = resultSet.getString("VEHICLE_MODEL");
 				Date insurenceDateFrom = resultSet.getDate("INSURENCE_DATE_FROM");
 				Date insurenceDateTo = resultSet.getDate("INSURENCE_DATE_TO");

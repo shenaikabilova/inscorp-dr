@@ -32,16 +32,26 @@
 					</li>
 					<li><a href="#">Търсене</a>
 						<ul>
-							<li><a href="#">Гражданска отговорност</a></li>
-							<li><a href="#">Каско</a></li>
+							<li><a href="#">Гражданска отговорност</a>
+								<ul>
+									<li><a href="searchGO.jsp">Търсене по №</a></li>
+									<li><a href="seachGOByInsurer.jsp">Търсене по текущ застраховател</a></li>
+									<li><a href="searchGOAll.jsp">Изведи всички</a></li>
+								</ul>
+							</li>
+							<li><a href="#">Каско</a>
+								<ul>
+									<li><a href="searchInsKaskoByID.jsp">Търсене по №</a></li>
+									<li><a href="searchKaskoByInsurer.jsp">Търсене по текущ застраховател</a></li>
+									<li><a href="searchAllKasko.jsp">Изведи всички</a></li>
+								</ul>
+							</li>
 						</ul>
 					</li>
 					<li><a href="insurerSettings.jsp">Настройки</a></li>
-					<li><a href="/logout">Изход</a>
+					<li><a href="logout">Изход</a>
 				</ul>
 			</div>
 		</div>
-		
-		
 	</body>
 </html>

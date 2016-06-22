@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="GrajdanskaOtgovornostDAOImplTest" project="inscorp" tests="6" started="6" failures="0" errors="0" ignored="0">
+  <testsuite name="inscorp.GrajdanskaOtgovornostDAOImplTest" time="0.45">
+    <testcase name="testSearchGOByInsurer" classname="inscorp.GrajdanskaOtgovornostDAOImplTest" time="0.001"/>
+    <testcase name="testListAllGO" classname="inscorp.GrajdanskaOtgovornostDAOImplTest" time="0.0"/>
+    <testcase name="testInsertGO" classname="inscorp.GrajdanskaOtgovornostDAOImplTest" time="0.0"/>
+    <testcase name="testDeleteGO" classname="inscorp.GrajdanskaOtgovornostDAOImplTest" time="0.0"/>
+    <testcase name="testSearchGO" classname="inscorp.GrajdanskaOtgovornostDAOImplTest" time="0.0"/>
+    <testcase name="testUpdateGO" classname="inscorp.GrajdanskaOtgovornostDAOImplTest" time="0.449"/>
+  </testsuite>
+</testrun>

@@ -75,7 +75,7 @@
 		<item value="400" key="height"/>
 	</section>
 	<section name="javadoc">
-		<item value="public" key="access"/>
+		<item value="private" key="access"/>
 		<item value="false" key="noindex"/>
 		<item value="D:\TU\DiplomnaRabota\inscorp-dr\inscorp\javadoc.xml" key="antpath"/>
 		<item value="false" key="nodeprecatedlist"/>
@@ -94,6 +94,16 @@
 		<item value="D:\TU\DiplomnaRabota\inscorp-dr\inscorp\doc" key="destdir"/>
 		<item value="false" key="openinbrowser"/>
 		<section name="projects">
+			<section name="Servers">
+				<item value="D:\TU\DiplomnaRabota\inscorp-dr\Servers\javadoc.xml" key="antpath"/>
+				<item value="D:\TU\DiplomnaRabota\inscorp-dr\Servers\doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="inscorp">
+				<item value="D:\TU\DiplomnaRabota\inscorp-dr\inscorp\javadoc.xml" key="antpath"/>
+				<item value="D:\TU\DiplomnaRabota\inscorp-dr\inscorp\doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
 		</section>
 	</section>
 	<section name="SourceActionDialog.methods">

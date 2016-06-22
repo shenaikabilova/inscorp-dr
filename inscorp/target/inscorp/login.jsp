@@ -7,7 +7,7 @@
 	</head>
 	
 	<body>
-		
+
 		<div class="login">
 			<div class="shell">
 				<form action="login" method="post">
@@ -15,11 +15,11 @@
 					<table width="100%">
 						<tr>
 							<td><label for="userName">Потребителско име </label></td>
-							<td><input type="text" class="field" name="userName" placeholder="Потребителско име"><br/></td>
+							<td><input type="text" class="field" name="userName" placeholder="Потребителско име" maxlength="50"><br/></td>
 						</tr>
 						<tr>
 							<td><label for="password">Парола</label></td>
-							<td><input type="password" class="field" name="password" placeholder="Парола"><br/></td>
+							<td><input type="password" class="field" name="password" placeholder="Парола" maxlength="50"><br/></td>
 						</tr>
 						<tr>
 							<td></td>

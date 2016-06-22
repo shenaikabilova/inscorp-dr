@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="Rerun inscorp.KaskoDAOImplTest" project="inscorp" tests="6" started="6" failures="0" errors="0" ignored="0">
+  <testsuite name="inscorp.KaskoDAOImplTest" time="1.601">
+    <testcase name="testDeleteKasko" classname="inscorp.KaskoDAOImplTest" time="0.491"/>
+    <testcase name="testUpdateKasko" classname="inscorp.KaskoDAOImplTest" time="0.393"/>
+    <testcase name="testSearchKasko" classname="inscorp.KaskoDAOImplTest" time="0.244"/>
+    <testcase name="testInsertKasko" classname="inscorp.KaskoDAOImplTest" time="0.289"/>
+    <testcase name="testListAllKasko" classname="inscorp.KaskoDAOImplTest" time="0.089"/>
+    <testcase name="testSearchKaskoByInsurer" classname="inscorp.KaskoDAOImplTest" time="0.095"/>
+  </testsuite>
+</testrun>

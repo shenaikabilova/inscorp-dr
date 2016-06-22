@@ -1,0 +1,15 @@
+/**
+ * 
+ */
+package inscorp;
+
+import dao_api.VehicleColorDAO;
+import dao_jdbc.VehicleColorDAOImpl;
+
+/**
+ * @author shenaikabilova
+ *
+ */
+public class VehicleColorDAOImpleTest {
+	private static VehicleColorDAO dao = new VehicleColorDAOImpl();
+}

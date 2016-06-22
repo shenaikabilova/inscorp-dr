@@ -1,0 +1,15 @@
+/**
+ * 
+ */
+package inscorp;
+
+import model.InsurerType;
+
+/**
+ * @author shenaikabilova
+ *
+ */
+public class InsurerTypeDAOImplTest {
+	private static InsurerType insType = new InsurerType();
+	
+}

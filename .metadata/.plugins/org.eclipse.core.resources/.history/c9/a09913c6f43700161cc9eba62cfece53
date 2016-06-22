@@ -1,0 +1,22 @@
+/**
+ * 
+ */
+package inscorp;
+
+import org.junit.Test;
+
+import dao_api.VehicleColorDAO;
+import dao_jdbc.VehicleTypeDAOImpl;
+
+/**
+ * @author shenaikabilova
+ *
+ */
+public class VehicleTypeDAOImplTest {
+	private static VehicleColorDAO dao = new VehicleTypeDAOImpl();
+	
+	@Test
+	public void listAll() {
+		
+	}
+}

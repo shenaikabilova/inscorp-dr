@@ -58,8 +58,6 @@ public class UsersSettingsUpdate extends HttpServlet {
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/insurerSettings.jsp");
 				dispatcher.forward(request,response);
 			}
-			
-			
 		}
 	}
 }

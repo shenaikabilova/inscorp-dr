@@ -1,0 +1,33 @@
+/**
+ * 
+ */
+package inscorp;
+
+import java.util.List;
+
+import org.junit.Test;
+
+import model.GrajdanskaOtgovornost;
+
+/**
+ * @author shenaikabilova
+ *
+ */
+public class GrajdanskaOtgovornostDAOImplTest {
+
+	@Test
+	public void testListAllGO() {
+		
+	}
+	
+	@Test
+	public void testInsertGO() {
+		
+	}
+	
+	@Test
+	public void testDeleteGO (GrajdanskaOtgovornost grajdanskaOtgovornostID);
+	public void updateGO (GrajdanskaOtgovornost grajdanskaOtgovornost);
+	public GrajdanskaOtgovornost searchGO (String grajdanskaOtgovornostID);
+	public List<GrajdanskaOtgovornost> searchGOByInsurer (String userName);
+}

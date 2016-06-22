@@ -42,7 +42,13 @@
 					</ul>
 				</li>
 				<li><a href="adminPanelSettings.jsp">Настройки</a></li>
-				<li><a href="adminPanelInsurers.jsp">Застрахователни агенти</a></li>
+				<li><a href="#">Застрахователни агенти</a>
+					<ul>
+						<li><a href="adminPanelInsurers.jsp">Изведи</a></li>
+						<li><a href="adminPanelUpdateUser.jsp">Промени</a></li>
+						<li><a href="adminPanelDeleteUser.jsp">Изтрий</a></li>
+					</ul>
+				</li>
 				<li><a href="logout">Изход</a></li>
 			</ul>
 		</div>
@@ -65,8 +71,8 @@
 						<td><%=insurer.getInsurerFamily()%></td>
 						<td><%=insurer.getInsurerEmail()%></td>
 						<td><%=insurer.getInsurerPassword()%></td>
-						<td><input type="submit" value="Промени" name="update"></td>
-						<td><input type="submit" value="Изтрий" name="delete"></td>
+<!-- 						<td><input type="submit" value="Промени" name="update"></td> -->
+<!-- 						<td><input type="submit" value="Изтрий" name="delete"></td> -->
 					</tr>
 			</form>
 				<% } %>

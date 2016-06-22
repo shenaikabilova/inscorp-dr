@@ -33,12 +33,13 @@ public class Kasko {
 	public Kasko() {
 	}
 	
-	public Kasko(String insKaskoId, String insurenceFirstName, String insurenceSecondName, String insurenceFamily, 
+	public Kasko(String insKaskoId, String insType, String insurenceFirstName, String insurenceSecondName, String insurenceFamily, 
 			String insurenceEGN, String insurenceMobilePhone, String insurenceAddress, int insurencePK, 
 			String vehicleRegistrationNumber, String vehicleType, String vehicleRama, String vehicleBrand, 
 			String vehicleModel, String vehicleColor, int vehicleYear, Date vehicleFirstRegistration, float vehicleEngine, 
 			int vehiclePlaceNumber, float vehicleInsurenceValue, float vehicleInsurencePremiq) {
 		this.insKaskoId = insKaskoId;
+		this.insType = insType;
 		this.insurenceFirstName = insurenceFirstName;
 		this.insurenceSecondName = insurenceSecondName;
 		this.insurenceFamily = insurenceFamily;

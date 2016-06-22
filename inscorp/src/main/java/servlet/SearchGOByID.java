@@ -17,11 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.GrajdanskaOtgovornost;
-import model.Kasko;
 import dao_api.GrajdanskaOtgovornostDAO;
-import dao_api.KaskoDAO;
 import dao_jdbc.GrajdanskaOtgovornostDAOImpl;
-import dao_jdbc.KaskoDAOImpl;
 
 /**
  * @author shenaikabilova

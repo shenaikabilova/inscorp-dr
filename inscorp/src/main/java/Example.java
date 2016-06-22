@@ -1,11 +1,16 @@
+import java.util.Date;
+
+import model.GrajdanskaOtgovornost;
 import model.Insurer;
 import model.Kasko;
 import model.VehicleColor;
 import model.VehicleBrand;
+import dao_api.GrajdanskaOtgovornostDAO;
 import dao_api.InsurerDAO;
 import dao_api.KaskoDAO;
 import dao_api.VehicleColorDAO;
 import dao_api.VehicleBrandDAO;
+import dao_jdbc.GrajdanskaOtgovornostDAOImpl;
 import dao_jdbc.InsurerDAOImpl;
 import dao_jdbc.KaskoDAOImpl;
 import dao_jdbc.VehicleColorDAOImpl;
@@ -47,7 +52,31 @@ public class Example {
 //			System.out.println("true");
 //		}
 //		else System.out.println("false");
+//		
+//		System.out.println(new InsurerDAOImpl().isUser("000000", "admin"));
+//		
+//		@SuppressWarnings("deprecation")
+//		Kasko kasko = new Kasko("000001", "100014", "Физическо лице", "Георги", "Иванов", "Иванов", 
+//				"8807070011", "123456", "гр. Варна", 9000, "В4589АА", "Автомобил", "А14789АRD78954123", 
+//				"Ауди", "А5", "Бял", 2005, new Date(2005-1900, 10-1, 10), 2.0f, 4, 10000, 500);
+//		KaskoDAO dao = new KaskoDAOImpl();
+////		dao.insertKasko(kasko);
+//		System.out.println(dao.searchKasko("100014").getInsurerId());
+//		System.out.println(dao.searchKasko("100014").getInsKaskoId());
+//		System.out.println(dao.searchKasko("100014").getInsurenceFirstName());
 		
-		System.out.println(new InsurerDAOImpl().isUser("000000", "admin"));
+		@SuppressWarnings("deprecation")
+		GrajdanskaOtgovornost go = new GrajdanskaOtgovornost("000001", "000002", "Физическо лице", 
+				"Иван", "Иванов", "Иванов", "8602020511", "Бългагия", "гр. Варна", 9000, "111222", "В8887А", 
+				"Зона IІ - Пловдив, Варна и Бургас", "Автомобил", "BG478965АА78952BA", "Ауди", "А5", 
+				new Date(2016-1900, 7-1, 20), new Date(2017-1900, 7-1, 19), 12, 150, 150);
+		GrajdanskaOtgovornostDAO dao = new GrajdanskaOtgovornostDAOImpl();
+		
+//		dao.insertGO(go);
+		
+		for(GrajdanskaOtgovornost g : dao.listGO()) {
+			System.out.println(g.getInsurenceGrajdanskaOtgovornostID());
+		}
+
 	}
 }
