@@ -1,0 +1,16 @@
+/**
+ * 
+ */
+package servlet;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+
+/**
+ * @author shenaikabilova
+ *
+ */
+@WebServlet("/GoUpdate")
+public class GoUpdate extends HttpServlet {
+
+}

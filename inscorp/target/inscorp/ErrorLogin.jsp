@@ -7,7 +7,7 @@
 	</head>
 	
 	<body>
-		<center><% String message = (String) request.getAttribute("errmsg"); %>
+		<center class="error-msg"><% String message = (String) request.getAttribute("errmsg"); %>
 				<%=message %></center>
 	</body>
 </html>

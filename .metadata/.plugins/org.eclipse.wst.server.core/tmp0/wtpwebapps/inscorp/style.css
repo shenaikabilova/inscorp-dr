@@ -11,8 +11,9 @@ body{
 }
 
 .shell { 
-	width: 960px; 
+	width: 1200px; 
 	margin: 0 auto;
+	overflow: scroll;
 }
 
 input { font-size: 14px; }
@@ -172,3 +173,6 @@ form input[type="submit"] {
 .viewInsurers { margin-top: 50px; }
 .viewInsurers table { margin: 0 auto; border: 1px solid #000; border-collapse: collapse; }
 .viewInsurers table th, .viewInsurers table td { padding: 5px; }
+
+/* Errors */
+.error-msg { padding-top: 50px; font-size: 25px; }

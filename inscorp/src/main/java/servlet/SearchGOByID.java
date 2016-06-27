@@ -25,7 +25,7 @@ import dao_jdbc.GrajdanskaOtgovornostDAOImpl;
  *
  */
 @SuppressWarnings("serial")
-@WebServlet("/searchGOByID")
+@WebServlet("/searchByID")
 public class SearchGOByID extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 	      super.init(config);
@@ -45,12 +45,29 @@ public class SearchGOByID extends HttpServlet {
 		if(!(goID = request.getParameter("searchByID")).isEmpty()) {
 			GrajdanskaOtgovornostDAO searchByID = new GrajdanskaOtgovornostDAOImpl();
 			
-			List<GrajdanskaOtgovornost> result = new ArrayList<GrajdanskaOtgovornost>();
-			result.add(searchByID.searchGO(goID));
-			
-			request.setAttribute("result", result);
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/searchKaskoResults.jsp");
-			rd.forward(request, response);
+			if(searchByID.searchGO(goID).getInsurenceGrajdanskaOtgovornostID() != null){
+				
+				List<GrajdanskaOtgovornost> result = new ArrayList<GrajdanskaOtgovornost>();
+				result.add(searchByID.searchGO(goID));
+				
+				if(!(result.isEmpty())) {
+					request.setAttribute("result", result);
+					RequestDispatcher rd = getServletContext().getRequestDispatcher("/searchInsGOResult.jsp");
+					rd.forward(request, response);
+				}
+			}
+			else {
+				String errmsg = "Не е намерена застраховка 'Гражданска отговорност' с този номер!";
+				request.setAttribute("errmsg", errmsg);
+				RequestDispatcher view = request.getRequestDispatcher("InsurerErrors.jsp");
+				view.forward(request,response);
+			}
+		}
+		else {
+			String errmsg = "Полето за номер на полица е празно!";
+			request.setAttribute("errmsg", errmsg);
+			RequestDispatcher view = request.getRequestDispatcher("InsurerErrors.jsp");
+			view.forward(request,response);
 		}
 	}
 }

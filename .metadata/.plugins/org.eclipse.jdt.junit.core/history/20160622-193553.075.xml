@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="Rerun inscorp.KaskoDAOImplTest" project="inscorp" tests="3" started="3" failures="0" errors="0" ignored="0">
-  <testsuite name="inscorp.KaskoDAOImplTest" time="0.666">
-    <testcase name="deleteKasko" classname="inscorp.KaskoDAOImplTest" time="0.344"/>
-    <testcase name="testListAllKasko" classname="inscorp.KaskoDAOImplTest" time="0.012"/>
-    <testcase name="insertKasko" classname="inscorp.KaskoDAOImplTest" time="0.31"/>
-  </testsuite>
-</testrun>

@@ -1,0 +1,15 @@
+/**
+ * 
+ */
+package servlet;
+
+import javax.servlet.annotation.WebServlet;
+
+/**
+ * @author shenaikabilova
+ *
+ */
+@WebServlet("/searchGOUpdate")
+public class KaskoUpdate {
+
+}

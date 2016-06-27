@@ -33,7 +33,7 @@
 				<li><a href="#">Застрахователни агенти</a>
 					<ul>
 						<li><a href="adminPanelInsurers.jsp">Изведи</a></li>
-						<li><a href="adminPanelUpdateUser.jsp">Изтрий</a></li>
+						<li><a href="adminPanelUpdateUser.jsp">Промени</a></li>
 						<li><a href="adminPanelDeleteUser.jsp">Изтрий</a></li>
 					</ul>
 				</li>
@@ -51,11 +51,11 @@
 						%>
 						<tr>
 							<td></td>
-							<td><h3>Настройки на администратора</h3></td>
+							<td><h3>Настройки на застраховател</h3></td>
 						</tr>
 						<tr>
 							<td><label for="admin">ID</label></td>
-							<td><input type="text" class="field" name="userID" size="30" value=<%=i.getInsurerId()%> ></td>
+							<td><input type="text" class="field" name="userID" size="30" value=<%=i.getInsurerId()%> readonly="readonly"></td>
 						</tr>
 						<tr>
 							<td><label for="adminName">Име</label></td>
@@ -80,7 +80,7 @@
 						</tr>
 						<tr>
 							<td></td>
-							<td><input type="submit" value="Промени"></td>
+							<td><input type="submit" value="Промени" name="updateInsurer"></td>
 						</tr>
 					</table>
 				</form>

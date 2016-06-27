@@ -48,6 +48,12 @@
 							</li>
 						</ul>
 					</li>
+					<li><a href="#">Редакция</a>
+						<ul>
+							<li><a href="insurerGoUpdateSearch.jsp">Гражданска отговорност</a></li>
+							<li><a href="insurerKaskoUpdateSearch.jsp">Каско</a></li>
+						</ul>
+					</li>
 					<li><a href="insurerSettings.jsp">Настройки</a></li>
 					<li><a href="logout">Изход</a>
 				</ul>
@@ -61,7 +67,7 @@
 						<div class="form-row">
 							<label>№ на полица</label>
 							<input class="field" type="text" name="searchKaskoByID" placeholder="Въведете № на полица" >
-							<input type="submit" value="Намери" name="searchByID">
+							<input type="submit" value="Намери" name="searchKaskoByID">
 						</div>
 					</div>				
 				</form>	

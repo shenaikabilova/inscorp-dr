@@ -8,6 +8,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.UnavailableException;
@@ -73,8 +74,8 @@ public class InsurerAddNewGO extends HttpServlet {
 		}
 		
 		int insurenceMonths = Integer.parseInt(request.getParameter("months"));
-		float insurenceValue = Integer.parseInt(request.getParameter("insValue"));
-		float insurencePremiq = Integer.parseInt(request.getParameter("insPremiq"));
+		float insurenceValue = Float.parseFloat(request.getParameter("vehicleInsValue"));
+		float insurencePremiq = Float.parseFloat(request.getParameter("insPremiq"));
 		
 		GrajdanskaOtgovornostDAO go = new GrajdanskaOtgovornostDAOImpl();
 		go.insertGO(new GrajdanskaOtgovornost(insurerID, insurenceGrajdanskaOtgovornostID, 
@@ -83,6 +84,9 @@ public class InsurerAddNewGO extends HttpServlet {
 				vehicleRama, vehicleBrand, vehicleModel, dateFrom, dateTo, insurenceMonths, 
 				insurenceValue, insurencePremiq));
 		
-		response.sendRedirect("/inscorp/insurerAddNewGO.jsp");
+		String errmsg = "Успешно добавяне!";
+		request.setAttribute("errmsg", errmsg);
+		RequestDispatcher view = request.getRequestDispatcher("InsurerErrors.jsp");
+		view.forward(request,response);
 	}
 }

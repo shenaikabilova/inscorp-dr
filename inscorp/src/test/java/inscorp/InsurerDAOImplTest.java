@@ -7,6 +7,7 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Test;
 
+import Exceptions.InsCorpErrorException;
 import dao_api.InsurerDAO;
 import dao_jdbc.InsurerDAOImpl;
 import model.Insurer;
@@ -20,12 +21,12 @@ public class InsurerDAOImplTest {
 	private static InsurerDAO dao = new InsurerDAOImpl();
 
 	@AfterClass
-	static public void del() {
+	static public void del() throws InsCorpErrorException {
 		dao.delete(insurer.getInsurerId());
 	}
 	
 	@Test
-	public void testInsert() {
+	public void testInsert() throws InsCorpErrorException {
 		dao.insert(insurer);
 		
 		Assert.assertEquals(insurer.getInsurerId(), dao.searchUserName("5").getInsurerId());
@@ -36,7 +37,7 @@ public class InsurerDAOImplTest {
 	}
 	
 	@Test
-	public void testUpdate() {
+	public void testUpdate() throws InsCorpErrorException {
 		dao.update(insurer);
 		
 		Assert.assertEquals(insurer.getInsurerId(), dao.searchUserName("5").getInsurerId());
@@ -47,7 +48,7 @@ public class InsurerDAOImplTest {
 	}
 
 	@Test 
-	public void testDelete() {
+	public void testDelete() throws InsCorpErrorException {
 		dao.delete(insurer.getInsurerId());
 		
 		Assert.assertNull(dao.searchUserName("5").getInsurerId());
@@ -59,7 +60,7 @@ public class InsurerDAOImplTest {
 	}
 	
 	@Test
-	public void testSearchUserName() {
+	public void testSearchUserName() throws InsCorpErrorException {
 		dao.insert(insurer);
 		Assert.assertEquals(insurer.getInsurerId(), dao.searchUserName("5").getInsurerId());
 		Assert.assertEquals(insurer.getInsurerName(), dao.searchUserName("5").getInsurerName()); 
@@ -69,7 +70,7 @@ public class InsurerDAOImplTest {
 	}
 	
 	@Test
-	public void testIsUser() {
+	public void testIsUser() throws InsCorpErrorException {
 		Assert.assertTrue(dao.isUser(insurer.getInsurerId(), insurer.getInsurerPassword()));
 	}
 }

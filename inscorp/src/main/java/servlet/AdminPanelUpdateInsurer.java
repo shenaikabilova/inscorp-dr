@@ -4,7 +4,10 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.UnavailableException;
@@ -13,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Exceptions.InsCorpErrorException;
 import model.Insurer;
 import dao_api.InsurerDAO;
 import dao_jdbc.InsurerDAOImpl;
@@ -34,24 +38,58 @@ public class AdminPanelUpdateInsurer extends HttpServlet {
 	      }
 	}
 	
-	public void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 	
-		String insurerID = request.getParameter("insurerID");
-		String insurerFirstName = request.getParameter("insurerName");
-		String insurerLastName = request.getParameter("insurerFamily");
-		String insurerEmail = request.getParameter("e-mail");
+		String insurerID = request.getParameter("userID");
+		String insurerFirstName = request.getParameter("userName");
+		String insurerLastName = request.getParameter("userFamily");
+		String insurerEmail = request.getParameter("userEmail");
 		String insurerPass1 = request.getParameter("password1");
 		String insurerPass2 = request.getParameter("password2");
 		
+		SendMail sendMail = new SendMail();
+		
 		if(insurerPass1.equals(insurerPass2)) {
 			InsurerDAO insUpdate = new InsurerDAOImpl();
-			insUpdate.update(new Insurer(insurerID, insurerFirstName, insurerLastName, insurerEmail, insurerPass1));
-			
-			response.sendRedirect("/inscorp/insurerSettings.jsp");
+			try {
+				if(!(insUpdate.searchUserName(insurerID).getInsurerId() == null)) {
+					insUpdate.update(new Insurer(insurerID, insurerFirstName, insurerLastName, insurerEmail, insurerPass1));
+					
+					sendMail.sendMail(insurerID, insurerPass1, insurerEmail);
+					
+					List<Insurer> result = new ArrayList<Insurer>();
+					try {
+						result.add(insUpdate.searchUserName(insurerID));
+					} catch (InsCorpErrorException e) {
+						request.setAttribute("errmsg", e.toString());
+						RequestDispatcher view = request.getRequestDispatcher("/AdminPanelErrors.jsp");
+						view.forward(request,response);
+						e.printStackTrace();
+					}
+					
+					request.setAttribute("result", result);
+					RequestDispatcher rd = getServletContext().getRequestDispatcher("/adminPanelViewUser.jsp");
+					rd.forward(request, response);
+				}
+				else {
+					String errmsg = "Неуспешна промяна!";
+					request.setAttribute("errmsg", errmsg);
+					RequestDispatcher view = request.getRequestDispatcher("AdminPanelErrors.jsp");
+					view.forward(request,response);
+				}
+			} catch (InsCorpErrorException e) {
+				request.setAttribute("errmsg", e.toString());
+				RequestDispatcher view = request.getRequestDispatcher("AdminPanelErrors.jsp");
+				view.forward(request,response);
+				e.printStackTrace();
+			}
 		}
 		else {
-		
+			String errmsg = "Въведените пароли не са еднакви!";
+			request.setAttribute("errmsg", errmsg);
+			RequestDispatcher view = request.getRequestDispatcher("AdminPanelErrors.jsp");
+			view.forward(request,response);
 		}
 	}
 }

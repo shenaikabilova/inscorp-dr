@@ -1,0 +1,12 @@
+/**
+ * 
+ */
+package Exceptions;
+
+/**
+ * @author shenaikabilova
+ *
+ */
+public class InsCorpErrorException {
+
+}

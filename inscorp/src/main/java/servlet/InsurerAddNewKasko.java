@@ -8,6 +8,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.UnavailableException;
@@ -79,6 +80,9 @@ public class InsurerAddNewKasko extends HttpServlet {
 									   vehicleBrand, vehicleModel, vehicleColor, vehicleYear, startDate, 
 									   vehicleEngine, vehiclePlaceNumber, vehicleInsurenceValue, vehicleInsurencePremiq));
 	
-		response.sendRedirect("/inscorp/insurerAddNewKasko.jsp");
+		String errmsg = "Успешно добавяне!";
+		request.setAttribute("errmsg", errmsg);
+		RequestDispatcher view = request.getRequestDispatcher("InsurerErrors.jsp");
+		view.forward(request,response);
 	}
 }

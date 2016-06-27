@@ -11,6 +11,7 @@ dao_api\KaskoDAO.class
 dao_api\VehicleTypeDAO.class
 dao_api\VehicleBrandDAO.class
 model\Country.class
+servlet\GoUpdateSearch.class
 dao_api\VehicleColorDAO.class
 model\GrajdanskaOtgovornost.class
 model\Insurer.class
@@ -21,13 +22,17 @@ model\VehicleBrand.class
 dao_api\CountryDAO.class
 dao_api\InsurerTypeDAO.class
 dao_jdbc\GrajdanskaOtgovornostDAOImpl.class
+Exceptions\InsCorpErrorException.class
 servlet\AdminPanelSearchUser.class
+servlet\KaskoUpdateSearch.class
+servlet\KaskoUpdate.class
 dao_jdbc\VehicleColorDAOImpl.class
 servlet\AdminPanelDeleteUser.class
 servlet\SearchKaskoByID.class
 dao_api\InsurerDAO.class
 servlet\UsersSettingsUpdate.class
 servlet\SendMail.class
+servlet\GoUpdate.class
 servlet\Logout.class
 model\Kasko.class
 dao_api\GrajdanskaOtgovornostDAO.class

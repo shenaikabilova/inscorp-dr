@@ -148,11 +148,11 @@ public class GrajdanskaOtgovornostDAOImpl implements GrajdanskaOtgovornostDAO {
 	@Override
 	public void updateGO(GrajdanskaOtgovornost grajdanskaOtgovornost) {
 		try(Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Insurence", "root", "123456")) {
-			final String QUERY = "UPDATE grajdanska_otgovornostINSURER_ID=?, INSURENCE_ID=?, INSURENCE_TYPE=?, INSURENCE_FIRST_NAME=?, "
+			final String QUERY = "UPDATE grajdanska_otgovornost SET INSURER_ID=?, INSURENCE_ID=?, INSURENCE_TYPE=?, INSURENCE_FIRST_NAME=?, "
 					+ "INSURENCE_SECOND_NAME=?, INSURENCE_LAST_NAME=?, INSURENCE_EGN=?, INSURENCE_COUNTRY=?, "
 					+ "INSURENCE_ADDRESS=?, INSURENCE_PK=?, INSURENCE_PHONE=?, VEHICLE_REG_NUMBER=?, VEHICLE_TYPE=?, "
 					+ "VEHICLE_RAMA=?, VEHICLE_BRAND=?, VEHICLE_MODEL=?, INSURENCE_DATE_FROM=?, INSURENCE_DATE_TO=?, MONTHS=?, "
-					+ "VALUE=?, PREMIQ=? ";
+					+ "VALUE=?, PREMIQ=? WHERE INSURENCE_ID = '" + grajdanskaOtgovornost.getInsurenceGrajdanskaOtgovornostID() + "'";
 		
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
 			

@@ -45,12 +45,29 @@ public class SearchKaskoByID extends HttpServlet {
 		if(!(kaskoID = request.getParameter("searchKaskoByID")).isEmpty()) {
 			KaskoDAO searchByID = new KaskoDAOImpl();
 			
-			List<Kasko> result = new ArrayList<Kasko>();
-			result.add(searchByID.searchKasko(kaskoID));
-			
-			request.setAttribute("result", result);
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/searchInsGOResult.jsp");
-			rd.forward(request, response);
+			if(searchByID.searchKasko(kaskoID).getInsKaskoId() != null) {
+				List<Kasko> result = new ArrayList<Kasko>();
+				result.add(searchByID.searchKasko(kaskoID));
+				
+				if(!(result.isEmpty())) {
+				
+					request.setAttribute("result", result);
+					RequestDispatcher rd = getServletContext().getRequestDispatcher("/searchKaskoResults.jsp");
+					rd.forward(request, response);
+				}
+			}
+			else {
+				String errmsg = "Не е намерена застраховка 'Каско' с този номер!";
+				request.setAttribute("errmsg", errmsg);
+				RequestDispatcher view = request.getRequestDispatcher("InsurerErrors.jsp");
+				view.forward(request,response);
+			}
+		}
+		else {
+			String errmsg = "Полето за номер на полица е празно!";
+			request.setAttribute("errmsg", errmsg);
+			RequestDispatcher view = request.getRequestDispatcher("InsurerErrors.jsp");
+			view.forward(request,response);
 		}
 	}
 }

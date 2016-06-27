@@ -1,2 +1,0 @@
-<p>Message: ${message}</p>
-<c:remove var="message" scope="session" /> 

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="java.util.List"%>
 <%@page import="model.GrajdanskaOtgovornost"%>
 <%@page import="dao_jdbc.GrajdanskaOtgovornostDAOImpl"%>
 <%@page import="dao_api.GrajdanskaOtgovornostDAO"%>
@@ -54,6 +55,12 @@
 							</li>
 						</ul>
 					</li>
+					<li><a href="#">Редакция</a>
+						<ul>
+							<li><a href="insurerGoUpdateSearch.jsp">Гражданска отговорност</a></li>
+							<li><a href="insurerKaskoUpdateSearch.jsp">Каско</a></li>
+						</ul>
+					</li>
 					<li><a href="insurerSettings.jsp">Настройки</a></li>
 					<li><a href="logout">Изход</a>
 				</ul>
@@ -86,13 +93,13 @@
 				<th>Застрахователна премия</th>
 
 				<%
- 					GrajdanskaOtgovornostDAO grajdanskaOtgovornost = new GrajdanskaOtgovornostDAOImpl();
-					for(GrajdanskaOtgovornost go : grajdanskaOtgovornost.listGO()) { %> 
+					List<GrajdanskaOtgovornost> list = (List<GrajdanskaOtgovornost>)request.getAttribute("result");
+					for(GrajdanskaOtgovornost go : list) { 
+				%> 
 					<tr>
 						<td><%=go.getInsurerID()%></td>
 						<td><%=go.getInsurenceGrajdanskaOtgovornostID()%></td>
 						<td><%=go.getInsurenceType()%></td>
-						<td><%=go.getInsurerID()%></td>
 						<td><%=go.getInsurenceFirstName()%></td>
 						<td><%=go.getInsurenceSecondName()%></td>
 						<td><%=go.getInsurenceLastName()%></td>

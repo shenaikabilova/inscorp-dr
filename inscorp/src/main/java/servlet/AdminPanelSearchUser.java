@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Exceptions.InsCorpErrorException;
 import model.Insurer;
 import dao_api.InsurerDAO;
 import dao_jdbc.InsurerDAOImpl;
@@ -45,7 +46,14 @@ public class AdminPanelSearchUser extends HttpServlet {
 		
 		if (!(user = request.getParameter("username")).equals("")) {
 			List<Insurer> result = new ArrayList<Insurer>();
-			result.add(insurer.searchUserName(user));
+			try {
+				result.add(insurer.searchUserName(user));
+			} catch (InsCorpErrorException e) {
+				request.setAttribute("errmsg", e.toString());
+				RequestDispatcher view = request.getRequestDispatcher("/AdminPanelErrors.jsp");
+				view.forward(request,response);
+				e.printStackTrace();
+			}
 			
 			request.setAttribute("result", result);
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/adminPanelViewUser.jsp");

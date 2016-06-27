@@ -70,6 +70,12 @@
 							</li>
 						</ul>
 					</li>
+					<li><a href="#">Редакция</a>
+						<ul>
+							<li><a href="insurerGoUpdateSearch.jsp">Гражданска отговорност</a></li>
+							<li><a href="insurerKaskoUpdateSearch.jsp">Каско</a></li>
+						</ul>
+					</li>
 					<li><a href="insurerSettings.jsp">Настройки</a></li>
 					<li><a href="logout">Изход</a>
 				</ul>
@@ -85,7 +91,7 @@
 							<h4>Застрахователна полица ГО на МПС</h4>
 							<div class="form-row">
 								<label>№ на полица</label>
-								<input class="field" type="text" name="policaN" maxlength="6">						
+								<input class="field" id="policaN" type="text" name="policaN" readonly="readonly" maxlength="6">						
 							</div>
 							<div class="form-row">
 									<label>Застраховател</label>
@@ -95,6 +101,7 @@
 						<div class="form-section">
 							<h4>Застрахован</h4>
 							<div class="form-row">
+								<label>Тип на клиента:</label>
 								<select id="insType" class="field" name="insType">
 									<%
 									InsurerTypeDAO insTypes = new InsurerTypeDAOImpl();
@@ -115,7 +122,7 @@
 							</div>
 							<div class="form-row">
 								<label>Държава</label>
-								<select class="field">
+								<select class="field" name="country">
 								<%
 									CountryDAO countries = new CountryDAOImpl();
 									for(Country country : countries.listCountries()) { %>
@@ -139,25 +146,28 @@
 							</div>
 						</div>
 					</div>
-					<div class="form-action">
+					<div class="form-section">
 						<h4>Данни за МПС</h4>
+				
 						<div class="form-row">
-								<div class="form-row">
-									<label for="registrationNumber">Регистрационен №</label>
-									<input type="text" id="registrationNumber" class="field" name="registrationNumber" placeholder="Регистрационен №" size="20" onchange="isValidRegNumber();" maxlength="8">
-								
-									<label for="zone">Зона</label>
-									<select id="zone" class="field" name="zone" onchange="sum();">
-										<option>Зона І - София</option>
-										<option>Зона IІ - Пловдив, Варна и Бургас</option>
-										<option>Зона ІІІ - Други</option>
-									</select>
-								</div>
+							<div class="form-row-inner">
+								<label for="registrationNumber">Регистрационен №</label>
+								<input type="text" id="registrationNumber" class="field" name="registrationNumber" placeholder="Регистрационен №" size="20" onchange="isValidRegNumber();" maxlength="8">
+							</div>
+						
+							<div class="form-row-inner">
+								<label for="zone">Зона</label>
+								<select id="zone" class="field" name="zone" onchange="sum();">
+									<option>Зона І - София</option>
+									<option>Зона IІ - Пловдив, Варна и Бургас</option>
+									<option>Зона ІІІ - Други</option>
+								</select>
+							</div>
+						</div>
 						
 						<div class="form-row">
 							<div class="form-row-inner">
 								<label for="vehicleType">Вид МПС</label>
-<!-- 								<select id="vehicleType" class="field" name="vehicleType" onchange="change();" ></select> -->
 									<select id="vehicleType" class="field" name="vehicleType" onchange="change();">
 										<%
 											VehicleTypeDAO vTypes = new VehicleTypeDAOImpl();
@@ -170,6 +180,9 @@
 								<label for="kubici">Кубици</label>
 								<select id="kubici" class="field" name="kubici" onchange="sum();"></select>
 							</div>
+						</div>
+						
+						<div class="form-row">
 							<div class="form-row-inner">
 								<label for="ramaN">Рама №</label>
 								<input type="text" class="field" name="ramaN" placeholder="Рама №" size="30" maxlength="17">
@@ -209,18 +222,17 @@
 						<div class="form-row">
 							<label>Срок</label>
 							<select id="months" class="field" name="months">
-								<option>12 месеца</option>
+								<option>12</option>
 							</select>
 						</div>
 					</div>
 					
-					<div class="form-action">
+					<div class="form-section">
 						<h4>Застрахователна сума</h4>
 						<div class="form-row">
 							<label>Застрахоателна сума</label>
 							<input type="text" 
-								class="field" id="vehicleInsValue" name="vehicleInsValue" size="30">
-						
+								class="field" id="vehicleInsValue" name="vehicleInsValue" size="30" readonly="readonly">
 						</div>
 						<div class="form-row">
 							<label>Отстъпки</label>
@@ -239,8 +251,8 @@
 							<input class="field" id="insPremiq" type="text" name="insPremiq">
 						</div>
 					</div>
-				</div>
-				<input type="submit" value="Сключи застраховка">
+					
+					<input type="submit" value="Сключи застраховка">
 				</form>
 			</div>
 		</div>

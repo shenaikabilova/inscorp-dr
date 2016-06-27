@@ -2,6 +2,7 @@ package dao_api;
 
 import java.util.List;
 
+import Exceptions.InsCorpErrorException;
 import model.Insurer;
 
 /**
@@ -10,9 +11,9 @@ import model.Insurer;
  */
 public interface InsurerDAO {
 	public List<Insurer> listInsurers();
-	public void insert(Insurer insurer);
-	public void delete(String insurerID);
-	public void update(Insurer insurer);
-	public Insurer searchUserName (String username);
-	public boolean isUser (String username, String password);
+	public void insert(Insurer insurer) throws InsCorpErrorException;
+	public void delete(String insurerID) throws InsCorpErrorException;
+	public void update(Insurer insurer) throws InsCorpErrorException;
+	public Insurer searchUserName (String username) throws InsCorpErrorException;
+	public boolean isUser (String username, String password) throws InsCorpErrorException;
 }

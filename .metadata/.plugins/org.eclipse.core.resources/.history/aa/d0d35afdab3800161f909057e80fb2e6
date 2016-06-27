@@ -1,0 +1,19 @@
+/**
+ * 
+ */
+package Exceptions;
+
+/**
+ * @author shenaikabilova
+ *
+ */
+public class InsCorpErrorException extends Exception {
+	
+	public InsCorpErrorException() {
+		super();
+	}
+
+	public InsCorpErrorException (String message) {
+		super(message);
+	}
+}

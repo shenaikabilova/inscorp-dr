@@ -71,8 +71,6 @@
 						<td><%=insurer.getInsurerFamily()%></td>
 						<td><%=insurer.getInsurerEmail()%></td>
 						<td><%=insurer.getInsurerPassword()%></td>
-<!-- 						<td><input type="submit" value="Промени" name="update"></td> -->
-<!-- 						<td><input type="submit" value="Изтрий" name="delete"></td> -->
 					</tr>
 			</form>
 				<% } %>

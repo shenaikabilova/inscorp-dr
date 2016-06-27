@@ -1,5 +1,7 @@
 import java.util.Date;
+import java.util.Scanner;
 
+import Exceptions.InsCorpErrorException;
 import model.GrajdanskaOtgovornost;
 import model.Insurer;
 import model.Kasko;
@@ -36,16 +38,35 @@ public class Example {
 //		}
 //		
 //		InsurerDAO insurer = new InsurerDAOImpl();
+//		try {
+//			if(!(insurer.searchUserName("0000010").getInsurerId() == null)) {
+//				System.out.println("yes");
+//			}
+//		} catch (InsCorpErrorException e) {
+//			System.out.println(e.getMessage());
+//		}
 //		insurer.insert(new Insurer("8", "Иван", "Иванов", "aaa", "123"));
-		
+//		Insurer ins = new Insurer("000004", "Митко", "Делибалтов", "aaaaaa@aa.bg", "aaa");
+//		try {
+//			insurer.update(ins);
+//		} catch (InsCorpErrorException e) {
+//			System.out.println(e.getMessage());
+//		}
+//		try {
+//			System.out.println(insurer.searchUserName("000004").getInsurerId());
+//			System.out.println(insurer.searchUserName("000004").getInsurerEmail());
+//		} catch (InsCorpErrorException e) {
+//			System.out.println(e.getMessage());
+//		}
+	
 //		KaskoDAO searchByID = new KaskoDAOImpl();
-//		System.out.println(searchByID.searchKasko("000001").getInsKaskoId());
+//		System.out.println(searchByID.searchKasko("000006").getInsKaskoId());
 		
 //		KaskoDAO searchAll = new KaskoDAOImpl();
 //		for(Kasko all : searchAll.searchKaskoByInsurer("000001")) {
 //			System.out.println(all.getInsKaskoId());
 //		}
-		
+//		System.out.println(searchAll.searchKasko("000001").getInsKaskoId());
 //		System.out.println(new InsurerDAOImpl().searchUserName("000000").getInsurerId().equals("000000"));
 //		if(new InsurerDAOImpl().searchUserName("000000").getInsurerId().equals("000000") &&
 //				   new InsurerDAOImpl().searchUserName("000000").getInsurerPassword().equals("aaa")) {
@@ -64,19 +85,36 @@ public class Example {
 //		System.out.println(dao.searchKasko("100014").getInsurerId());
 //		System.out.println(dao.searchKasko("100014").getInsKaskoId());
 //		System.out.println(dao.searchKasko("100014").getInsurenceFirstName());
-		
-		@SuppressWarnings("deprecation")
-		GrajdanskaOtgovornost go = new GrajdanskaOtgovornost("000001", "000002", "Физическо лице", 
-				"Иван", "Иванов", "Иванов", "8602020511", "Бългагия", "гр. Варна", 9000, "111222", "В8887А", 
-				"Зона IІ - Пловдив, Варна и Бургас", "Автомобил", "BG478965АА78952BA", "Ауди", "А5", 
-				new Date(2016-1900, 7-1, 20), new Date(2017-1900, 7-1, 19), 12, 150, 150);
-		GrajdanskaOtgovornostDAO dao = new GrajdanskaOtgovornostDAOImpl();
-		
-//		dao.insertGO(go);
-		
-		for(GrajdanskaOtgovornost g : dao.listGO()) {
-			System.out.println(g.getInsurenceGrajdanskaOtgovornostID());
-		}
+//		
+//		@SuppressWarnings("deprecation")
+//		GrajdanskaOtgovornost go = new GrajdanskaOtgovornost("000001", "000002", "Физическо лице", 
+//				"Иван", "Иванов", "Иванов", "8602020511", "Бългагия", "гр. Варна", 9000, "111222", "В8887А", 
+//				"Зона IІ - Пловдив, Варна и Бургас", "Автомобил", "BG478965АА78952BA", "Ауди", "А5", 
+//				new Date(2016-1900, 7-1, 20), new Date(2017-1900, 7-1, 19), 12, 150, 150);
+//		GrajdanskaOtgovornostDAO dao = new GrajdanskaOtgovornostDAOImpl();
+//		System.out.println(dao.searchGO("11").getInsurenceGrajdanskaOtgovornostID());
+////		
+//////		dao.insertGO(go);
+////		
+//		for(GrajdanskaOtgovornost g : dao.listGO()) {
+//			System.out.println(g.getInsurenceGrajdanskaOtgovornostID());
+//		}
 
+		Scanner input = new Scanner(System.in);
+        String S;
+        S = input.nextLine();
+        
+        for(int i=0; i<S.length(); i++) {
+            if(i % 2 == 0) {
+                System.out.print(S.charAt(i));
+            }
+        }
+        System.out.print(" ");
+        for(int i=0; i<S.length(); i++) {
+            if(i % 2 != 0) {
+                System.out.print(S.charAt(i));
+            }
+        }
+        input.close();
 	}
 }

@@ -48,13 +48,19 @@
 							</li>
 						</ul>
 					</li>
+					<li><a href="#">Редакция</a>
+						<ul>
+							<li><a href="insurerGoUpdateSearch.jsp">Гражданска отговорност</a></li>
+							<li><a href="insurerKaskoUpdateSearch.jsp">Каско</a></li>
+						</ul>
+					</li>
 					<li><a href="insurerSettings.jsp">Настройки</a></li>
 					<li><a href="logout">Изход</a>
 				</ul>
 			</div>
 		</div>
 		
-		<div class="searchGO">
+		<div class="searchByID">
 			<div class="shell">
 				<form action="searchByID" method="get">
 					<div class="form-section">

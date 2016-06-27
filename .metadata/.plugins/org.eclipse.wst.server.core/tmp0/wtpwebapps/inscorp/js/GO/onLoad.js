@@ -10,4 +10,6 @@ function onLoad() {
 		kubici.add(option, 0);
 	}
 	sum();
+	
+	document.getElementById('policaN').value=Math.floor(Math.random()*999999);
 }

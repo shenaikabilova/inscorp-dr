@@ -82,6 +82,12 @@
 							</li>
 						</ul>
 					</li>
+					<li><a href="#">Редакция</a>
+						<ul>
+							<li><a href="insurerGoUpdateSearch.jsp">Гражданска отговорност</a></li>
+							<li><a href="insurerKaskoUpdateSearch.jsp">Каско</a></li>
+						</ul>
+					</li>
 					<li><a href="insurerSettings.jsp">Настройки</a></li>
 					<li><a href="logout">Изход</a>
 				</ul>
@@ -99,7 +105,7 @@
 						</div>
 						<div class="form-row">
 							<label>№ на полица</label>
-							<input type="text" class="field" name="insurenceID" placeholder="№ на застраховка" size="30" maxlength="6">
+							<input type="text" id="insurenceID" class="field" name="insurenceID" size="30" maxlength="6" readonly="readonly">
 						</div>
 					</div>
 					<div class="form-section">
@@ -128,16 +134,16 @@
 							<label for="mobilePhone">Мобилен телефон</label>
 							<input type="text" class="field" name="mobilePhone" placeholder="Мобилен телефон" size="30" maxlength="10">
 						</div>
-						<div class="form-row">
-							<label>Държава</label>
-							<select class="field">
-								<%
-									CountryDAO countries = new CountryDAOImpl();
-									for(Country country : countries.listCountries()) { %>
-										<option><%=country.getCountry() %></option>
-									<%} %>
-							</select>
-						</div>
+<!-- 						<div class="form-row"> -->
+<!-- 							<label>Държава</label> -->
+<!-- 							<select class="field"> -->
+<%-- 								<% -
+// 									CountryDAO countries = new CountryDAOImpl();
+<%-- 									for(Country country : countries.listCountries()) { %> --%>
+<%-- 										<option><%=country.getCountry() %></option> --%>
+<%-- 									<%} %> --%>
+<!-- 							</select> -->
+<!-- 						</div> -->
 						<div class="form-row">
 							<div class="form-row-inner">
 								<label for="address">Адрес на собственика</label>
@@ -159,7 +165,7 @@
 						<div class="form-row">
 							<div class="form-row-inner">
 								<label for="vehicleType">Вид МПС</label>
-								<select id="vehicleType" class="field" name="vehicleType">
+								<select id="vehicleType" class="field" name="vehicleType" onchange="change();">
 								<%
 									VehicleTypeDAO vTypes = new VehicleTypeDAOImpl();
 									for(VehicleType type : vTypes.listVehicleTypes()) { %>
@@ -214,7 +220,12 @@
 						<div class="form-row">
 							<div class="form-row-inner">
 								<label>Обем на двигателя</label>
-								<select id="vehicleEngine" class="field" name="vehicleEngine"></select>
+								<select id="vehicleEngine" class="field" name="vehicleEngine">
+									<option>1.4</option>
+									<option>1.6</option>
+									<option>1.8</option>
+									<option>2.0</option>
+								</select>
 							</div>
 							<div class="form-row-inner">
 								<label>Брой места</label>
@@ -234,7 +245,7 @@
 						</div>
 						<div class="form-row">
 							<label>Застрахователна премия</label>
-							<input type="text" class="field" id="vehicleInsPremiq" name="vehicleInsPremiq" size="30">
+							<input type="text" class="field" id="vehicleInsPremiq" name="vehicleInsPremiq" size="30" readonly="readonly">
 						</div>
 					</div>
 					<input type="submit" value="Сключи застраховка">

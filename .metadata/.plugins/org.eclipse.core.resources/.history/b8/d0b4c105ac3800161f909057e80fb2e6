@@ -1,0 +1,20 @@
+/**
+ * 
+ */
+package Exceptions;
+
+/**
+ * @author shenaikabilova
+ *
+ */
+@SuppressWarnings("serial")
+public class InsCorpErrorException extends Exception {
+	
+	public InsCorpErrorException() {
+		super();
+	}
+
+	public InsCorpErrorException (String message) {
+		super(message);
+	}
+}
