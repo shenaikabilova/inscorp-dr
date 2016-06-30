@@ -91,15 +91,53 @@ public class InsurerAddNewGO extends HttpServlet {
 		float insurencePremiq = Float.parseFloat(request.getParameter("insPremiq"));
 		
 		GrajdanskaOtgovornostDAO go = new GrajdanskaOtgovornostDAOImpl();
-		go.insertGO(new GrajdanskaOtgovornost(insurerID, insurenceGrajdanskaOtgovornostID, 
-				insurenceType, insurenceFirstName, insurenceSecondName, insurenceLastName, insurenceEGN, 
-				insurenceCountry, insurenceAddress, insurencePK, insurenceMobilePhone, vehicleRegNumber, zone, vehicleType, 
-				vehicleRama, vehicleBrand, vehicleModel, dateFrom, dateTo, insurenceMonths, 
-				insurenceValue, insurencePremiq));
 		
-		String errmsg = "Успешно добавяне!";
-		request.setAttribute("errmsg", errmsg);
-		RequestDispatcher view = request.getRequestDispatcher("InsurerErrors.jsp");
-		view.forward(request,response);
+		for(GrajdanskaOtgovornost g : go.listGO()) {
+			if(g.getInsurenceEGN().equals(insurenceEGN)) {
+				String errmsg = "Съществуващo ЕГН!";
+				request.setAttribute("errmsg", errmsg);
+				RequestDispatcher view = request.getRequestDispatcher("InsurerErrors.jsp");
+				view.forward(request,response);
+			}
+			if(g.getInsurenceMobilePhone().equals(insurenceMobilePhone)) {
+				String errmsg = "Съществуващ мобилен телефон!";
+				request.setAttribute("errmsg", errmsg);
+				RequestDispatcher view = request.getRequestDispatcher("InsurerErrors.jsp");
+				view.forward(request,response);
+			}
+			if(g.getVehicleRegNumber().equals(insurenceGrajdanskaOtgovornostID)) {
+				String errmsg = "Съществуващ регистрационен номер на МПС!";
+				request.setAttribute("errmsg", errmsg);
+				RequestDispatcher view = request.getRequestDispatcher("InsurerErrors.jsp");
+				view.forward(request,response);
+			}
+			if(g.getVehicleRama().equals(vehicleRama)) {
+				String errmsg = "Съществуваща РАМА на МПС!";
+				request.setAttribute("errmsg", errmsg);
+				RequestDispatcher view = request.getRequestDispatcher("InsurerErrors.jsp");
+				view.forward(request,response);
+			}
+		}
+		
+//		if( ((dateFrom.getYear()+1900) > (dateTo.getYear()+1900)) || 
+//		     (dateFrom.getDate() != dateTo.getDate() ) ||
+//		     (dateFrom.getDate() != dateTo.getDate() )) {
+//			String errmsg = "Некоретни данни в поле дата!";
+//			request.setAttribute("errmsg", errmsg);
+//			RequestDispatcher view = request.getRequestDispatcher("InsurerErrors.jsp");
+//			view.forward(request,response);
+//		}
+//		else {
+			go.insertGO(new GrajdanskaOtgovornost(insurerID, insurenceGrajdanskaOtgovornostID, 
+					insurenceType, insurenceFirstName, insurenceSecondName, insurenceLastName, insurenceEGN, 
+					insurenceCountry, insurenceAddress, insurencePK, insurenceMobilePhone, vehicleRegNumber, zone, vehicleType, 
+					vehicleRama, vehicleBrand, vehicleModel, dateFrom, dateTo, insurenceMonths, 
+					insurenceValue, insurencePremiq));
+			
+			String errmsg = "Успешно добавяне!";
+			request.setAttribute("errmsg", errmsg);
+			RequestDispatcher view = request.getRequestDispatcher("InsurerErrors.jsp");
+			view.forward(request,response);
+//		}
 	}
 }

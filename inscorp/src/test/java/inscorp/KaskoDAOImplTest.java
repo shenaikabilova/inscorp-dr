@@ -23,7 +23,8 @@ public class KaskoDAOImplTest {
 	@SuppressWarnings("deprecation")
 	private static Kasko kasko = new Kasko("000001", "000014", "Физическо лице", "Иван", "Иванов", "Иванов", 
 			"8807070011", "123456", "гр. Варна", 9000, "В4589АА", "Автомобил", "А14789АRD78954123", 
-			"Ауди", "А5", "Бял", 2005, new Date(2005, 10, 10), 2.0f, 4, 10000, 500);
+			"Ауди", "А5", "Бял", 2005, new Date(2005, 10, 10), 2.0f, 4, new Date(2005, 10, 10),
+			new Date(2005, 10, 10), 10000, 500);
 	private static KaskoDAO dao = new KaskoDAOImpl();
 	
 	@Before
@@ -70,6 +71,8 @@ public class KaskoDAOImplTest {
 		Assert.assertEquals(kasko.getVehicleFirstRegistration(), dao.searchKasko("000014").getVehicleFirstRegistration());
 		Assert.assertEquals(kasko.getVehicleEngine(), dao.searchKasko("000014").getVehicleEngine(), 0.001);
 		Assert.assertEquals(kasko.getVehiclePlaceNumber(), dao.searchKasko("000014").getVehiclePlaceNumber());
+		Assert.assertEquals(kasko.getInsurenceDateFrom(), dao.searchKasko("000014").getInsurenceDateFrom());
+		Assert.assertEquals(kasko.getInsurenceDateTo(), dao.searchKasko("000014").getInsurenceDateTo());
 		Assert.assertEquals(kasko.getVehicleInsurenceValue(), dao.searchKasko("000014").getVehicleInsurenceValue(), 0.001);
 		Assert.assertEquals(kasko.getVehicleInsurencePremiq(), dao.searchKasko("000014").getVehicleInsurencePremiq(), 0.001);
 	}
@@ -106,6 +109,8 @@ public class KaskoDAOImplTest {
 		Assert.assertEquals(kasko.getVehicleFirstRegistration(), dao.searchKasko("000014").getVehicleFirstRegistration());
 		Assert.assertEquals(kasko.getVehicleEngine(), dao.searchKasko("000014").getVehicleEngine(), 0.001);
 		Assert.assertEquals(kasko.getVehiclePlaceNumber(), dao.searchKasko("000014").getVehiclePlaceNumber());
+		Assert.assertEquals(kasko.getInsurenceDateFrom(), dao.searchKasko("000014").getInsurenceDateFrom());
+		Assert.assertEquals(kasko.getInsurenceDateTo(), dao.searchKasko("000014").getInsurenceDateTo());
 		Assert.assertEquals(kasko.getVehicleInsurenceValue(), dao.searchKasko("000014").getVehicleInsurenceValue(), 0.001);
 		Assert.assertEquals(kasko.getVehicleInsurencePremiq(), dao.searchKasko("000014").getVehicleInsurencePremiq(), 0.001);
 		
@@ -133,6 +138,8 @@ public class KaskoDAOImplTest {
 		Assert.assertEquals(kasko.getVehicleFirstRegistration(), dao.searchKasko("000014").getVehicleFirstRegistration());
 		Assert.assertEquals(kasko.getVehicleEngine(), dao.searchKasko("000014").getVehicleEngine(), 0.001);
 		Assert.assertEquals(kasko.getVehiclePlaceNumber(), dao.searchKasko("000014").getVehiclePlaceNumber());
+		Assert.assertEquals(kasko.getInsurenceDateFrom(), dao.searchKasko("000014").getInsurenceDateFrom());
+		Assert.assertEquals(kasko.getInsurenceDateTo(), dao.searchKasko("000014").getInsurenceDateTo());
 		Assert.assertEquals(kasko.getVehicleInsurenceValue(), dao.searchKasko("000014").getVehicleInsurenceValue(), 0.001);
 		Assert.assertEquals(kasko.getVehicleInsurencePremiq(), dao.searchKasko("000014").getVehicleInsurencePremiq(), 0.001);
 		

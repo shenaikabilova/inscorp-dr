@@ -31,6 +31,7 @@ public class KaskoDAOImpl implements KaskoDAO{
 					+ "INSURENCE_FAMILY, INSURENCE_EGN, INSURENCE_MOBILE_PHONE, INSURENCE_ADDRESS, INSURENCE_PK, "
 					+ "VEHICLE_REGISTRATION_NUMBER, VEHICLE_TYPE, VEHICLE_RAMA, VEHICLE_BRAND, VEHICLE_MODEL,"
 					+ "VEHICLE_COLOR, VEHICLE_YEAR, VEHICLE_FIRST_REGISTRATION, VEHICLE_ENGINE, VEHICLE_PLACE_NUMBER,"
+					+ "INSURENCE_DATE_FROM, INSURENCE_DATE_TO,"
 					+ "VEHICLE_INSURANCE_VALUE, VEHICLE_INSURANCE_PREMIQ FROM kasko";
 			final String QUERY_COUNT = "SELECT COUNT(*) as count FROM kasko";
 			
@@ -66,14 +67,16 @@ public class KaskoDAOImpl implements KaskoDAO{
 				Date vehicleFirstRegistration = resultSet.getDate("VEHICLE_FIRST_REGISTRATION");
 				float vehicleEngine = resultSet.getFloat("VEHICLE_ENGINE");
 				int vehiclePlaceNumber = resultSet.getInt("VEHICLE_PLACE_NUMBER");
+				Date dateFrom = resultSet.getDate("INSURENCE_DATE_FROM");
+				Date dateTo = resultSet.getDate("INSURENCE_DATE_TO");
 				float vehicleInsurenceValue = resultSet.getFloat("VEHICLE_INSURANCE_VALUE");
 				float vehicleInsurencePremiq = resultSet.getFloat("VEHICLE_INSURANCE_PREMIQ");
 				
 				listKasko.add((new Kasko(insId, insKaskoId, insType, insurenceFirstName, insurenceSecondName, 
 						insurenceFamily, insurenceEGN, insurenceMobilePhone, insurenceAddress, insurencePK, 
 						vehicleRegistrationNumber, vehicleType, vehicleRama, vehicleBrand, vehicleModel, vehicleColor, 
-						vehicleYear, vehicleFirstRegistration, vehicleEngine, vehiclePlaceNumber, vehicleInsurenceValue, 
-						vehicleInsurencePremiq)));
+						vehicleYear, vehicleFirstRegistration, vehicleEngine, vehiclePlaceNumber, 
+						dateFrom, dateTo, vehicleInsurenceValue, vehicleInsurencePremiq)));
 			}
 			return listKasko;
 		} catch (Exception e) {
@@ -93,8 +96,8 @@ public class KaskoDAOImpl implements KaskoDAO{
 					+ "INSURENCE_EGN, INSURENCE_MOBILE_PHONE, INSURENCE_ADDRESS, INSURENCE_PK, "
 					+ "VEHICLE_REGISTRATION_NUMBER, VEHICLE_TYPE, VEHICLE_RAMA, VEHICLE_BRAND, "
 					+ "VEHICLE_MODEL, VEHICLE_COLOR, VEHICLE_YEAR, VEHICLE_FIRST_REGISTRATION, "
-					+ "VEHICLE_ENGINE, VEHICLE_PLACE_NUMBER, VEHICLE_INSURANCE_VALUE, "
-					+ "VEHICLE_INSURANCE_PREMIQ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+					+ "VEHICLE_ENGINE, VEHICLE_PLACE_NUMBER, INSURENCE_DATE_FROM, INSURENCE_DATE_TO, VEHICLE_INSURANCE_VALUE, "
+					+ "VEHICLE_INSURANCE_PREMIQ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
 			
@@ -118,8 +121,10 @@ public class KaskoDAOImpl implements KaskoDAO{
 			preparedStatement.setDate(18, new Date(kasko.getVehicleFirstRegistration().getTime()));
 			preparedStatement.setFloat(19, kasko.getVehicleEngine());
 			preparedStatement.setInt(20, kasko.getVehiclePlaceNumber());
-			preparedStatement.setFloat(21, kasko.getVehicleInsurenceValue());
-			preparedStatement.setFloat(22, kasko.getVehicleInsurencePremiq());
+			preparedStatement.setDate(21,  new Date(kasko.getInsurenceDateFrom().getTime()));
+			preparedStatement.setDate(22,  new Date(kasko.getInsurenceDateTo().getTime()));
+			preparedStatement.setFloat(23, kasko.getVehicleInsurenceValue());
+			preparedStatement.setFloat(24, kasko.getVehicleInsurencePremiq());
 			
 			preparedStatement.executeUpdate();
 		}catch (SQLException e) {
@@ -155,7 +160,7 @@ public class KaskoDAOImpl implements KaskoDAO{
 					+ "INSURENCE_FAMILY=?, INSURENCE_EGN=?, INSURENCE_MOBILE_PHONE=?, INSURENCE_ADDRESS=?, INSURENCE_PK=?, "
 					+ "VEHICLE_REGISTRATION_NUMBER=?, VEHICLE_TYPE=?, VEHICLE_RAMA=?, VEHICLE_BRAND=?, VEHICLE_MODEL=?,"
 					+ "VEHICLE_COLOR=?, VEHICLE_YEAR=?, VEHICLE_FIRST_REGISTRATION=?, VEHICLE_ENGINE=?, VEHICLE_PLACE_NUMBER=?,"
-					+ "VEHICLE_INSURANCE_VALUE=?, VEHICLE_INSURANCE_PREMIQ=? WHERE INSURENCE_ID = '" + kasko.getInsKaskoId() + "'";
+					+ "INSURENCE_DATE_FROM=?, INSURENCE_DATE_TO=?, VEHICLE_INSURANCE_VALUE=?, VEHICLE_INSURANCE_PREMIQ=? WHERE INSURENCE_ID = '" + kasko.getInsKaskoId() + "'";
 		
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
 			
@@ -179,8 +184,10 @@ public class KaskoDAOImpl implements KaskoDAO{
 			preparedStatement.setDate(18, new Date(kasko.getVehicleFirstRegistration().getTime()));
 			preparedStatement.setFloat(19, kasko.getVehicleEngine());
 			preparedStatement.setInt(20, kasko.getVehiclePlaceNumber());
-			preparedStatement.setFloat(21, kasko.getVehicleInsurenceValue());
-			preparedStatement.setFloat(22, kasko.getVehicleInsurencePremiq());
+			preparedStatement.setDate(21, new Date(kasko.getInsurenceDateFrom().getTime()));
+			preparedStatement.setDate(22, new Date(kasko.getInsurenceDateTo().getTime()));
+			preparedStatement.setFloat(23, kasko.getVehicleInsurenceValue());
+			preparedStatement.setFloat(24, kasko.getVehicleInsurencePremiq());
 			
 			preparedStatement.executeUpdate();
 		}catch (SQLException e) {
@@ -202,7 +209,7 @@ public class KaskoDAOImpl implements KaskoDAO{
 					+ "INSURENCE_FAMILY, INSURENCE_EGN, INSURENCE_MOBILE_PHONE, INSURENCE_ADDRESS, INSURENCE_PK, "
 					+ "VEHICLE_REGISTRATION_NUMBER, VEHICLE_TYPE, VEHICLE_RAMA, VEHICLE_BRAND, VEHICLE_MODEL,"
 					+ "VEHICLE_COLOR, VEHICLE_YEAR, VEHICLE_FIRST_REGISTRATION, VEHICLE_ENGINE, VEHICLE_PLACE_NUMBER,"
-					+ "VEHICLE_INSURANCE_VALUE, VEHICLE_INSURANCE_PREMIQ FROM kasko WHERE INSURENCE_ID = '" + kaskoID + "'";
+					+ "INSURENCE_DATE_FROM, INSURENCE_DATE_TO, VEHICLE_INSURANCE_VALUE, VEHICLE_INSURANCE_PREMIQ FROM kasko WHERE INSURENCE_ID = '" + kaskoID + "'";
 			
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
 			ResultSet resultSet = preparedStatement.executeQuery();
@@ -228,6 +235,8 @@ public class KaskoDAOImpl implements KaskoDAO{
 				Date vehicleFirstRegistration = resultSet.getDate("VEHICLE_FIRST_REGISTRATION");
 				float vehicleEngine = resultSet.getFloat("VEHICLE_ENGINE");
 				int vehiclePlaceNumber = resultSet.getInt("VEHICLE_PLACE_NUMBER");
+				Date dateFrom = resultSet.getDate("INSURENCE_DATE_FROM");
+				Date dateTo = resultSet.getDate("INSURENCE_DATE_TO");
 				float vehicleInsurenceValue = resultSet.getFloat("VEHICLE_INSURANCE_VALUE");
 				float vehicleInsurencePremiq = resultSet.getFloat("VEHICLE_INSURANCE_PREMIQ");
 				
@@ -235,7 +244,7 @@ public class KaskoDAOImpl implements KaskoDAO{
 						insurenceFamily, insurenceEGN, insurenceMobilePhone, insurenceAddress, insurencePK, 
 						vehicleRegistrationNumber, vehicleType, vehicleRama, vehicleBranch, 
 						vehicleModel, vehicleColor, vehicleYear, vehicleFirstRegistration, vehicleEngine, 
-						vehiclePlaceNumber, vehicleInsurenceValue, vehicleInsurencePremiq);
+						vehiclePlaceNumber, dateFrom, dateTo, vehicleInsurenceValue, vehicleInsurencePremiq);
 			}
 					
 			return kasko;
@@ -259,7 +268,7 @@ public class KaskoDAOImpl implements KaskoDAO{
 					+ "INSURENCE_FAMILY, INSURENCE_EGN, INSURENCE_MOBILE_PHONE, INSURENCE_ADDRESS, INSURENCE_PK, "
 					+ "VEHICLE_REGISTRATION_NUMBER, VEHICLE_TYPE, VEHICLE_RAMA, VEHICLE_BRAND, VEHICLE_MODEL,"
 					+ "VEHICLE_COLOR, VEHICLE_YEAR, VEHICLE_FIRST_REGISTRATION, VEHICLE_ENGINE, VEHICLE_PLACE_NUMBER,"
-					+ "VEHICLE_INSURANCE_VALUE, VEHICLE_INSURANCE_PREMIQ FROM kasko WHERE INSURER_ID = '" + userName + "'";
+					+ "INSURENCE_DATE_FROM, INSURENCE_DATE_TO, VEHICLE_INSURANCE_VALUE, VEHICLE_INSURANCE_PREMIQ FROM kasko WHERE INSURER_ID = '" + userName + "'";
 			final String QUERY_COUNT = "SELECT COUNT(*) as count FROM kasko";
 			
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
@@ -294,14 +303,16 @@ public class KaskoDAOImpl implements KaskoDAO{
 				Date vehicleFirstRegistration = resultSet.getDate("VEHICLE_FIRST_REGISTRATION");
 				float vehicleEngine = resultSet.getFloat("VEHICLE_ENGINE");
 				int vehiclePlaceNumber = resultSet.getInt("VEHICLE_PLACE_NUMBER");
+				Date dateFrom = resultSet.getDate("INSURENCE_DATE_FROM");
+				Date dateTo = resultSet.getDate("INSURENCE_DATE_TO");
 				float vehicleInsurenceValue = resultSet.getFloat("VEHICLE_INSURANCE_VALUE");
 				float vehicleInsurencePremiq = resultSet.getFloat("VEHICLE_INSURANCE_PREMIQ");
 				
 				listKasko.add((new Kasko(insId, insKaskoId, insType, insurenceFirstName, insurenceSecondName, 
 						insurenceFamily, insurenceEGN, insurenceMobilePhone, insurenceAddress, insurencePK, 
 						vehicleRegistrationNumber, vehicleType, vehicleRama, vehicleBranch, vehicleModel, vehicleColor, 
-						vehicleYear, vehicleFirstRegistration, vehicleEngine, vehiclePlaceNumber, vehicleInsurenceValue, 
-						vehicleInsurencePremiq)));
+						vehicleYear, vehicleFirstRegistration, vehicleEngine, vehiclePlaceNumber, 
+						dateFrom, dateTo, vehicleInsurenceValue, vehicleInsurencePremiq)));
 			}
 			return listKasko;
 		} catch (Exception e) {

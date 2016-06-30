@@ -61,9 +61,18 @@ public class KaskoUpdateSearch extends HttpServlet{
 			List<Kasko> result = new ArrayList<Kasko>();
 			result.add(searchByID.searchKasko(kaskoID));
 			
-			request.setAttribute("result", result);
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/insurerKaskoUpdate.jsp");
-			rd.forward(request, response);
+			if(searchByID.searchKasko(kaskoID).getInsKaskoId() == null) {
+				
+				String errmsg = "Не е намерена полица с ID " + kaskoID;
+				request.setAttribute("errmsg", errmsg);
+				RequestDispatcher view = request.getRequestDispatcher("InsurerErrors.jsp");
+				view.forward(request,response);
+			}
+			else {
+				request.setAttribute("result", result);
+				RequestDispatcher rd = getServletContext().getRequestDispatcher("/insurerKaskoUpdate.jsp");
+				rd.forward(request, response);
+			}
 		}
 		else {
 			String errmsg = "Полето за номер на полица е празно!";

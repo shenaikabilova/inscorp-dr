@@ -67,7 +67,7 @@
 			</div>
 		</div>
 		
-		<div class="viewInsurers shell">
+		<div class="searchInsurers viewInsurers shell">
 			<table border="1">
 				<th>Застраховател</th> 
 				<th>№ на полица</th>

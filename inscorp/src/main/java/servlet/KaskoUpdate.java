@@ -51,6 +51,7 @@ public class KaskoUpdate extends HttpServlet {
 	 * @throws ServletException, IOException
 	 * @see javax.servlet.http.HttpServlet#doPost(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
 	 */
+	@SuppressWarnings("deprecation")
 	public void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
@@ -83,19 +84,59 @@ public class KaskoUpdate extends HttpServlet {
 		
 		float vehicleEngine = Float.parseFloat(request.getParameter("vehicleEngine"));
 		int vehiclePlaceNumber = Integer.parseInt(request.getParameter("vehiclePlaces"));
+		
+		String insurenceDateFrom = request.getParameter("fromDate");
+		String insurenceDateTo = request.getParameter("toDate");
+		
+		Date dateFrom = null;
+		Date dateTo = null;
+		try {
+			dateFrom = sdf.parse(insurenceDateFrom);
+			dateTo = sdf.parse(insurenceDateTo);
+			
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
 		float vehicleInsurenceValue = Float.parseFloat(request.getParameter("vehicleInsValue"));
 		float vehicleInsurencePremiq = Float.parseFloat(request.getParameter("vehicleInsPremiq"));
 		
 		KaskoDAO updateKasko = new KaskoDAOImpl();
-		updateKasko.updateKasko(new Kasko(insurerId, insKaskoId, insType, insurenceFirstName, insurenceSecondName, 
-				   insurenceFamily, insurenceEGN, insurenceMobilePhone, insurenceAddress, 
-				   insurencePK, vehicleRegistrationNumber, vehicleType, vehicleRama, 
-				   vehicleBrand, vehicleModel, vehicleColor, vehicleYear, startDate, 
-				   vehicleEngine, vehiclePlaceNumber, vehicleInsurenceValue, vehicleInsurencePremiq));
-
-		String errmsg = "Успешна промяна!";
-		request.setAttribute("errmsg", errmsg);
-		RequestDispatcher view = request.getRequestDispatcher("InsurerErrors.jsp");
-		view.forward(request,response);
+		
+		if(vehicleYear > (startDate.getYear()+1900)) {
+			String errmsg = "Годината при първа регистрация не може да е преди годината на прозиводство!";
+			request.setAttribute("errmsg", errmsg);
+			RequestDispatcher view = request.getRequestDispatcher("InsurerErrors.jsp");
+			view.forward(request,response);
+		}
+//		else if( ((dateFrom.getYear()+1900) > (dateTo.getYear()+1900)) || 
+//			     (dateFrom.getDate() != dateTo.getDate() ) ||
+//			     (dateFrom.getMonth() != dateTo.getMonth() )) {
+//			
+//			System.out.println(dateFrom.getYear()+1900);
+//			System.out.println(dateTo.getYear()+1900);
+//			System.out.println(dateFrom.getDate());
+//			System.out.println(dateTo.getDate() );
+//			System.out.println(dateFrom.getMonth());
+//			System.out.println(dateTo.getMonth());
+//			
+//				String errmsg = "Некоретни данни в поле дата!";
+//				request.setAttribute("errmsg", errmsg);
+//				RequestDispatcher view = request.getRequestDispatcher("InsurerErrors.jsp");
+//				view.forward(request,response);
+//			}
+		else{
+			updateKasko.updateKasko(new Kasko(insurerId, insKaskoId, insType, insurenceFirstName, insurenceSecondName, 
+					   insurenceFamily, insurenceEGN, insurenceMobilePhone, insurenceAddress, 
+					   insurencePK, vehicleRegistrationNumber, vehicleType, vehicleRama, 
+					   vehicleBrand, vehicleModel, vehicleColor, vehicleYear, startDate, 
+					   vehicleEngine, vehiclePlaceNumber, dateFrom, dateTo, vehicleInsurenceValue, 
+					   vehicleInsurencePremiq));
+	
+			String errmsg = "Успешна промяна!";
+			request.setAttribute("errmsg", errmsg);
+			RequestDispatcher view = request.getRequestDispatcher("InsurerErrors.jsp");
+			view.forward(request,response);
+		}
 	}
 }

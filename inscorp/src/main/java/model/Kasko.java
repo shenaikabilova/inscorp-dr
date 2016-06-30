@@ -27,6 +27,8 @@ public class Kasko {
 	private Date vehicleFirstRegistration;
 	private float vehicleEngine;
 	private int vehiclePlaceNumber;
+	private Date insurenceDateFrom;
+	private Date insurenceDateTo;
 	private float vehicleInsurenceValue;
 	private float vehicleInsurencePremiq;
 	
@@ -36,8 +38,9 @@ public class Kasko {
 	public Kasko(String insKaskoId, String insType, String insurenceFirstName, String insurenceSecondName, String insurenceFamily, 
 			String insurenceEGN, String insurenceMobilePhone, String insurenceAddress, int insurencePK, 
 			String vehicleRegistrationNumber, String vehicleType, String vehicleRama, String vehicleBrand, 
-			String vehicleModel, String vehicleColor, int vehicleYear, Date vehicleFirstRegistration, float vehicleEngine, 
-			int vehiclePlaceNumber, float vehicleInsurenceValue, float vehicleInsurencePremiq) {
+			String vehicleModel, String vehicleColor, int vehicleYear, Date vehicleFirstRegistration, 
+			float vehicleEngine, int vehiclePlaceNumber, Date insurenceDateFrom, Date insurenceDateTo,
+			float vehicleInsurenceValue, float vehicleInsurencePremiq) {
 		this.insKaskoId = insKaskoId;
 		this.insType = insType;
 		this.insurenceFirstName = insurenceFirstName;
@@ -57,6 +60,8 @@ public class Kasko {
 		this.vehicleFirstRegistration = vehicleFirstRegistration;
 		this.vehicleEngine = vehicleEngine;
 		this.vehiclePlaceNumber = vehiclePlaceNumber;
+		this.insurenceDateFrom = insurenceDateFrom;
+		this.insurenceDateTo = insurenceDateTo;
 		this.vehicleInsurenceValue = vehicleInsurenceValue;
 		this.vehicleInsurencePremiq = vehicleInsurencePremiq;
 	}
@@ -65,7 +70,8 @@ public class Kasko {
 			String insurenceEGN, String insurenceMobilePhone, String insurenceAddress, int insurencePK, 
 			String vehicleRegistrationNumber, String vehicleType, String vehicleRama, String vehicleBrand, 
 			String vehicleModel, String vehicleColor, int vehicleYear, Date vehicleFirstRegistration, float vehicleEngine, 
-			int vehiclePlaceNumber, float vehicleInsurenceValue, float vehicleInsurencePremiq) {
+			int vehiclePlaceNumber, Date insurenceDateFrom, Date insurenceDateTo, 
+			float vehicleInsurenceValue, float vehicleInsurencePremiq) {
 		this.insurerId = insurerId;
 		this.insKaskoId = insKaskoId;
 		this.insType = insType;
@@ -86,6 +92,8 @@ public class Kasko {
 		this.vehicleFirstRegistration = vehicleFirstRegistration;
 		this.vehicleEngine = vehicleEngine;
 		this.vehiclePlaceNumber = vehiclePlaceNumber;
+		this.insurenceDateFrom = insurenceDateFrom;
+		this.insurenceDateTo = insurenceDateTo;
 		this.vehicleInsurenceValue = vehicleInsurenceValue;
 		this.vehicleInsurencePremiq = vehicleInsurencePremiq;
 	}
@@ -248,6 +256,22 @@ public class Kasko {
 
 	public void setVehiclePlaceNumber(int vehiclePlaceNumber) {
 		this.vehiclePlaceNumber = vehiclePlaceNumber;
+	}
+	
+	public Date getInsurenceDateFrom() {
+		return insurenceDateFrom;
+	}
+
+	public void setInsurenceDateFrom(Date insurenceDateFrom) {
+		this.insurenceDateFrom = insurenceDateFrom;
+	}
+
+	public Date getInsurenceDateTo() {
+		return insurenceDateTo;
+	}
+
+	public void setInsurenceDateTo(Date insurenceDateTo) {
+		this.insurenceDateTo = insurenceDateTo;
 	}
 
 	public float getVehicleInsurenceValue() {

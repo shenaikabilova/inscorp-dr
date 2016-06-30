@@ -52,6 +52,7 @@
 		<script type="text/javascript" src="js/Kasko/setKaskoSettings.js"></script>
 		<script src="js/Kasko/setKaskoValue.js"></script>
 		<script src="js/validate.js"></script>
+		<script src="js/GO/calendarGO.js"></script>
 	</head>
 	
 	<body onload="addList()">
@@ -235,6 +236,19 @@
 									<option>4</option>
 									<option>50</option>
 								</select>
+							</div>
+						</div>
+						<div class="form-row">
+							<label>Дата на сключване</label>
+						</div>
+						<div class="form-row">
+							<div class="form-row-inner">
+								<label>Начало</label>
+								<input class="field" type="text" placeholder="Начална дата" id="datepicker1" name="fromDate">							
+							</div>
+							<div class="form-row-inner">
+								<label>Край</label>
+								<input class="field" type="text" placeholder="Крайна датва" id="datepicker2" name="toDate">							
 							</div>
 						</div>
 						<div class="form-row">

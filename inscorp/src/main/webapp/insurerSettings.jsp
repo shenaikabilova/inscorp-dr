@@ -81,11 +81,8 @@
 					<%
 						InsurerDAO insurer = new InsurerDAOImpl();
 					%>
+					<h3>Настройки</h3>
 					<table width="100%">
-						<tr>
-							<td></td>
-							<td><h3>Настройки</h3></td>
-						</tr>
 						<tr>
 							<td><label>ID</label></td>
 							<td><input type="text" class="field" name="userID" size="30" readonly="readonly"

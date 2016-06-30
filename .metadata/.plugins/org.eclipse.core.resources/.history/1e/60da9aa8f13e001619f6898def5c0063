@@ -1,0 +1,144 @@
+/**
+ * 
+ */
+package servlet;
+
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.UnavailableException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import model.GrajdanskaOtgovornost;
+import dao_api.GrajdanskaOtgovornostDAO;
+import dao_jdbc.GrajdanskaOtgovornostDAOImpl;
+
+/**
+ * Servlet for inserting new insurance grajdanska otgovornost 
+ * @author shenaikabilova
+ *
+ */
+@SuppressWarnings("serial")
+@WebServlet("/addNewGO")
+public class InsurerAddNewGO extends HttpServlet {
+	/**
+	 * Servlet init method sets mysql driver for database connection
+	 * @throws ServletException
+	 * @see javax.servlet.GenericServlet#init(javax.servlet.ServletConfig)
+	 */
+	public void init(ServletConfig config) throws ServletException {
+	      super.init(config);
+	      try {
+	         Class.forName("com.mysql.jdbc.Driver");
+	         }
+	      catch (Exception e) {
+	         throw new UnavailableException(e.getMessage());
+	      }
+	}
+	
+	/**
+	 * Post method for inserting new insurance grajdanska otgovornost
+	 * @param request get or set parameters from jsp
+	 * @param response redirect to jsp
+	 * @throws ServletException, IOException
+	 * @see javax.servlet.http.HttpServlet#doPost(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+	 */
+	@SuppressWarnings("deprecation")
+	public void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		
+		String insurerID = request.getParameter("userName");
+		String insurenceGrajdanskaOtgovornostID = request.getParameter("policaN");
+		String insurenceType = request.getParameter("insType");
+		String insurenceFirstName = request.getParameter("insuredFirstName");
+		String insurenceSecondName = request.getParameter("insuredSecondName");
+		String insurenceLastName = request.getParameter("insuredLastName");
+		String insurenceEGN = request.getParameter("EGN");
+		String insurenceCountry = request.getParameter("country");
+		String insurenceAddress = request.getParameter("address");
+		int insurencePK = Integer.parseInt(request.getParameter("pKod"));
+		String insurenceMobilePhone = request.getParameter("mobilePhone");
+		String vehicleRegNumber = request.getParameter("registrationNumber");
+		String zone = request.getParameter("zone");
+		String vehicleType = request.getParameter("vehicleType");
+		String vehicleRama = request.getParameter("ramaN");
+		String vehicleBrand = request.getParameter("vehicleBrand");
+		String vehicleModel = request.getParameter("vehicleModel");
+		
+		String insurenceDateFrom = request.getParameter("fromDate");
+		String insurenceDateTo = request.getParameter("toDate");
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date dateFrom = null;
+		Date dateTo = null;
+		try {
+			dateFrom = sdf.parse(insurenceDateFrom);
+			dateTo = sdf.parse(insurenceDateTo);
+			
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		int insurenceMonths = Integer.parseInt(request.getParameter("months"));
+		float insurenceValue = Float.parseFloat(request.getParameter("vehicleInsValue"));
+		float insurencePremiq = Float.parseFloat(request.getParameter("insPremiq"));
+		
+		GrajdanskaOtgovornostDAO go = new GrajdanskaOtgovornostDAOImpl();
+		
+		for(GrajdanskaOtgovornost g : go.listGO()) {
+			if(g.getInsurenceEGN().equals(insurenceEGN)) {
+				String errmsg = "Съществуващo ЕГН!";
+				request.setAttribute("errmsg", errmsg);
+				RequestDispatcher view = request.getRequestDispatcher("InsurerErrors.jsp");
+				view.forward(request,response);
+			}
+			if(g.getInsurenceMobilePhone().equals(insurenceMobilePhone)) {
+				String errmsg = "Съществуващ мобилен телефон!";
+				request.setAttribute("errmsg", errmsg);
+				RequestDispatcher view = request.getRequestDispatcher("InsurerErrors.jsp");
+				view.forward(request,response);
+			}
+			if(g.getVehicleRegNumber().equals(insurenceGrajdanskaOtgovornostID)) {
+				String errmsg = "Съществуващ регистрационен номер на МПС!";
+				request.setAttribute("errmsg", errmsg);
+				RequestDispatcher view = request.getRequestDispatcher("InsurerErrors.jsp");
+				view.forward(request,response);
+			}
+			if(g.getVehicleRama().equals(vehicleRama)) {
+				String errmsg = "Съществуваща РАМА на МПС!";
+				request.setAttribute("errmsg", errmsg);
+				RequestDispatcher view = request.getRequestDispatcher("InsurerErrors.jsp");
+				view.forward(request,response);
+			}
+		}
+		
+		if( ((dateFrom.getYear()+1900) > (dateTo.getYear()+1900)) || 
+		     (dateFrom.getDate() != dateTo.getDate() ) ||
+		     (dateFrom.getDate() != dateTo.getDate() )) {
+			String errmsg = "Некоретни данни в поле дата!";
+			request.setAttribute("errmsg", errmsg);
+			RequestDispatcher view = request.getRequestDispatcher("InsurerErrors.jsp");
+			view.forward(request,response);
+		}
+		else {
+			go.insertGO(new GrajdanskaOtgovornost(insurerID, insurenceGrajdanskaOtgovornostID, 
+					insurenceType, insurenceFirstName, insurenceSecondName, insurenceLastName, insurenceEGN, 
+					insurenceCountry, insurenceAddress, insurencePK, insurenceMobilePhone, vehicleRegNumber, zone, vehicleType, 
+					vehicleRama, vehicleBrand, vehicleModel, dateFrom, dateTo, insurenceMonths, 
+					insurenceValue, insurencePremiq));
+			
+			String errmsg = "Успешно добавяне!";
+			request.setAttribute("errmsg", errmsg);
+			RequestDispatcher view = request.getRequestDispatcher("InsurerErrors.jsp");
+			view.forward(request,response);
+		}
+	}
+}

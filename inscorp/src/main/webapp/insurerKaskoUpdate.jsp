@@ -54,6 +54,7 @@
 		<script type="text/javascript" src="js/Kasko/setKaskoSettings.js"></script>
 		<script src="js/Kasko/setKaskoValue.js"></script>
 		<script src="js/validate.js"></script>
+		<script src="js/GO/calendarGO.js"></script>
 	</head>
 	
 	<body onload="addList()">
@@ -157,7 +158,7 @@
 <%-- 										><%=country.getCountry() %></option> --%>
 <%-- 									<%} %> --%>
 <!-- 							</select> -->
-						</div>
+<!-- 						</div> -->
 						<div class="form-row">
 							<div class="form-row-inner">
 								<label for="address">Адрес на собственика</label>
@@ -264,6 +265,16 @@
 									<option <%if(i.getVehiclePlaceNumber() == 4 ) { %> selected <% }%> >4</option>
 									<option <%if(i.getVehiclePlaceNumber() == 50) { %> selected <% }%> >50</option>
 								</select>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-row-inner">
+								<label>Начало</label>
+								<input class="field" type="text" value=<%=i.getInsurenceDateFrom()%> id="datepicker1" name="fromDate">							
+							</div>
+							<div class="form-row-inner">
+								<label>Край</label>
+								<input class="field" type="text" value=<%=i.getInsurenceDateTo()%> id="datepicker2" name="toDate">							
 							</div>
 						</div>
 						<div class="form-row">
