@@ -5,8 +5,8 @@ import java.util.List;
 import model.Kasko;
 
 /**
+ * KaskoDAO interface
  * @author shenaikabilova
- *
  */
 public interface KaskoDAO {
 	public List<Kasko> listKasko();

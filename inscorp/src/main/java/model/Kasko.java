@@ -3,8 +3,8 @@ package model;
 import java.util.Date;
 
 /**
+ * The Kasko class represent kasko objects.
  * @author shenaikabilova
- *
  */
 public class Kasko {
 	private String insurerId;

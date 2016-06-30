@@ -1,8 +1,8 @@
 package model;
 
 /**
+ * The Insurer class represent insurer objects.
  * @author shenaikabilova
- *
  */
 public class Insurer {
 	private String insurerId;

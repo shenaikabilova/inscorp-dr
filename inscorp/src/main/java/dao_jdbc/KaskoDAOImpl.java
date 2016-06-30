@@ -13,11 +13,15 @@ import dao_api.KaskoDAO;
 import model.Kasko;
 
 /**
+ * This class implements KaskoDAO interface
  * @author shenaikabilova
- *
  */
 public class KaskoDAOImpl implements KaskoDAO{
 
+	/** List all existing kasko insurances in database
+	 * @return list kasko insurances or null if list is empty
+	 * @see dao_api.KaskoDAO#listKasko()
+	 */
 	@Override
 	public List<Kasko> listKasko() {
 		List<Kasko> listKasko;
@@ -77,6 +81,10 @@ public class KaskoDAOImpl implements KaskoDAO{
 		}
 	}
 
+	/** Insert new insurance Kasko in database
+	 * @param kasko object from class Kasko
+	 * @see dao_api.KaskoDAO#insertKasko(model.Kasko)
+	 */
 	@Override
 	public void insertKasko(Kasko kasko) {
 		try(Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Insurence", "root", "123456")) {
@@ -119,6 +127,10 @@ public class KaskoDAOImpl implements KaskoDAO{
 		}
 	}
 
+	/** Delete existing insurance kasko in databse
+	 * @param kaskoID specific string field contains insurance ID
+	 * @see dao_api.KaskoDAO#deleteKasko(java.lang.String)
+	 */
 	@Override
 	public void deleteKasko(String kaskoID) {
 		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Insurence", "root", "123456")) {
@@ -132,6 +144,10 @@ public class KaskoDAOImpl implements KaskoDAO{
 		}
 	}
 
+	/** Update existing insurance kasko in database 
+	 * @param kasko specific string field contains insurance ID
+	 * @see dao_api.KaskoDAO#updateKasko(model.Kasko)
+	 */
 	@Override
 	public void updateKasko(Kasko kasko) {
 		try(Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Insurence", "root", "123456")) {
@@ -172,6 +188,11 @@ public class KaskoDAOImpl implements KaskoDAO{
 		}
 	}
 
+	/** Search insurance kasko in database with specific ID
+	 * @param kaskoID specific string field contains insurance ID
+	 * @return object from class Kasko or null if insurance with this ID does not exist
+	 * @see dao_api.KaskoDAO#searchKasko(java.lang.String)
+	 */
 	@Override
 	public Kasko searchKasko(String kaskoID) {
 		Kasko kasko = new Kasko();
@@ -224,7 +245,9 @@ public class KaskoDAOImpl implements KaskoDAO{
 		return kasko;
 	}
 
-	/* (non-Javadoc)
+	/** List all insurances kasko in database with specific insurer
+	 * @param userName string field contains specific user name
+	 * @return list insurances or null if list is empty
 	 * @see dao_api.KaskoDAO#searchKaskoByInsurer(java.lang.String)
 	 */
 	@Override

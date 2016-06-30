@@ -128,11 +128,11 @@
 						</div>
 						<div class="form-row">
 							<label for="EGN">ЕГН</label>
-							<input type="text" id="EGN" class="field" name="EGN" placeholder="ЕГН" size="30" maxlength="10">
+							<input type="text" id="EGN" class="field" name="EGN" placeholder="ЕГН" size="30" onchange="isValidateEGN();" maxlength="10">
 						</div>
 						<div class="form-row">
 							<label for="mobilePhone">Мобилен телефон</label>
-							<input type="text" class="field" name="mobilePhone" placeholder="Мобилен телефон" size="30" maxlength="10">
+							<input type="text" class="field" name="mobilePhone" placeholder="Мобилен телефон" size="30"  maxlength="10">
 						</div>
 <!-- 						<div class="form-row"> -->
 <!-- 							<label>Държава</label> -->

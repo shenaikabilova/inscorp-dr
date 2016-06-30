@@ -12,15 +12,16 @@ import javax.mail.internet.MimeMessage;
  * 
  */
 
-/**
+/** Class using for send mail 
  * @author shenaikabilova
  *
  */
 public class SendMail {
-	/**
-	 * @param args
+	/** This method sending mail to the specified email contains specified user and pass
+	 * @param user string field contains user name
+	 * @param pass string field contains password
+	 * @param email string field contains email
 	 */
-//	public static void main(String[] args) {
 	public void sendMail (String user, String pass, String email) {
 		final String userName = "shenaikabilova93@gmail.com";
 		final String password = "sheni412";

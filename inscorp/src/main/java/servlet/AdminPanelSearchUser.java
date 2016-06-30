@@ -22,12 +22,18 @@ import dao_api.InsurerDAO;
 import dao_jdbc.InsurerDAOImpl;
 
 /**
+ * Servlet for searching existing user by admin
  * @author shenaikabilova
  *
  */
 @SuppressWarnings("serial")
 @WebServlet("/updateUser")
 public class AdminPanelSearchUser extends HttpServlet {
+	/**
+	 * Servlet init method sets mysql driver for database connection
+	 * @throws ServletException
+	 * @see javax.servlet.GenericServlet#init(javax.servlet.ServletConfig)
+	 */
 	public void init(ServletConfig config) throws ServletException {
 	      super.init(config);
 	      try {
@@ -38,6 +44,13 @@ public class AdminPanelSearchUser extends HttpServlet {
 	      }
 	}
 	
+	/**
+	 * Get method for searching existing user by admin
+	 * @param request get or set parameters from jsp
+	 * @param response redirect to jsp
+	 * @throws ServletException, IOException
+	 * @see javax.servlet.http.HttpServlet#doGet(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+	 */
 	public void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		

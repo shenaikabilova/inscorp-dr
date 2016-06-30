@@ -1,0 +1,21 @@
+/**
+ * 
+ */
+package dao_api;
+
+import java.util.List;
+
+import model.GrajdanskaOtgovornost;
+
+/**
+ * Interface for GrajdanskaOtgovnost 
+ * @author shenaikabilova
+ */
+public interface GrajdanskaOtgovornostDAO {
+	public List<GrajdanskaOtgovornost> listGO();
+	public void insertGO (GrajdanskaOtgovornost grajdanskaOtgovornost);
+	public void deleteGO (String grajdanskaOtgovornostID);
+	public void updateGO (GrajdanskaOtgovornost grajdanskaOtgovornost);
+	public GrajdanskaOtgovornost searchGO (String grajdanskaOtgovornostID);
+	public List<GrajdanskaOtgovornost> searchGOByInsurer (String userName);
+}

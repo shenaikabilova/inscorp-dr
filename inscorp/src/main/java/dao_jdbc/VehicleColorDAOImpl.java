@@ -14,12 +14,14 @@ import model.VehicleColor;
 import dao_api.VehicleColorDAO;
 
 /**
+ * This class implements VehicleColorDAO interface
  * @author shenaikabilova
  *
  */
 public class VehicleColorDAOImpl implements VehicleColorDAO {
 
-	/* (non-Javadoc)
+	/** List all existing vehicle colors in database
+	 * @return list vehicle colors or null if list is empty 
 	 * @see dao_api.VehicleColorDAO#listAllVehicleColors()
 	 */
 	@Override

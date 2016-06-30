@@ -1,0 +1,17 @@
+/**
+ * 
+ */
+package dao_api;
+
+import java.util.List;
+
+import model.Country;
+
+/**
+ * Country interface
+ * @author shenaikabilova
+ *
+ */
+public interface CountryDAO {
+	public List<Country> listCountries();
+}

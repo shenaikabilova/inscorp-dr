@@ -1,11 +1,8 @@
-/**
- * 
- */
 package model;
 
 /**
+ * The Country class represents country objects. 
  * @author shenaikabilova
- *
  */
 public class Country {
 	private String country;

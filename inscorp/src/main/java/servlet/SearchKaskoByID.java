@@ -20,13 +20,19 @@ import model.Kasko;
 import dao_api.KaskoDAO;
 import dao_jdbc.KaskoDAOImpl;
 
-/**
+/** 
+ * Servlet for searching insurance kasko with specified ID
  * @author shenaikabilova
- *
+ * 
  */
 @SuppressWarnings("serial")
 @WebServlet("/searchKaskoByID")
 public class SearchKaskoByID extends HttpServlet {
+	/** 
+	 * Servlet init method sets mysql driver for database connection
+	 * @throws ServletException
+	 * @see javax.servlet.GenericServlet#init(javax.servlet.ServletConfig)
+	 */
 	public void init(ServletConfig config) throws ServletException {
 	      super.init(config);
 	      try {
@@ -37,6 +43,13 @@ public class SearchKaskoByID extends HttpServlet {
 	      }
 	}
 	
+	/** 
+	 * Get method for searching kasko by specific ID
+	 * @param request get or set parameters from jsp
+	 * @param response redirect to jsp
+	 * @throws ServletException, IOException
+	 * @see javax.servlet.http.HttpServlet#doGet(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+	 */
 	public void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		

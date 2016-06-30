@@ -13,7 +13,7 @@ body{
 .shell { 
 	width: 1200px; 
 	margin: 0 auto;
-	overflow: scroll;
+/* 	overflow: scroll; */
 }
 
 input { font-size: 14px; }

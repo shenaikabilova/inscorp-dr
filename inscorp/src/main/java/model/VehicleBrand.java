@@ -1,11 +1,8 @@
-/**
- * 
- */
 package model;
 
 /**
+ * The VehicleBrand class represent vehicle brand object.
  * @author shenaikabilova
- *
  */
 public class VehicleBrand {
 	private String vehicleBrand;

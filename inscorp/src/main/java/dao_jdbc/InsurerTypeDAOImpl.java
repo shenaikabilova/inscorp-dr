@@ -1,6 +1,3 @@
-/**
- * 
- */
 package dao_jdbc;
 
 import java.sql.Connection;
@@ -14,12 +11,13 @@ import model.InsurerType;
 import dao_api.InsurerTypeDAO;
 
 /**
+ * This class implements InsurerTypeDAO interface
  * @author shenaikabilova
- *
  */
 public class InsurerTypeDAOImpl implements InsurerTypeDAO {
 
-	/* (non-Javadoc)
+	/** List all insurer types in databse
+	 * @return list insurers or null if list is empty
 	 * @see dao_api.InsurerTypeDAO#listInsurerTypes()
 	 */
 	@Override

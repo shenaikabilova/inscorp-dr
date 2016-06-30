@@ -14,12 +14,14 @@ import dao_api.VehicleBrandDAO;
 import model.VehicleBrand;
 
 /**
+ * This class implements VehicleBrandDAO interface
  * @author shenaikabilova
  *
  */
 public class VehicleBrandDAOImpl implements VehicleBrandDAO {
 
-	/* (non-Javadoc)
+	/** List all existing vehicle types in database
+	 * @return list vehicle types or null if list is empty
 	 * @see dao.TypeVehicleDAO#listAllVehicleTypes()
 	 */
 	@Override

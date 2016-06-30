@@ -1,6 +1,3 @@
-/**
- * 
- */
 package servlet;
 
 import java.io.IOException;
@@ -20,12 +17,17 @@ import dao_api.InsurerDAO;
 import dao_jdbc.InsurerDAOImpl;
 
 /**
+ * Servlet using for adding insurer from admin
  * @author shenaikabilova
- *
+
  */
 @SuppressWarnings("serial")
 @WebServlet("/adminPanelAddInsurer")
 public class AdminPanelAddInsurer extends HttpServlet {
+	/** 
+	 * servlet init method sets mysql driver for database connection
+	 * @see javax.servlet.GenericServlet#init(javax.servlet.ServletConfig)
+	 */
 	public void init(ServletConfig config) throws ServletException {
 	      super.init(config);
 	      try {
@@ -36,6 +38,13 @@ public class AdminPanelAddInsurer extends HttpServlet {
 	      }
 	}
 	
+	/** 
+	 * Post method for adding insurer in database 
+	 * @param request get or set parameters from jsp
+	 * @param response redirect to jsp
+	 * @throws ServletException, IOException
+	 * @see javax.servlet.http.HttpServlet#doPost(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+	 */
 	public void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
@@ -60,14 +69,7 @@ public class AdminPanelAddInsurer extends HttpServlet {
 			}
 			
 			sendMail.sendMail(insurerID, insurerPass1, insurerEmail);
-			
 			response.sendRedirect("/inscorp/adminPanelAddInsurer.jsp");
 		}
-//		else {
-//			String errmsg = "Неуспешна регистрация на застрахователно лице!";
-//			request.setAttribute("errmsg", errmsg);
-//			RequestDispatcher view = request.getRequestDispatcher("ErrorLogin.jsp");
-//			view.forward(request,response);
-//		}
 	}
 }

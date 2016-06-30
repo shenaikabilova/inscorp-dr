@@ -1,11 +1,8 @@
-/**
- * 
- */
 package model;
 
 /**
+ * The VehicleColor class represents vehicle color object.
  * @author shenaikabilova
- *
  */
 public class VehicleColor {
 	private String vehicleColor;

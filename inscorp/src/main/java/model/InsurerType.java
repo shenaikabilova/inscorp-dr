@@ -1,11 +1,8 @@
-/**
- * 
- */
 package model;
 
 /**
+ * The InsurerType class represent insurerType object.
  * @author shenaikabilova
- *
  */
 public class InsurerType {
 	private String insurerType;

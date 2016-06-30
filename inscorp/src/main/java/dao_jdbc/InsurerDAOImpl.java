@@ -14,10 +14,14 @@ import dao_api.InsurerDAO;
 import model.Insurer;
 
 /**
+ * This class implements InsurerDAO interface
  * @author shenaikabilova
- *
  */
 public class InsurerDAOImpl implements InsurerDAO{
+	/** List all existing insurers in database
+	 * @return list insurers or null if list is empty
+	 * @see dao_api.InsurerDAO#listInsurers()
+	 */
 	@Override
 	public List<Insurer> listInsurers() {
 		List<Insurer> insurers;
@@ -54,6 +58,10 @@ public class InsurerDAOImpl implements InsurerDAO{
 		}
 	}
 
+	/** Insert insurer in database
+	 * @param insurer object from class Insurer
+	 * @see dao_api.InsurerDAO#insert(model.Insurer)
+	 */
 	@Override
 	public void insert(Insurer insurer) throws InsCorpErrorException{
 		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Insurence", "root", "123456")) {
@@ -75,6 +83,10 @@ public class InsurerDAOImpl implements InsurerDAO{
 		}
 	}
 
+	/** Delete insurer in database 
+	 * @param insurerID specific string field contains insurer ID
+	 * @see dao_api.InsurerDAO#delete(java.lang.String)
+	 */
 	@Override
 	public void delete(String insurerID) throws InsCorpErrorException {
 		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Insurence", "root", "123456")) {
@@ -88,6 +100,10 @@ public class InsurerDAOImpl implements InsurerDAO{
 		}
 	}
 
+	/** Update existing insurer in database
+	 * @param insurer object from class Insurer
+	 * @see dao_api.InsurerDAO#update(model.Insurer)
+	 */
 	@Override
 	public void update(Insurer insurer) throws InsCorpErrorException {
 		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Insurence", "root", "123456")) {
@@ -110,6 +126,11 @@ public class InsurerDAOImpl implements InsurerDAO{
 		}
 	}
 	
+	/** Search all insurances in database with specific user (e.g. insurer)
+	 * @param username specific string field contains insurer user name
+	 * @return list insurances or null if list is empty
+	 * @see dao_api.InsurerDAO#searchUserName(java.lang.String)
+	 */
 	public Insurer searchUserName(String username) throws InsCorpErrorException {
 		Insurer insurer = new Insurer();
 		
@@ -140,6 +161,12 @@ public class InsurerDAOImpl implements InsurerDAO{
 		return insurer;
 	}
 	
+	/** Check if user is existing in database
+	 * @param username specific string field contains insurer user name
+	 * @param password specific string field contains insurer password
+	 * @return true if user existing or false if not existing
+	 * @see dao_api.InsurerDAO#isUser(java.lang.String, java.lang.String)
+	 */
 	public boolean isUser (String username, String password) throws InsCorpErrorException {
 		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Insurence", "root", "123456")){
 

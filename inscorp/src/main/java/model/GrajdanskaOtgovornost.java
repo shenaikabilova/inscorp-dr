@@ -1,13 +1,10 @@
-/**
- * 
- */
 package model;
 
 import java.util.Date;
 
 /**
+ * The Grajdanska otgovornost represents grajdanska otgogovrnost object.
  * @author shenaikabilova
- *
  */
 public class GrajdanskaOtgovornost {
 	private String insurerID;

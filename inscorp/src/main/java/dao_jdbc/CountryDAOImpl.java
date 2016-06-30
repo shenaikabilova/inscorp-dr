@@ -1,6 +1,3 @@
-/**
- * 
- */
 package dao_jdbc;
 
 import java.sql.Connection;
@@ -14,12 +11,13 @@ import model.Country;
 import dao_api.CountryDAO;
 
 /**
+ * This class implements CountryDAO interface
  * @author shenaikabilova
- *
  */
 public class CountryDAOImpl implements CountryDAO{
 
-	/* (non-Javadoc)
+	/** List all countries from database
+	 * @return list of countries
 	 * @see dao_api.CountryDAO#listCountries()
 	 */
 	@Override

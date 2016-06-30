@@ -3,7 +3,5 @@ INDEX VERSION 1.3+D:\TU\DiplomnaRabota\inscorp-dr\.metadata\.plugins\org.eclipse
 3892754456.index
 1199019862.index
 3259879258.index
-1791588469.index
-1791588469.index
 2002516217.index
 3525147227.index

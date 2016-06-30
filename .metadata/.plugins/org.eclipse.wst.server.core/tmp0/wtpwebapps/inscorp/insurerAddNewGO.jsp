@@ -118,7 +118,7 @@
 							</div>
 							<div class="form-row">
 								<label>ЕГН</label>
-								<input type="text" class="field" name="EGN" placeholder="ЕГН" maxlength="10">
+								<input type="text" id="EGN" class="field" name="EGN" placeholder="ЕГН" maxlength="10" onchange="isValidateEGN();">
 							</div>
 							<div class="form-row">
 								<label>Държава</label>

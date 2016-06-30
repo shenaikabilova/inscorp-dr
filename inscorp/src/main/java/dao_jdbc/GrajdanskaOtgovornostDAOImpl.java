@@ -1,6 +1,3 @@
-/**
- * 
- */
 package dao_jdbc;
 
 import java.sql.Connection;
@@ -16,13 +13,14 @@ import model.GrajdanskaOtgovornost;
 import dao_api.GrajdanskaOtgovornostDAO;
 
 /**
+ * This class implements methods from GrajdanskaOtgovornostDAO interface 
  * @author shenaikabilova
- *
  */
 public class GrajdanskaOtgovornostDAOImpl implements GrajdanskaOtgovornostDAO {
 
-	/* (non-Javadoc)
+	/** List all grajdanska otgovornost insurances from database
 	 * @see dao_api.GrajdanskaOtgovornostDAO#listGO()
+	 * @return list insurances or null if list is empty
 	 */
 	@Override
 	public List<GrajdanskaOtgovornost> listGO() {
@@ -83,7 +81,8 @@ public class GrajdanskaOtgovornostDAOImpl implements GrajdanskaOtgovornostDAO {
 		}
 	}
 
-	/* (non-Javadoc)
+	/** Insert grajdanska otgovornost insurance in database
+	 * @param grajdanskaOtgovornost object from class Grajdanska otgovornost
 	 * @see dao_api.GrajdanskaOtgovornostDAO#insertGO(model.GrajdanskaOtgovornost)
 	 */
 	@Override
@@ -126,7 +125,8 @@ public class GrajdanskaOtgovornostDAOImpl implements GrajdanskaOtgovornostDAO {
 		}
 	}
 
-	/* (non-Javadoc)
+	/** Delete grajdanska otgovornost insurance with specific insurance ID from database
+	 * @param grajdanskaOtgovornostID string field 
 	 * @see dao_api.GrajdanskaOtgovornostDAO#deleteGO(model.GrajdanskaOtgovornost)
 	 */
 	@Override
@@ -142,7 +142,8 @@ public class GrajdanskaOtgovornostDAOImpl implements GrajdanskaOtgovornostDAO {
 		}
 	}
 
-	/* (non-Javadoc)
+	/** Update existing grajdanska otgovornost insurance in database 
+	 * @param grajdanskaOtgovornost object from class GrajdanskaOtgovornost
 	 * @see dao_api.GrajdanskaOtgovornostDAO#updateGO(model.GrajdanskaOtgovornost)
 	 */
 	@Override
@@ -184,7 +185,9 @@ public class GrajdanskaOtgovornostDAOImpl implements GrajdanskaOtgovornostDAO {
 		}
 	}
 
-	/* (non-Javadoc)
+	/** Return insurance grajdanska otgovonost with specific insurance ID from database 
+	 * @param grajdanskaOtgovornostID string field for specific insurance ID
+	 * @return GrajdanskaOtgovornost object with result from database
 	 * @see dao_api.GrajdanskaOtgovornostDAO#searchGO(model.GrajdanskaOtgovornost)
 	 */
 	@Override
@@ -239,7 +242,9 @@ public class GrajdanskaOtgovornostDAOImpl implements GrajdanskaOtgovornostDAO {
 		return grajdanskaOtgovornost;
 	}
 
-	/* (non-Javadoc)
+	/** List all existing grajdanska otgovornost insurances in database for specific insurer
+	 * @param userName string field for insurer user name
+	 * @return list all existing insurances or null if list is empty
 	 * @see dao_api.GrajdanskaOtgovornostDAO#searchGOByInsurer(model.GrajdanskaOtgovornost)
 	 */
 	@Override

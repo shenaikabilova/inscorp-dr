@@ -1,11 +1,8 @@
-/**
- * 
- */
 package model;
 
 /**
+ * The VehicleType class represents vehicle type objects.
  * @author shenaikabilova
- *
  */
 public class VehicleType {
 	private String vehicleType;

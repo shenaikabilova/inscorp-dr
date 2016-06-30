@@ -1,0 +1,312 @@
+/**
+ * 
+ */
+package dao_jdbc;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import model.GrajdanskaOtgovornost;
+import dao_api.GrajdanskaOtgovornostDAO;
+
+/**
+ * This class implements methods from GrajdanskaOtgovornostDAO
+ * @author shenaikabilova
+ *
+ */
+public class GrajdanskaOtgovornostDAOImpl implements GrajdanskaOtgovornostDAO {
+
+	/** List all grajdanska otgovornost insurances from database
+	 * @see dao_api.GrajdanskaOtgovornostDAO#listGO()
+	 * @return list insurances or null if list is empty
+	 */
+	@Override
+	public List<GrajdanskaOtgovornost> listGO() {
+		List<GrajdanskaOtgovornost> listGO;
+		
+		try(Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Insurence", "root", "123456")) {
+			final String QUERY = "SELECT INSURER_ID, INSURENCE_ID, INSURENCE_TYPE, INSURENCE_FIRST_NAME, "
+					+ "INSURENCE_SECOND_NAME, INSURENCE_LAST_NAME, INSURENCE_EGN, INSURENCE_COUNTRY, "
+					+ "INSURENCE_ADDRESS, INSURENCE_PK, INSURENCE_PHONE, VEHICLE_REG_NUMBER, ZONE, VEHICLE_TYPE, "
+					+ "VEHICLE_RAMA, VEHICLE_BRAND, INSURENCE_DATE_FROM, VEHICLE_MODEL, INSURENCE_DATE_TO, MONTHS, "
+					+ "VALUE, PREMIQ FROM grajdanska_otgovornost";
+			final String QUERY_COUNT = "SELECT COUNT(*) as count FROM grajdanska_otgovornost";
+			
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
+			PreparedStatement preparedStetmentCount = connection.prepareStatement(QUERY_COUNT);
+			
+			ResultSet resultSet = preparedStatement.executeQuery();
+			ResultSet resultSetCount = preparedStetmentCount.executeQuery();
+			
+			resultSetCount.next();
+			int count = resultSetCount.getInt("count");
+			
+			listGO = new ArrayList<GrajdanskaOtgovornost>(count);
+			
+			while(resultSet.next()) {
+				String insurerID = resultSet.getString("INSURER_ID");
+				String insurenceGrajdanskaOtgovornostID = resultSet.getString("INSURENCE_ID");
+				String insurenceType = resultSet.getString("INSURENCE_TYPE");
+				String insurenceFirstName = resultSet.getString("INSURENCE_FIRST_NAME");
+				String insurenceSecondName = resultSet.getString("INSURENCE_SECOND_NAME");
+				String insurenceLastName = resultSet.getString("INSURENCE_LAST_NAME");
+				String insurenceEGN = resultSet.getString("INSURENCE_EGN");
+				String insurenceCountry = resultSet.getString("INSURENCE_COUNTRY");
+				String insurenceAddress = resultSet.getString("INSURENCE_ADDRESS");
+				int insurencePK = resultSet.getInt("INSURENCE_PK");
+				String insurenceMobilePhone = resultSet.getString("INSURENCE_PHONE");
+				String vehicleRegNumber = resultSet.getString("VEHICLE_REG_NUMBER");
+				String zone = resultSet.getString("ZONE");
+				String vehicleType = resultSet.getString("VEHICLE_TYPE");
+				String vehicleRama = resultSet.getString("VEHICLE_RAMA");
+				String vehicleBranch = resultSet.getString("VEHICLE_BRAND");
+				String vehicleModel = resultSet.getString("VEHICLE_MODEL");
+				Date insurenceDateFrom = resultSet.getDate("INSURENCE_DATE_FROM");
+				Date insurenceDateTo = resultSet.getDate("INSURENCE_DATE_TO");
+				int insurenceMonths = resultSet.getInt("MONTHS");
+				float insurenceValue = resultSet.getFloat("VALUE");
+				float insurencePremiq = resultSet.getFloat("PREMIQ"); 
+				
+				listGO.add((new GrajdanskaOtgovornost(insurerID, insurenceGrajdanskaOtgovornostID, insurenceType, 
+						insurenceFirstName, insurenceSecondName, insurenceLastName, insurenceEGN,
+						insurenceCountry, insurenceAddress, insurencePK, insurenceMobilePhone, vehicleRegNumber, zone,
+						vehicleType, vehicleRama, vehicleBranch, vehicleModel, insurenceDateFrom, 
+						insurenceDateTo, insurenceMonths, insurenceValue, insurencePremiq)));
+			}
+			return listGO;
+		} catch (Exception e) {
+			return new ArrayList<GrajdanskaOtgovornost>(0);
+		}
+	}
+
+	/** Insert grajdanska otgovornost insurance in database
+	 * @param grajdanskaOtgovornost object from class Grajdanska otgovornost
+	 * @see dao_api.GrajdanskaOtgovornostDAO#insertGO(model.GrajdanskaOtgovornost)
+	 */
+	@Override
+	public void insertGO(GrajdanskaOtgovornost grajdanskaOtgovornost) {
+		try(Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Insurence", "root", "123456")) {
+			final String QUERY = "INSERT INTO grajdanska_otgovornost(INSURER_ID, INSURENCE_ID, INSURENCE_TYPE, INSURENCE_FIRST_NAME, "
+					+ "INSURENCE_SECOND_NAME, INSURENCE_LAST_NAME, INSURENCE_EGN, INSURENCE_COUNTRY, "
+					+ "INSURENCE_ADDRESS, INSURENCE_PK, INSURENCE_PHONE, VEHICLE_REG_NUMBER, ZONE, VEHICLE_TYPE, "
+					+ "VEHICLE_RAMA, VEHICLE_BRAND, VEHICLE_MODEL, INSURENCE_DATE_FROM, INSURENCE_DATE_TO, MONTHS, "
+					+ "VALUE, PREMIQ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
+			
+			preparedStatement.setString(1, grajdanskaOtgovornost.getInsurerID());
+			preparedStatement.setString(2, grajdanskaOtgovornost.getInsurenceGrajdanskaOtgovornostID());
+			preparedStatement.setString(3, grajdanskaOtgovornost.getInsurenceType());
+			preparedStatement.setString(4, grajdanskaOtgovornost.getInsurenceFirstName());
+			preparedStatement.setString(5, grajdanskaOtgovornost.getInsurenceSecondName());
+			preparedStatement.setString(6, grajdanskaOtgovornost.getInsurenceLastName());
+			preparedStatement.setString(7, grajdanskaOtgovornost.getInsurenceEGN());
+			preparedStatement.setString(8, grajdanskaOtgovornost.getInsurenceCountry());
+			preparedStatement.setString(9, grajdanskaOtgovornost.getInsurenceAddress());
+			preparedStatement.setInt(10, grajdanskaOtgovornost.getInsurencePK());
+			preparedStatement.setString(11, grajdanskaOtgovornost.getInsurenceMobilePhone());
+			preparedStatement.setString(12, grajdanskaOtgovornost.getVehicleRegNumber());
+			preparedStatement.setString(13, grajdanskaOtgovornost.getZone());
+			preparedStatement.setString(14, grajdanskaOtgovornost.getVehicleType());
+			preparedStatement.setString(15, grajdanskaOtgovornost.getVehicleRama());
+			preparedStatement.setString(16, grajdanskaOtgovornost.getVehicleBrand());
+			preparedStatement.setString(17, grajdanskaOtgovornost.getVehicleModel());
+			preparedStatement.setDate(18, new Date(grajdanskaOtgovornost.getInsurenceDateFrom().getTime()));
+			preparedStatement.setDate(19, new Date(grajdanskaOtgovornost.getInsurenceDateTo().getTime()));	
+			preparedStatement.setInt(20, grajdanskaOtgovornost.getInsurenceMonths());
+			preparedStatement.setFloat(21, grajdanskaOtgovornost.getInsurenceValue());
+			preparedStatement.setFloat(22, grajdanskaOtgovornost.getInsurencePremiq());	
+			
+			preparedStatement.executeUpdate();
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/** Delete grajdanska otgovornost insurance with specific insurance ID from database
+	 * @param grajdanskaOtgovornostID string field 
+	 * @see dao_api.GrajdanskaOtgovornostDAO#deleteGO(model.GrajdanskaOtgovornost)
+	 */
+	@Override
+	public void deleteGO(String grajdanskaOtgovornostID) {
+		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Insurence", "root", "123456")) {
+			final String QUERY = "DELETE FROM grajdanska_otgovornost WHERE INSURENCE_ID = '" + grajdanskaOtgovornostID + "'";
+			
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
+			
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/** Update existing grajdanska otgovornost insurance in database 
+	 * @param grajdanskaOtgovornost object from class GrajdanskaOtgovornost
+	 * @see dao_api.GrajdanskaOtgovornostDAO#updateGO(model.GrajdanskaOtgovornost)
+	 */
+	@Override
+	public void updateGO(GrajdanskaOtgovornost grajdanskaOtgovornost) {
+		try(Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Insurence", "root", "123456")) {
+			final String QUERY = "UPDATE grajdanska_otgovornost SET INSURER_ID=?, INSURENCE_ID=?, INSURENCE_TYPE=?, INSURENCE_FIRST_NAME=?, "
+					+ "INSURENCE_SECOND_NAME=?, INSURENCE_LAST_NAME=?, INSURENCE_EGN=?, INSURENCE_COUNTRY=?, "
+					+ "INSURENCE_ADDRESS=?, INSURENCE_PK=?, INSURENCE_PHONE=?, VEHICLE_REG_NUMBER=?, VEHICLE_TYPE=?, "
+					+ "VEHICLE_RAMA=?, VEHICLE_BRAND=?, VEHICLE_MODEL=?, INSURENCE_DATE_FROM=?, INSURENCE_DATE_TO=?, MONTHS=?, "
+					+ "VALUE=?, PREMIQ=? WHERE INSURENCE_ID = '" + grajdanskaOtgovornost.getInsurenceGrajdanskaOtgovornostID() + "'";
+		
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
+			
+			preparedStatement.setString(1, grajdanskaOtgovornost.getInsurerID());
+			preparedStatement.setString(2, grajdanskaOtgovornost.getInsurenceGrajdanskaOtgovornostID());
+			preparedStatement.setString(3, grajdanskaOtgovornost.getInsurenceType());
+			preparedStatement.setString(4, grajdanskaOtgovornost.getInsurenceFirstName());
+			preparedStatement.setString(5, grajdanskaOtgovornost.getInsurenceSecondName());
+			preparedStatement.setString(6, grajdanskaOtgovornost.getInsurenceLastName());
+			preparedStatement.setString(7, grajdanskaOtgovornost.getInsurenceEGN());
+			preparedStatement.setString(8, grajdanskaOtgovornost.getInsurenceCountry());
+			preparedStatement.setString(9, grajdanskaOtgovornost.getInsurenceAddress());
+			preparedStatement.setInt(10, grajdanskaOtgovornost.getInsurencePK());
+			preparedStatement.setString(11, grajdanskaOtgovornost.getInsurenceMobilePhone());
+			preparedStatement.setString(12, grajdanskaOtgovornost.getVehicleRegNumber());
+			preparedStatement.setString(13, grajdanskaOtgovornost.getVehicleType());
+			preparedStatement.setString(14, grajdanskaOtgovornost.getVehicleRama());
+			preparedStatement.setString(15, grajdanskaOtgovornost.getVehicleBrand());
+			preparedStatement.setString(16, grajdanskaOtgovornost.getVehicleModel());
+			preparedStatement.setDate(17, new Date(grajdanskaOtgovornost.getInsurenceDateFrom().getTime()));	
+			preparedStatement.setDate(18, new Date(grajdanskaOtgovornost.getInsurenceDateTo().getTime()));	
+			preparedStatement.setInt(19, grajdanskaOtgovornost.getInsurenceMonths());
+			preparedStatement.setFloat(20, grajdanskaOtgovornost.getInsurenceValue());
+			preparedStatement.setFloat(21, grajdanskaOtgovornost.getInsurencePremiq());	
+			
+			preparedStatement.executeUpdate();
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/** Return insurance grajdanska otgovonost with specific insurance ID from database 
+	 * @param grajdanskaOtgovornostID string field for specific insurance ID
+	 * @return GrajdanskaOtgovornost object with result from database
+	 * @see dao_api.GrajdanskaOtgovornostDAO#searchGO(model.GrajdanskaOtgovornost)
+	 */
+	@Override
+	public GrajdanskaOtgovornost searchGO(String grajdanskaOtgovornostID) {
+		GrajdanskaOtgovornost grajdanskaOtgovornost = new GrajdanskaOtgovornost();
+		
+		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Insurence", "root", "123456")) {
+			final String QUERY = "SELECT INSURER_ID, INSURENCE_ID, INSURENCE_TYPE, INSURENCE_FIRST_NAME, "
+					+ "INSURENCE_SECOND_NAME, INSURENCE_LAST_NAME, INSURENCE_EGN, INSURENCE_COUNTRY, "
+					+ "INSURENCE_ADDRESS, INSURENCE_PK, INSURENCE_PHONE, VEHICLE_REG_NUMBER, ZONE, VEHICLE_TYPE, "
+					+ "VEHICLE_RAMA, VEHICLE_BRAND, INSURENCE_DATE_FROM, VEHICLE_MODEL, INSURENCE_DATE_TO, MONTHS, "
+					+ "VALUE, PREMIQ FROM grajdanska_otgovornost WHERE INSURENCE_ID = '" + grajdanskaOtgovornostID + "'";
+			
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			if(resultSet.next()) {
+				String insurerID = resultSet.getString("INSURER_ID");
+				String insurenceGrajdanskaOtgovornostID = resultSet.getString("INSURENCE_ID");
+				String insurenceType = resultSet.getString("INSURENCE_TYPE");
+				String insurenceFirstName = resultSet.getString("INSURENCE_FIRST_NAME");
+				String insurenceSecondName = resultSet.getString("INSURENCE_SECOND_NAME");
+				String insurenceLastName = resultSet.getString("INSURENCE_LAST_NAME");
+				String insurenceEGN = resultSet.getString("INSURENCE_EGN");
+				String insurenceCountry = resultSet.getString("INSURENCE_COUNTRY");
+				String insurenceAddress = resultSet.getString("INSURENCE_ADDRESS");
+				int insurencePK = resultSet.getInt("INSURENCE_PK");
+				String insurenceMobilePhone = resultSet.getString("INSURENCE_PHONE");
+				String vehicleRegNumber = resultSet.getString("VEHICLE_REG_NUMBER");
+				String zone = resultSet.getString("ZONE");
+				String vehicleType = resultSet.getString("VEHICLE_TYPE");
+				String vehicleRama = resultSet.getString("VEHICLE_RAMA");
+				String vehicleBranch = resultSet.getString("VEHICLE_BRAND");
+				String vehicleModel = resultSet.getString("VEHICLE_MODEL");
+				Date insurenceDateFrom = resultSet.getDate("INSURENCE_DATE_FROM");
+				Date insurenceDateTo = resultSet.getDate("INSURENCE_DATE_TO");
+				int insurenceMonths = resultSet.getInt("MONTHS");
+				float insurenceValue = resultSet.getFloat("VALUE");
+				float insurencePremiq = resultSet.getFloat("PREMIQ"); 
+				
+				grajdanskaOtgovornost = new GrajdanskaOtgovornost(insurerID, insurenceGrajdanskaOtgovornostID, insurenceType, 
+						insurenceFirstName, insurenceSecondName, insurenceLastName, insurenceEGN,
+						insurenceCountry, insurenceAddress, insurencePK, insurenceMobilePhone, vehicleRegNumber, zone,
+						vehicleType, vehicleRama, vehicleBranch, vehicleModel, insurenceDateFrom, 
+						insurenceDateTo, insurenceMonths, insurenceValue, insurencePremiq);
+			}
+					
+			return grajdanskaOtgovornost;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return grajdanskaOtgovornost;
+	}
+
+	/** List all existing grajdanska otgovornost insurance in database for specific insurer
+	 * @param userName string field for insurer user name
+	 * @return list all existing insurances or null if list is empty
+	 * @see dao_api.GrajdanskaOtgovornostDAO#searchGOByInsurer(model.GrajdanskaOtgovornost)
+	 */
+	@Override
+	public List<GrajdanskaOtgovornost> searchGOByInsurer(String userName) {
+List<GrajdanskaOtgovornost> listGO;
+		
+		try(Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Insurence", "root", "123456")) {
+			final String QUERY = "SELECT INSURER_ID, INSURENCE_ID, INSURENCE_TYPE, INSURENCE_FIRST_NAME, "
+					+ "INSURENCE_SECOND_NAME, INSURENCE_LAST_NAME, INSURENCE_EGN, INSURENCE_COUNTRY, "
+					+ "INSURENCE_ADDRESS, INSURENCE_PK, INSURENCE_PHONE, VEHICLE_REG_NUMBER, ZONE, VEHICLE_TYPE, "
+					+ "VEHICLE_RAMA, VEHICLE_BRAND, INSURENCE_DATE_FROM, VEHICLE_MODEL, INSURENCE_DATE_TO, MONTHS, "
+					+ "VALUE, PREMIQ FROM grajdanska_otgovornost WHERE INSURER_ID = '" + userName + "'";
+			final String QUERY_COUNT = "SELECT COUNT(*) as count FROM grajdanska_otgovornost";
+			
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
+			PreparedStatement preparedStetmentCount = connection.prepareStatement(QUERY_COUNT);
+			
+			ResultSet resultSet = preparedStatement.executeQuery();
+			ResultSet resultSetCount = preparedStetmentCount.executeQuery();
+			
+			resultSetCount.next();
+			int count = resultSetCount.getInt("count");
+			
+			listGO = new ArrayList<GrajdanskaOtgovornost>(count);
+			
+			while(resultSet.next()) {
+				String insurerID = resultSet.getString("INSURER_ID");
+				String insurenceGrajdanskaOtgovornostID = resultSet.getString("INSURENCE_ID");
+				String insurenceType = resultSet.getString("INSURENCE_TYPE");
+				String insurenceFirstName = resultSet.getString("INSURENCE_FIRST_NAME");
+				String insurenceSecondName = resultSet.getString("INSURENCE_SECOND_NAME");
+				String insurenceLastName = resultSet.getString("INSURENCE_LAST_NAME");
+				String insurenceEGN = resultSet.getString("INSURENCE_EGN");
+				String insurenceCountry = resultSet.getString("INSURENCE_COUNTRY");
+				String insurenceAddress = resultSet.getString("INSURENCE_ADDRESS");
+				int insurencePK = resultSet.getInt("INSURENCE_PK");
+				String insurenceMobilePhone = resultSet.getString("INSURENCE_PHONE");
+				String vehicleRegNumber = resultSet.getString("VEHICLE_REG_NUMBER");
+				String zone = resultSet.getString("ZONE");
+				String vehicleType = resultSet.getString("VEHICLE_TYPE");
+				String vehicleRama = resultSet.getString("VEHICLE_RAMA");
+				String vehicleBranch = resultSet.getString("VEHICLE_BRAND");
+				String vehicleModel = resultSet.getString("VEHICLE_MODEL");
+				Date insurenceDateFrom = resultSet.getDate("INSURENCE_DATE_FROM");
+				Date insurenceDateTo = resultSet.getDate("INSURENCE_DATE_TO");
+				int insurenceMonths = resultSet.getInt("MONTHS");
+				float insurenceValue = resultSet.getFloat("VALUE");
+				float insurencePremiq = resultSet.getFloat("PREMIQ"); 
+				
+				listGO.add((new GrajdanskaOtgovornost(insurerID, insurenceGrajdanskaOtgovornostID, insurenceType, 
+						insurenceFirstName, insurenceSecondName, insurenceLastName, insurenceEGN,
+						insurenceCountry, insurenceAddress, insurencePK, insurenceMobilePhone, vehicleRegNumber, zone, 
+						vehicleType, vehicleRama, vehicleBranch, vehicleModel, insurenceDateFrom, 
+						insurenceDateTo, insurenceMonths, insurenceValue, insurencePremiq)));
+			}
+			return listGO;
+		} catch (Exception e) {
+			return new ArrayList<GrajdanskaOtgovornost>(0);
+		}
+	}
+}

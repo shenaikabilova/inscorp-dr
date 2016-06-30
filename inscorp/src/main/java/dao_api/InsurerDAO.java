@@ -6,6 +6,7 @@ import Exceptions.InsCorpErrorException;
 import model.Insurer;
 
 /**
+ * InsurerDAO interface
  * @author shenaikabilova
  *
  */

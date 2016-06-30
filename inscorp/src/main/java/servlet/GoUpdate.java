@@ -22,12 +22,18 @@ import dao_api.GrajdanskaOtgovornostDAO;
 import dao_jdbc.GrajdanskaOtgovornostDAOImpl;
 
 /**
+ * Servlet for updating existing insurance grajdanska otgovorstno by specific ID
  * @author shenaikabilova
  *
  */
 @SuppressWarnings("serial")
 @WebServlet("/GoUpdate")
 public class GoUpdate extends HttpServlet {
+	/**
+	 * Servlet init method sets mysql driver for database connection
+	 * @throws ServletException
+	 * @see javax.servlet.GenericServlet#init(javax.servlet.ServletConfig)
+	 */
 	public void init(ServletConfig config) throws ServletException {
 	      super.init(config);
 	      try {
@@ -38,6 +44,13 @@ public class GoUpdate extends HttpServlet {
 	      }
 	}
 	
+	/**
+	 * Post method for updating existing insurance grajdanska otgovornost by specific ID
+	 * @param request get or set parameters from jsp
+	 * @param response redirect to jsp
+	 * @throws ServletException, IOException
+	 * @see javax.servlet.http.HttpServlet#doPost(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+	 */
 	public void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 request.setCharacterEncoding("UTF-8");
 		

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package dao_api;
 
 import java.util.List;
@@ -8,8 +5,8 @@ import java.util.List;
 import model.GrajdanskaOtgovornost;
 
 /**
+ * GrajdanskaOtgovnostDAO interface 
  * @author shenaikabilova
- *
  */
 public interface GrajdanskaOtgovornostDAO {
 	public List<GrajdanskaOtgovornost> listGO();

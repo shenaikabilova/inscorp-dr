@@ -1,4 +1,6 @@
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 import Exceptions.InsCorpErrorException;
@@ -99,22 +101,5 @@ public class Example {
 //		for(GrajdanskaOtgovornost g : dao.listGO()) {
 //			System.out.println(g.getInsurenceGrajdanskaOtgovornostID());
 //		}
-
-		Scanner input = new Scanner(System.in);
-        String S;
-        S = input.nextLine();
-        
-        for(int i=0; i<S.length(); i++) {
-            if(i % 2 == 0) {
-                System.out.print(S.charAt(i));
-            }
-        }
-        System.out.print(" ");
-        for(int i=0; i<S.length(); i++) {
-            if(i % 2 != 0) {
-                System.out.print(S.charAt(i));
-            }
-        }
-        input.close();
 	}
 }

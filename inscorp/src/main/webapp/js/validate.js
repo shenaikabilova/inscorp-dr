@@ -14,3 +14,41 @@ function validateEmail() {
     	alert("Невалиден е-майл адрес!");
     }
 }
+
+function isValidateEGN() {
+	var egn = document.getElementById("EGN").value;
+	
+	var weights = [ 2, 4, 8, 5, 10, 9, 7, 3, 6 ];
+
+	var year = egn.substring(0,2);
+    var month = egn.substring(2,4);
+    var day = egn.substring(4, 6);
+    var checkSum  = 0;
+    
+    if(egn.length != 10) {
+    	alert("Полето за ЕГН трябва да съдържа 10 числа!");
+    }
+    
+    if(year < 0 || year > 99) {
+    	alert("Очаква се година между 00...99!");
+    }
+    if(month > 20 && month < 40) {
+            month -= 20;
+    } else if(month > 40) {
+            month -=40;                     
+    }
+    if (month < 1 || month > 12) {
+    	alert("Месецът трябва да бъде между 1...12!");
+    }
+    if(day < 1 || day > 31) {
+    	alert("Датата трябва да бъде между 1...31!");
+    }
+     
+    for(var i = 0; i < egn.length - 1; i++) {
+            checkSum += (egn.charAt(i) - '0')*weights[i];
+    }
+    checkSum %= 11;
+    if(checkSum != (egn.charAt(9) - '0')) {
+    	alert("Невалидна контролна сума!");
+    }
+}

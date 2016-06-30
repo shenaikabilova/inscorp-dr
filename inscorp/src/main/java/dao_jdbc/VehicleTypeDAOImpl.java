@@ -1,6 +1,3 @@
-/**
- * 
- */
 package dao_jdbc;
 
 import java.sql.Connection;
@@ -13,13 +10,14 @@ import java.util.List;
 import dao_api.VehicleTypeDAO;
 import model.VehicleType;
 
-/**
+/** 
+ * This class implements VehicleTypeDAO interface
  * @author shenaikabilova
- *
  */
 public class VehicleTypeDAOImpl implements VehicleTypeDAO{
 
-	/* (non-Javadoc)
+	/** List all existing vehicle types in database
+	 * @return list with vehicle types or null if list is empty 
 	 * @see dao_api.VehicleTypeDAO#listVehicleTypes()
 	 */
 	@Override

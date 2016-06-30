@@ -19,12 +19,18 @@ import dao_api.InsurerDAO;
 import dao_jdbc.InsurerDAOImpl;
 
 /**
+ * Servlet for deleting existing insurer by admin
  * @author shenaikabilova
  *
  */
 @SuppressWarnings("serial")
 @WebServlet("/deleteUser")
 public class AdminPanelDeleteUser extends HttpServlet {
+	/**
+	 * Servlet init method sets mysql driver for database connection
+	 * @throws ServletException
+	 * @see javax.servlet.GenericServlet#init(javax.servlet.ServletConfig)
+	 */
 	public void init(ServletConfig config) throws ServletException {
 	      super.init(config);
 	      try {
@@ -35,6 +41,13 @@ public class AdminPanelDeleteUser extends HttpServlet {
 	      }
 	}
 	
+	/**
+	 * Post method for deleting insurer by admin
+	 * @param request get or set parameters from jsp
+	 * @param response redirect to jsp
+	 * @throws ServletException, IOException
+	 * @see javax.servlet.http.HttpServlet#doPost(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+	 */
 	public void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userID;
 		
