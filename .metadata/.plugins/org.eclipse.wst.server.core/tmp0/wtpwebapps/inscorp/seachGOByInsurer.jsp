@@ -74,6 +74,7 @@
 		</div>
 		
 		<div class="searchInsurers viewInsurers shell">
+			<h3>Застраховка "Гражданска отговорност" - изведи по текущ застраховател</h3>
 			<table border="1">
 				<th>Застраховател</th> 
 				<th>Полица №</th>

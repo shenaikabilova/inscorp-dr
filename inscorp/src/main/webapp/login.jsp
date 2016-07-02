@@ -23,7 +23,7 @@
 						</tr>
 						<tr>
 							<td></td>
-							<td><input type="submit" value="Вход"></td>
+							<td><input type="submit" value="Вход" name="login"></td>
 						</tr>
 					</table>
 				</form>

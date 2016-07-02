@@ -65,6 +65,7 @@
 				<form action="searchGOUpdate" method="get">
 					<div class="form-section">
 						<div class="form-row">
+							<h3>Търсене на полица по застраховка "Гражданска отговорност"</h3>
 							<label>№ на полица</label>
 							<input class="field" type="text" name="searchGOByID" placeholder="Въведете № на полица" >
 							<input type="submit" value="Намери" name="searchGOUpdate">

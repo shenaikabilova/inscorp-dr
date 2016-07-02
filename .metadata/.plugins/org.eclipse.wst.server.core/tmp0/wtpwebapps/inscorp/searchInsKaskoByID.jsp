@@ -63,6 +63,7 @@
 		<div class="searchGO">
 			<div class="shell">
 				<form action="searchKaskoByID" method="get">
+				<h3>Търсене на застраховка "Каско" по № на полица</h3>
 					<div class="form-section">
 						<div class="form-row">
 							<label>№ на полица</label>

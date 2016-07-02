@@ -15,4 +15,5 @@ public interface GrajdanskaOtgovornostDAO {
 	public void updateGO (GrajdanskaOtgovornost grajdanskaOtgovornost);
 	public GrajdanskaOtgovornost searchGO (String grajdanskaOtgovornostID);
 	public List<GrajdanskaOtgovornost> searchGOByInsurer (String userName);
+	public String getLastInsID ();
 }

@@ -65,7 +65,8 @@
 			</div>
 		</div>
 		
-		<div class="viewInsurers shell">
+		<div class="searchInsurers viewInsurers shell">
+			<h3>Застраховка "Каско" - търсене по № на полица</h3>
 			<table border="1">
 				<th>Застраховател</th> 
 				<th>Полица №</th>  
@@ -85,7 +86,9 @@
 				<th>Година на производство</th>  
 				<th>Първа регистрация</th>  
 				<th>Двигател</th>  
-				<th>Брой места</th>  
+				<th>Брой места</th> 
+				<th>Начална дата</th>
+				<th>Крайна дата</th>  
 				<th>Застрахователна стойност</th>  
 				<th>Застрахователна премия</th>  
 
@@ -111,6 +114,8 @@
 						<td><%=i.getVehicleFirstRegistration()%></td>  
 						<td><%=i.getVehicleEngine()%></td>  
 						<td><%=i.getVehiclePlaceNumber()%></td>  
+						<td><%=i.getInsurenceDateFrom()%></td>
+						<td><%=i.getInsurenceDateTo()%></td>
 						<td><%=i.getVehicleInsurenceValue()%></td>  
 						<td><%=i.getVehicleInsurencePremiq()%></td>  
 				   </tr>

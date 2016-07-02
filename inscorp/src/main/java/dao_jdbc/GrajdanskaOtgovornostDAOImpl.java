@@ -305,4 +305,26 @@ List<GrajdanskaOtgovornost> listGO;
 			return new ArrayList<GrajdanskaOtgovornost>(0);
 		}
 	}
+
+	/**
+	 * Get last insurance ID
+	 * @see dao_api.GrajdanskaOtgovornostDAO#getLastInsID()
+	 */
+	@Override
+	public String getLastInsID() {
+		String lastID = null;
+		try(Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Insurence", "root", "123456")) {
+			final String QUERY = "SELECT INSURENCE_ID FROM grajdanska_otgovornost order by INSURENCE_ID desc limit 1";
+
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			if(resultSet.next()) {
+				lastID = resultSet.getString("INSURENCE_ID");
+			}
+			return lastID;
+		} catch (Exception e) {
+			return null;
+		}
+	}
 }

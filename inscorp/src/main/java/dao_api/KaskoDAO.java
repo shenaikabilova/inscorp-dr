@@ -15,4 +15,5 @@ public interface KaskoDAO {
 	public void updateKasko (Kasko kasko);
 	public Kasko searchKasko (String kaskoID);
 	public List<Kasko> searchKaskoByInsurer (String userName);
+	public String getLastInsID ();
 }

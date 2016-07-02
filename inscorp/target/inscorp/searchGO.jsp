@@ -65,6 +65,7 @@
 				<form action="searchByID" method="get">
 					<div class="form-section">
 						<div class="form-row">
+							<h3>Търсене на застраховка "Гражданска отговорност" по № на полица</h3>
 							<label>№ на полица</label>
 							<input class="field" type="text" name="searchByID" placeholder="Въведете № на полица" >
 							<input type="submit" value="Намери" name="searchByID">

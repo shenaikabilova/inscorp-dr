@@ -65,6 +65,7 @@
 				<form action="searchKaskoUpdate" method="get">
 					<div class="form-section">
 						<div class="form-row">
+							<h3>Търсене на застраховка "Каско" за редакция</h3>
 							<label>№ на полица</label>
 							<input class="field" type="text" name="searchKaskoByID" placeholder="Въведете № на полица" >
 							<input type="submit" value="Намери" name="searchKaskoUpdate">

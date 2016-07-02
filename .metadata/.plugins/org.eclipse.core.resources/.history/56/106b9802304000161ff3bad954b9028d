@@ -1,0 +1,381 @@
+package dao_jdbc;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import dao_api.KaskoDAO;
+import model.Kasko;
+
+/**
+ * This class implements KaskoDAO interface
+ * @author shenaikabilova
+ */
+public class KaskoDAOImpl implements KaskoDAO{
+
+	/** List all existing kasko insurances in database
+	 * @return list kasko insurances or null if list is empty
+	 * @see dao_api.KaskoDAO#listKasko()
+	 */
+	@Override
+	public List<Kasko> listKasko() {
+		List<Kasko> listKasko;
+		
+		try(Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Insurence", "root", "123456")) {
+			final String QUERY = "SELECT INSURER_ID, INSURENCE_ID, INSURENCE_TYPE, INSURENCE_FIRST_NAME, INSURENCE_SECOND_NAME,"
+					+ "INSURENCE_FAMILY, INSURENCE_EGN, INSURENCE_MOBILE_PHONE, INSURENCE_ADDRESS, INSURENCE_PK, "
+					+ "VEHICLE_REGISTRATION_NUMBER, VEHICLE_TYPE, VEHICLE_RAMA, VEHICLE_BRAND, VEHICLE_MODEL,"
+					+ "VEHICLE_COLOR, VEHICLE_YEAR, VEHICLE_FIRST_REGISTRATION, VEHICLE_ENGINE, VEHICLE_PLACE_NUMBER,"
+					+ "INSURENCE_DATE_FROM, INSURENCE_DATE_TO,"
+					+ "VEHICLE_INSURANCE_VALUE, VEHICLE_INSURANCE_PREMIQ FROM kasko";
+			final String QUERY_COUNT = "SELECT COUNT(*) as count FROM kasko";
+			
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
+			PreparedStatement preparedStetmentCount = connection.prepareStatement(QUERY_COUNT);
+			
+			ResultSet resultSet = preparedStatement.executeQuery();
+			ResultSet resultSetCount = preparedStetmentCount.executeQuery();
+			
+			resultSetCount.next();
+			int count = resultSetCount.getInt("count");
+			
+			listKasko = new ArrayList<Kasko>(count);
+			
+			while(resultSet.next()) {
+				String insId = resultSet.getString("INSURER_ID");
+				String insKaskoId = resultSet.getString("INSURENCE_ID");
+				String insType = resultSet.getString("INSURENCE_TYPE");
+				String insurenceFirstName = resultSet.getString("INSURENCE_FIRST_NAME");
+				String insurenceSecondName = resultSet.getString("INSURENCE_SECOND_NAME");
+				String insurenceFamily = resultSet.getString("INSURENCE_FAMILY");
+				String insurenceEGN = resultSet.getString("INSURENCE_EGN");
+				String insurenceMobilePhone = resultSet.getString("INSURENCE_MOBILE_PHONE");
+				String insurenceAddress = resultSet.getString("INSURENCE_ADDRESS");
+				int insurencePK = resultSet.getInt("INSURENCE_PK");
+				String vehicleRegistrationNumber = resultSet.getString("VEHICLE_REGISTRATION_NUMBER");
+				String vehicleType = resultSet.getString("VEHICLE_TYPE");
+				String vehicleRama = resultSet.getString("VEHICLE_RAMA");
+				String vehicleBrand = resultSet.getString("VEHICLE_BRAND");
+				String vehicleModel = resultSet.getString("VEHICLE_MODEL");
+				String vehicleColor = resultSet.getString("VEHICLE_COLOR");
+				int vehicleYear = resultSet.getInt("VEHICLE_YEAR");
+				Date vehicleFirstRegistration = resultSet.getDate("VEHICLE_FIRST_REGISTRATION");
+				float vehicleEngine = resultSet.getFloat("VEHICLE_ENGINE");
+				int vehiclePlaceNumber = resultSet.getInt("VEHICLE_PLACE_NUMBER");
+				Date dateFrom = resultSet.getDate("INSURENCE_DATE_FROM");
+				Date dateTo = resultSet.getDate("INSURENCE_DATE_TO");
+				float vehicleInsurenceValue = resultSet.getFloat("VEHICLE_INSURANCE_VALUE");
+				float vehicleInsurencePremiq = resultSet.getFloat("VEHICLE_INSURANCE_PREMIQ");
+				
+				listKasko.add((new Kasko(insId, insKaskoId, insType, insurenceFirstName, insurenceSecondName, 
+						insurenceFamily, insurenceEGN, insurenceMobilePhone, insurenceAddress, insurencePK, 
+						vehicleRegistrationNumber, vehicleType, vehicleRama, vehicleBrand, vehicleModel, vehicleColor, 
+						vehicleYear, vehicleFirstRegistration, vehicleEngine, vehiclePlaceNumber, 
+						dateFrom, dateTo, vehicleInsurenceValue, vehicleInsurencePremiq)));
+			}
+			return listKasko;
+		} catch (Exception e) {
+			return new ArrayList<Kasko>(0);
+		}
+	}
+
+	/** Insert new insurance Kasko in database
+	 * @param kasko object from class Kasko
+	 * @see dao_api.KaskoDAO#insertKasko(model.Kasko)
+	 */
+	@Override
+	public void insertKasko(Kasko kasko) {
+		try(Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Insurence", "root", "123456")) {
+			final String QUERY = "INSERT INTO kasko(INSURER_ID, INSURENCE_ID, INSURENCE_TYPE, "
+					+ "INSURENCE_FIRST_NAME, INSURENCE_SECOND_NAME, INSURENCE_FAMILY, "
+					+ "INSURENCE_EGN, INSURENCE_MOBILE_PHONE, INSURENCE_ADDRESS, INSURENCE_PK, "
+					+ "VEHICLE_REGISTRATION_NUMBER, VEHICLE_TYPE, VEHICLE_RAMA, VEHICLE_BRAND, "
+					+ "VEHICLE_MODEL, VEHICLE_COLOR, VEHICLE_YEAR, VEHICLE_FIRST_REGISTRATION, "
+					+ "VEHICLE_ENGINE, VEHICLE_PLACE_NUMBER, INSURENCE_DATE_FROM, INSURENCE_DATE_TO, VEHICLE_INSURANCE_VALUE, "
+					+ "VEHICLE_INSURANCE_PREMIQ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
+			
+			preparedStatement.setString(1, kasko.getInsurerId());
+			preparedStatement.setString(2, kasko.getInsKaskoId());
+			preparedStatement.setString(3, kasko.getInsType());
+			preparedStatement.setString(4, kasko.getInsurenceFirstName());
+			preparedStatement.setString(5, kasko.getInsurenceSecondName());
+			preparedStatement.setString(6, kasko.getInsurenceFamily());
+			preparedStatement.setString(7, kasko.getInsurenceEGN());
+			preparedStatement.setString(8, kasko.getInsurenceMobilePhone());
+			preparedStatement.setString(9, kasko.getInsurenceAddress());
+			preparedStatement.setInt(10, kasko.getInsurencePK());
+			preparedStatement.setString(11, kasko.getVehicleRegistrationNumber());
+			preparedStatement.setString(12, kasko.getVehicleType());
+			preparedStatement.setString(13, kasko.getVehicleRama());
+			preparedStatement.setString(14, kasko.getVehicleBrand());
+			preparedStatement.setString(15, kasko.getVehicleModel());
+			preparedStatement.setString(16, kasko.getVehicleColor());
+			preparedStatement.setInt(17, kasko.getVehicleYear());
+			preparedStatement.setDate(18, new Date(kasko.getVehicleFirstRegistration().getTime()));
+			preparedStatement.setFloat(19, kasko.getVehicleEngine());
+			preparedStatement.setInt(20, kasko.getVehiclePlaceNumber());
+			preparedStatement.setDate(21,  new Date(kasko.getInsurenceDateFrom().getTime()));
+			preparedStatement.setDate(22,  new Date(kasko.getInsurenceDateTo().getTime()));
+			preparedStatement.setFloat(23, kasko.getVehicleInsurenceValue());
+			preparedStatement.setFloat(24, kasko.getVehicleInsurencePremiq());
+			
+			preparedStatement.executeUpdate();
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/** Delete existing insurance kasko in databse
+	 * @param kaskoID specific string field contains insurance ID
+	 * @see dao_api.KaskoDAO#deleteKasko(java.lang.String)
+	 */
+	@Override
+	public void deleteKasko(String kaskoID) {
+		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Insurence", "root", "123456")) {
+			final String QUERY = "DELETE FROM kasko WHERE INSURENCE_ID = '" + kaskoID + "'";
+
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
+			
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/** Update existing insurance kasko in database 
+	 * @param kasko specific string field contains insurance ID
+	 * @see dao_api.KaskoDAO#updateKasko(model.Kasko)
+	 */
+	@Override
+	public void updateKasko(Kasko kasko) {
+		try(Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Insurence", "root", "123456")) {
+			final String QUERY = "UPDATE kasko SET INSURER_ID=?, INSURENCE_ID=?, INSURENCE_TYPE=?, INSURENCE_FIRST_NAME=?, INSURENCE_SECOND_NAME=?,"
+					+ "INSURENCE_FAMILY=?, INSURENCE_EGN=?, INSURENCE_MOBILE_PHONE=?, INSURENCE_ADDRESS=?, INSURENCE_PK=?, "
+					+ "VEHICLE_REGISTRATION_NUMBER=?, VEHICLE_TYPE=?, VEHICLE_RAMA=?, VEHICLE_BRAND=?, VEHICLE_MODEL=?,"
+					+ "VEHICLE_COLOR=?, VEHICLE_YEAR=?, VEHICLE_FIRST_REGISTRATION=?, VEHICLE_ENGINE=?, VEHICLE_PLACE_NUMBER=?,"
+					+ "INSURENCE_DATE_FROM=?, INSURENCE_DATE_TO=?, VEHICLE_INSURANCE_VALUE=?, VEHICLE_INSURANCE_PREMIQ=? WHERE INSURENCE_ID = '" + kasko.getInsKaskoId() + "'";
+		
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
+			
+			preparedStatement.setString(1, kasko.getInsurerId());
+			preparedStatement.setString(2, kasko.getInsKaskoId());
+			preparedStatement.setString(3, kasko.getInsType());
+			preparedStatement.setString(4, kasko.getInsurenceFirstName());
+			preparedStatement.setString(5, kasko.getInsurenceSecondName());
+			preparedStatement.setString(6, kasko.getInsurenceFamily());
+			preparedStatement.setString(7, kasko.getInsurenceEGN());
+			preparedStatement.setString(8, kasko.getInsurenceMobilePhone());
+			preparedStatement.setString(9, kasko.getInsurenceAddress());
+			preparedStatement.setInt(10, kasko.getInsurencePK());
+			preparedStatement.setString(11, kasko.getVehicleRegistrationNumber());
+			preparedStatement.setString(12, kasko.getVehicleType());
+			preparedStatement.setString(13, kasko.getVehicleRama());
+			preparedStatement.setString(14, kasko.getVehicleBrand());
+			preparedStatement.setString(15, kasko.getVehicleModel());
+			preparedStatement.setString(16, kasko.getVehicleColor());
+			preparedStatement.setInt(17, kasko.getVehicleYear());
+			preparedStatement.setDate(18, new Date(kasko.getVehicleFirstRegistration().getTime()));
+			preparedStatement.setFloat(19, kasko.getVehicleEngine());
+			preparedStatement.setInt(20, kasko.getVehiclePlaceNumber());
+			preparedStatement.setDate(21, new Date(kasko.getInsurenceDateFrom().getTime()));
+			preparedStatement.setDate(22, new Date(kasko.getInsurenceDateTo().getTime()));
+			preparedStatement.setFloat(23, kasko.getVehicleInsurenceValue());
+			preparedStatement.setFloat(24, kasko.getVehicleInsurencePremiq());
+			
+			preparedStatement.executeUpdate();
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/** Search insurance kasko in database with specific ID
+	 * @param kaskoID specific string field contains insurance ID
+	 * @return object from class Kasko or null if insurance with this ID does not exist
+	 * @see dao_api.KaskoDAO#searchKasko(java.lang.String)
+	 */
+	@Override
+	public Kasko searchKasko(String kaskoID) {
+		Kasko kasko = new Kasko();
+		
+		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Insurence", "root", "123456")) {
+			final String QUERY = "SELECT INSURER_ID, INSURENCE_ID, INSURENCE_TYPE, INSURENCE_FIRST_NAME, INSURENCE_SECOND_NAME,"
+					+ "INSURENCE_FAMILY, INSURENCE_EGN, INSURENCE_MOBILE_PHONE, INSURENCE_ADDRESS, INSURENCE_PK, "
+					+ "VEHICLE_REGISTRATION_NUMBER, VEHICLE_TYPE, VEHICLE_RAMA, VEHICLE_BRAND, VEHICLE_MODEL,"
+					+ "VEHICLE_COLOR, VEHICLE_YEAR, VEHICLE_FIRST_REGISTRATION, VEHICLE_ENGINE, VEHICLE_PLACE_NUMBER,"
+					+ "INSURENCE_DATE_FROM, INSURENCE_DATE_TO, VEHICLE_INSURANCE_VALUE, VEHICLE_INSURANCE_PREMIQ FROM kasko WHERE INSURENCE_ID = '" + kaskoID + "'";
+			
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			if(resultSet.next()) {
+				String insurerId = resultSet.getString("INSURER_ID");
+				String insKaskoId = resultSet.getString("INSURENCE_ID");
+				String insType = resultSet.getString("INSURENCE_TYPE");
+				String insurenceFirstName = resultSet.getString("INSURENCE_FIRST_NAME");
+				String insurenceSecondName = resultSet.getString("INSURENCE_SECOND_NAME");
+				String insurenceFamily = resultSet.getString("INSURENCE_FAMILY");
+				String insurenceEGN = resultSet.getString("INSURENCE_EGN");
+				String insurenceMobilePhone = resultSet.getString("INSURENCE_MOBILE_PHONE");
+				String insurenceAddress = resultSet.getString("INSURENCE_ADDRESS");
+				int insurencePK = resultSet.getInt("INSURENCE_PK");
+				String vehicleRegistrationNumber = resultSet.getString("VEHICLE_REGISTRATION_NUMBER");
+				String vehicleType = resultSet.getString("VEHICLE_TYPE");
+				String vehicleRama = resultSet.getString("VEHICLE_RAMA");
+				String vehicleBranch = resultSet.getString("VEHICLE_BRAND");
+				String vehicleModel = resultSet.getString("VEHICLE_MODEL");
+				String vehicleColor = resultSet.getString("VEHICLE_COLOR");
+				int vehicleYear = resultSet.getInt("VEHICLE_YEAR");
+				Date vehicleFirstRegistration = resultSet.getDate("VEHICLE_FIRST_REGISTRATION");
+				float vehicleEngine = resultSet.getFloat("VEHICLE_ENGINE");
+				int vehiclePlaceNumber = resultSet.getInt("VEHICLE_PLACE_NUMBER");
+				Date dateFrom = resultSet.getDate("INSURENCE_DATE_FROM");
+				Date dateTo = resultSet.getDate("INSURENCE_DATE_TO");
+				float vehicleInsurenceValue = resultSet.getFloat("VEHICLE_INSURANCE_VALUE");
+				float vehicleInsurencePremiq = resultSet.getFloat("VEHICLE_INSURANCE_PREMIQ");
+				
+				kasko = new Kasko(insurerId, insKaskoId, insType, insurenceFirstName, insurenceSecondName, 
+						insurenceFamily, insurenceEGN, insurenceMobilePhone, insurenceAddress, insurencePK, 
+						vehicleRegistrationNumber, vehicleType, vehicleRama, vehicleBranch, 
+						vehicleModel, vehicleColor, vehicleYear, vehicleFirstRegistration, vehicleEngine, 
+						vehiclePlaceNumber, dateFrom, dateTo, vehicleInsurenceValue, vehicleInsurencePremiq);
+			}
+					
+			return kasko;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return kasko;
+	}
+
+	/** List all insurances kasko in database with specific insurer
+	 * @param userName string field contains specific user name
+	 * @return list insurances or null if list is empty
+	 * @see dao_api.KaskoDAO#searchKaskoByInsurer(java.lang.String)
+	 */
+	@Override
+	public List<Kasko> searchKaskoByInsurer(String userName) {
+		List<Kasko> listKasko;
+		
+		try(Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Insurence", "root", "123456")) {
+			final String QUERY = "SELECT INSURER_ID, INSURENCE_ID, INSURENCE_TYPE, INSURENCE_FIRST_NAME, INSURENCE_SECOND_NAME,"
+					+ "INSURENCE_FAMILY, INSURENCE_EGN, INSURENCE_MOBILE_PHONE, INSURENCE_ADDRESS, INSURENCE_PK, "
+					+ "VEHICLE_REGISTRATION_NUMBER, VEHICLE_TYPE, VEHICLE_RAMA, VEHICLE_BRAND, VEHICLE_MODEL,"
+					+ "VEHICLE_COLOR, VEHICLE_YEAR, VEHICLE_FIRST_REGISTRATION, VEHICLE_ENGINE, VEHICLE_PLACE_NUMBER,"
+					+ "INSURENCE_DATE_FROM, INSURENCE_DATE_TO, VEHICLE_INSURANCE_VALUE, VEHICLE_INSURANCE_PREMIQ FROM kasko WHERE INSURER_ID = '" + userName + "'";
+			final String QUERY_COUNT = "SELECT COUNT(*) as count FROM kasko";
+			
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
+			PreparedStatement preparedStetmentCount = connection.prepareStatement(QUERY_COUNT);
+			
+			ResultSet resultSet = preparedStatement.executeQuery();
+			ResultSet resultSetCount = preparedStetmentCount.executeQuery();
+			
+			resultSetCount.next();
+			int count = resultSetCount.getInt("count");
+			
+			listKasko = new ArrayList<Kasko>(count);
+			
+			while(resultSet.next()) {
+				String insId = resultSet.getString("INSURER_ID");
+				String insKaskoId = resultSet.getString("INSURENCE_ID");
+				String insType = resultSet.getString("INSURENCE_TYPE");
+				String insurenceFirstName = resultSet.getString("INSURENCE_FIRST_NAME");
+				String insurenceSecondName = resultSet.getString("INSURENCE_SECOND_NAME");
+				String insurenceFamily = resultSet.getString("INSURENCE_FAMILY");
+				String insurenceEGN = resultSet.getString("INSURENCE_EGN");
+				String insurenceMobilePhone = resultSet.getString("INSURENCE_MOBILE_PHONE");
+				String insurenceAddress = resultSet.getString("INSURENCE_ADDRESS");
+				int insurencePK = resultSet.getInt("INSURENCE_PK");
+				String vehicleRegistrationNumber = resultSet.getString("VEHICLE_REGISTRATION_NUMBER");
+				String vehicleType = resultSet.getString("VEHICLE_TYPE");
+				String vehicleRama = resultSet.getString("VEHICLE_RAMA");
+				String vehicleBranch = resultSet.getString("VEHICLE_BRAND");
+				String vehicleModel = resultSet.getString("VEHICLE_MODEL");
+				String vehicleColor = resultSet.getString("VEHICLE_COLOR");
+				int vehicleYear = resultSet.getInt("VEHICLE_YEAR");
+				Date vehicleFirstRegistration = resultSet.getDate("VEHICLE_FIRST_REGISTRATION");
+				float vehicleEngine = resultSet.getFloat("VEHICLE_ENGINE");
+				int vehiclePlaceNumber = resultSet.getInt("VEHICLE_PLACE_NUMBER");
+				Date dateFrom = resultSet.getDate("INSURENCE_DATE_FROM");
+				Date dateTo = resultSet.getDate("INSURENCE_DATE_TO");
+				float vehicleInsurenceValue = resultSet.getFloat("VEHICLE_INSURANCE_VALUE");
+				float vehicleInsurencePremiq = resultSet.getFloat("VEHICLE_INSURANCE_PREMIQ");
+				
+				listKasko.add((new Kasko(insId, insKaskoId, insType, insurenceFirstName, insurenceSecondName, 
+						insurenceFamily, insurenceEGN, insurenceMobilePhone, insurenceAddress, insurencePK, 
+						vehicleRegistrationNumber, vehicleType, vehicleRama, vehicleBranch, vehicleModel, vehicleColor, 
+						vehicleYear, vehicleFirstRegistration, vehicleEngine, vehiclePlaceNumber, 
+						dateFrom, dateTo, vehicleInsurenceValue, vehicleInsurencePremiq)));
+			}
+			return listKasko;
+		} catch (Exception e) {
+			return new ArrayList<Kasko>(0);
+		}
+	}
+
+	/* (non-Javadoc)
+	 * @see dao_api.KaskoDAO#getLaskoInsID()
+	 */
+	@Override
+	public int getLaskoInsID() {
+		int lastID;
+		try(Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Insurence", "root", "123456")) {
+			final String QUERY = "SELECT insurence_id FROM kasko order by insurence_id desc limit 1";
+			final String QUERY_COUNT = "SELECT COUNT(*) as count FROM kasko";
+			
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
+			PreparedStatement preparedStetmentCount = connection.prepareStatement(QUERY_COUNT);
+			
+			ResultSet resultSet = preparedStatement.executeQuery();
+			ResultSet resultSetCount = preparedStetmentCount.executeQuery();
+			
+			resultSetCount.next();
+			int count = resultSetCount.getInt("count");
+			
+			listKasko = new ArrayList<Kasko>(count);
+			
+			while(resultSet.next()) {
+				String insId = resultSet.getString("INSURER_ID");
+				String insKaskoId = resultSet.getString("INSURENCE_ID");
+				String insType = resultSet.getString("INSURENCE_TYPE");
+				String insurenceFirstName = resultSet.getString("INSURENCE_FIRST_NAME");
+				String insurenceSecondName = resultSet.getString("INSURENCE_SECOND_NAME");
+				String insurenceFamily = resultSet.getString("INSURENCE_FAMILY");
+				String insurenceEGN = resultSet.getString("INSURENCE_EGN");
+				String insurenceMobilePhone = resultSet.getString("INSURENCE_MOBILE_PHONE");
+				String insurenceAddress = resultSet.getString("INSURENCE_ADDRESS");
+				int insurencePK = resultSet.getInt("INSURENCE_PK");
+				String vehicleRegistrationNumber = resultSet.getString("VEHICLE_REGISTRATION_NUMBER");
+				String vehicleType = resultSet.getString("VEHICLE_TYPE");
+				String vehicleRama = resultSet.getString("VEHICLE_RAMA");
+				String vehicleBranch = resultSet.getString("VEHICLE_BRAND");
+				String vehicleModel = resultSet.getString("VEHICLE_MODEL");
+				String vehicleColor = resultSet.getString("VEHICLE_COLOR");
+				int vehicleYear = resultSet.getInt("VEHICLE_YEAR");
+				Date vehicleFirstRegistration = resultSet.getDate("VEHICLE_FIRST_REGISTRATION");
+				float vehicleEngine = resultSet.getFloat("VEHICLE_ENGINE");
+				int vehiclePlaceNumber = resultSet.getInt("VEHICLE_PLACE_NUMBER");
+				Date dateFrom = resultSet.getDate("INSURENCE_DATE_FROM");
+				Date dateTo = resultSet.getDate("INSURENCE_DATE_TO");
+				float vehicleInsurenceValue = resultSet.getFloat("VEHICLE_INSURANCE_VALUE");
+				float vehicleInsurencePremiq = resultSet.getFloat("VEHICLE_INSURANCE_PREMIQ");
+				
+				listKasko.add((new Kasko(insId, insKaskoId, insType, insurenceFirstName, insurenceSecondName, 
+						insurenceFamily, insurenceEGN, insurenceMobilePhone, insurenceAddress, insurencePK, 
+						vehicleRegistrationNumber, vehicleType, vehicleRama, vehicleBranch, vehicleModel, vehicleColor, 
+						vehicleYear, vehicleFirstRegistration, vehicleEngine, vehiclePlaceNumber, 
+						dateFrom, dateTo, vehicleInsurenceValue, vehicleInsurencePremiq)));
+			}
+			return listKasko;
+		} catch (Exception e) {
+			return new ArrayList<Kasko>(0);
+		}
+	}
+}

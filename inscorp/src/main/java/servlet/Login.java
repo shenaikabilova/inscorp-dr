@@ -54,10 +54,10 @@ public class Login extends HttpServlet {
 			if(new InsurerDAOImpl().isUser(username, password)) {
 				try {
 					if(new InsurerDAOImpl().searchUserName(username).getRole().equals("admin")) {
-						Cookie loginCookie = new Cookie("user", username);
-						loginCookie.setMaxAge(60*60*24); 
-					    response.addCookie(loginCookie);
-						response.sendRedirect("adminPanel.jsp");
+						String errmsg = "Грешно потребителско име или парола!";
+						request.setAttribute("errmsg", errmsg);
+						RequestDispatcher view = request.getRequestDispatcher("ErrorLogin.jsp");
+						view.forward(request,response);
 					}
 				} catch (InsCorpErrorException e) {
 					request.setAttribute("errmsg", e);

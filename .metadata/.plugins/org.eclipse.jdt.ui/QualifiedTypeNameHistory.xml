@@ -17,14 +17,12 @@
 <fullyQualifiedTypeName name="model.Country"/>
 <fullyQualifiedTypeName name="dao_api.GrajdanskaOtgovornostDAO"/>
 <fullyQualifiedTypeName name="dao_jdbc.GrajdanskaOtgovornostDAOImpl"/>
-<fullyQualifiedTypeName name="model.GrajdanskaOtgovornost"/>
 <fullyQualifiedTypeName name="org.apache.naming.factory.SendMailFactory"/>
 <fullyQualifiedTypeName name="servlet.SendMail"/>
 <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
 <fullyQualifiedTypeName name="dao_api.InsurerDAO"/>
 <fullyQualifiedTypeName name="inscorp.InsurerDAOImplTest"/>
 <fullyQualifiedTypeName name="dao_jdbc.InsurerDAOImpl"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="org.junit.BeforeClass"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="model.Insurer"/>
@@ -44,7 +42,6 @@
 <fullyQualifiedTypeName name="dao_api.VehicleBrandDAO"/>
 <fullyQualifiedTypeName name="dao_jdbc.VehicleBrandDAOImpl"/>
 <fullyQualifiedTypeName name="org.junit.Test"/>
-<fullyQualifiedTypeName name="org.junit.Assert"/>
 <fullyQualifiedTypeName name="model.Kasko"/>
 <fullyQualifiedTypeName name="java.sql.Date"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
@@ -60,4 +57,7 @@
 <fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="java.util.Map.Entry"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="model.GrajdanskaOtgovornost"/>
+<fullyQualifiedTypeName name="org.junit.Assert"/>
 </qualifiedTypeNameHistroy>

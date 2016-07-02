@@ -1,0 +1,40 @@
+/**
+ * 
+ */
+package servlet;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * @author shenaikabilova
+ *
+ */
+@SuppressWarnings("serial")
+@WebServlet("/AdminLogin")
+public class AdminLogin extends HttpServlet {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+	      PrintWriter out = response.getWriter();
+	      response.setContentType("text/html");
+	      request.setCharacterEncoding("UTF-8");
+	      out.println("<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>");
+	      out.println("<form action='login' method='post'");
+	      out.println("<h3>Вход за администратор</h3>");
+	      out.println("<table>");
+	      out.println("<tr>");
+	      out.println("<td><label for='userName'>Потребителско име </label></td>");
+	      out.println("<td><input type='text' class='field' name='userName' placeholder='Потребителско име' maxlength='50'><br/></td>");
+	      out.println("</tr>");
+	      out.println("<tr>");
+	      out.println("<td><label for='password'>Парола</label></td>");
+	      out.println("<td><input type='password' class='field' name='password' placeholder='Парола' maxlength='50'><br/></td>");
+	      out.println("</tr><tr><td></td>");
+	      out.println("<td><input type='submit' value='Вход' name='login'></td></tr></table></form>");
+	}
+}

@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<%@page import="dao_jdbc.KaskoDAOImpl"%>
+<%@page import="dao_api.KaskoDAO"%>
 <%@page import="dao_jdbc.VehicleTypeDAOImpl"%>
 <%@page import="model.VehicleType"%>
 <%@page import="dao_api.VehicleTypeDAO"%>
@@ -106,7 +108,28 @@
 						</div>
 						<div class="form-row">
 							<label>№ на полица</label>
-							<input type="text" id="insurenceID" class="field" name="insurenceID" size="30" maxlength="6" readonly="readonly">
+							<% 
+								KaskoDAO insID = new KaskoDAOImpl();
+								String id = insID.getLastInsID();
+								int countZeros=0;
+								int max=0;
+								for(int i=0; i<id.length(); i++) {
+									char c = id.charAt(i);
+									if(c == '0') {
+										countZeros++;
+										max=countZeros;
+									}
+									else countZeros=0;
+								}
+								int i = Integer.parseInt(id);
+								System.out.println(max);
+								System.out.println(i);
+								i++;
+								max = max + String.valueOf(i).length(); 
+								String newID = String.format("%0"+max+"d", i);
+							%>
+							<input type="text" id="insurenceID" class="field" name="insurenceID" size="30" maxlength="6" readonly="readonly"
+								value=<%=newID%>>
 						</div>
 					</div>
 					<div class="form-section">

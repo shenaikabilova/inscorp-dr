@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<%@page import="dao_api.GrajdanskaOtgovornostDAO"%>
+<%@page import="dao_jdbc.GrajdanskaOtgovornostDAOImpl"%>
+<%@page import="model.GrajdanskaOtgovornost"%>
 <%@page import="dao_jdbc.VehicleBrandDAOImpl"%>
 <%@page import="dao_api.VehicleBrandDAO"%>
 <%@page import="model.VehicleBrand"%>
@@ -91,7 +94,28 @@
 							<h4>Застрахователна полица ГО на МПС</h4>
 							<div class="form-row">
 								<label>№ на полица</label>
-								<input class="field" id="policaN" type="text" name="policaN" readonly="readonly" maxlength="6">						
+								<% 
+									GrajdanskaOtgovornostDAO insID = new GrajdanskaOtgovornostDAOImpl();
+									String id = insID.getLastInsID();
+									int countZeros=0;
+									int max=0;
+									for(int i=0; i<id.length(); i++) {
+										char c = id.charAt(i);
+										if(c == '0') {
+											countZeros++;
+											max=countZeros;
+										}
+										else countZeros=0;
+									}
+									int i = Integer.parseInt(id);
+									System.out.println(max);
+									System.out.println(i);
+									i++;
+									max = max + String.valueOf(i).length(); 
+									String newID = String.format("%0"+max+"d", i);
+								%>
+								<input class="field" id="policaN" type="text" name="policaN" readonly="readonly" maxlength="6"
+									value=<%=newID%>>					
 							</div>
 							<div class="form-row">
 									<label>Застраховател</label>

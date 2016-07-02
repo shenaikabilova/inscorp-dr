@@ -66,6 +66,7 @@
 		</div>
 		
 		<div class="searchInsurers viewInsurers shell">
+			<h3>Застраховка "Каско" - търсене по № на полица</h3>
 			<table border="1">
 				<th>Застраховател</th> 
 				<th>Полица №</th>  

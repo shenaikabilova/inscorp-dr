@@ -86,7 +86,7 @@
 		
 		<div class="newGO">
 			<div class="shell">
-				<h3>Редакция на застраховка "Гражданеска отговорност"</h3>
+				<h3>Редакция на застраховка "Гражданска отговорност"</h3>
 				<form action="GoUpdate" method="post">
 				<%
 					List<GrajdanskaOtgovornost> list = (List<GrajdanskaOtgovornost>)request.getAttribute("result");
