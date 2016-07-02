@@ -1,3 +1,6 @@
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +24,7 @@ import dao_jdbc.VehicleColorDAOImpl;
 import dao_jdbc.VehicleBrandDAOImpl;
 
 public class Example {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws NoSuchAlgorithmException, InsCorpErrorException {
 //		InsurerDAO ins = new InsurerDAOImpl();
 //		Insurer insurer1 = new Insurer("000001", "Shenai", "Kabilova", "1234567");
 //		Insurer insurer2 = new Insurer("000002", "Ivan", "Ivanov", "123456", "user");
@@ -47,8 +50,8 @@ public class Example {
 //		} catch (InsCorpErrorException e) {
 //			System.out.println(e.getMessage());
 //		}
-//		insurer.insert(new Insurer("8", "Иван", "Иванов", "aaa", "123"));
-//		Insurer ins = new Insurer("000004", "Митко", "Делибалтов", "aaaaaa@aa.bg", "aaa");
+//		insurer.insert(new Insurer("8", "Г€ГўГ Г­", "Г€ГўГ Г­Г®Гў", "aaa", "123"));
+//		Insurer ins = new Insurer("000004", "ГЊГЁГІГЄГ®", "Г„ГҐГ«ГЁГЎГ Г«ГІГ®Гў", "aaaaaa@aa.bg", "aaa");
 //		try {
 //			insurer.update(ins);
 //		} catch (InsCorpErrorException e) {
@@ -79,9 +82,9 @@ public class Example {
 //		System.out.println(new InsurerDAOImpl().isUser("000000", "admin"));
 //		
 //		@SuppressWarnings("deprecation")
-//		Kasko kasko = new Kasko("000001", "100014", "Физическо лице", "Георги", "Иванов", "Иванов", 
-//				"8807070011", "123456", "гр. Варна", 9000, "В4589АА", "Автомобил", "А14789АRD78954123", 
-//				"Ауди", "А5", "Бял", 2005, new Date(2005-1900, 10-1, 10), 2.0f, 4, 10000, 500);
+//		Kasko kasko = new Kasko("000001", "100014", "Г”ГЁГ§ГЁГ·ГҐГ±ГЄГ® Г«ГЁГ¶ГҐ", "ГѓГҐГ®Г°ГЈГЁ", "Г€ГўГ Г­Г®Гў", "Г€ГўГ Г­Г®Гў", 
+//				"8807070011", "123456", "ГЈГ°. Г‚Г Г°Г­Г ", 9000, "Г‚4589ГЂГЂ", "ГЂГўГІГ®Г¬Г®ГЎГЁГ«", "ГЂ14789ГЂRD78954123", 
+//				"ГЂГіГ¤ГЁ", "ГЂ5", "ГЃГїГ«", 2005, new Date(2005-1900, 10-1, 10), 2.0f, 4, 10000, 500);
 //		KaskoDAO dao = new KaskoDAOImpl();
 ////		dao.insertKasko(kasko);
 //		System.out.println(dao.searchKasko("100014").getInsurerId());
@@ -89,9 +92,9 @@ public class Example {
 //		System.out.println(dao.searchKasko("100014").getInsurenceFirstName());
 //		
 //		@SuppressWarnings("deprecation")
-//		GrajdanskaOtgovornost go = new GrajdanskaOtgovornost("000001", "000002", "Физическо лице", 
-//				"Иван", "Иванов", "Иванов", "8602020511", "Бългагия", "гр. Варна", 9000, "111222", "В8887А", 
-//				"Зона IІ - Пловдив, Варна и Бургас", "Автомобил", "BG478965АА78952BA", "Ауди", "А5", 
+//		GrajdanskaOtgovornost go = new GrajdanskaOtgovornost("000001", "000002", "Г”ГЁГ§ГЁГ·ГҐГ±ГЄГ® Г«ГЁГ¶ГҐ", 
+//				"Г€ГўГ Г­", "Г€ГўГ Г­Г®Гў", "Г€ГўГ Г­Г®Гў", "8602020511", "ГЃГєГ«ГЈГ ГЈГЁГї", "ГЈГ°. Г‚Г Г°Г­Г ", 9000, "111222", "Г‚8887ГЂ", 
+//				"Г‡Г®Г­Г  IВІ - ГЏГ«Г®ГўГ¤ГЁГў, Г‚Г Г°Г­Г  ГЁ ГЃГіГ°ГЈГ Г±", "ГЂГўГІГ®Г¬Г®ГЎГЁГ«", "BG478965ГЂГЂ78952BA", "ГЂГіГ¤ГЁ", "ГЂ5", 
 //				new Date(2016-1900, 7-1, 20), new Date(2017-1900, 7-1, 19), 12, 150, 150);
 //		GrajdanskaOtgovornostDAO dao = new GrajdanskaOtgovornostDAOImpl();
 //		System.out.println(dao.searchGO("11").getInsurenceGrajdanskaOtgovornostID());
@@ -101,5 +104,11 @@ public class Example {
 //		for(GrajdanskaOtgovornost g : dao.listGO()) {
 //			System.out.println(g.getInsurenceGrajdanskaOtgovornostID());
 //		}
+
+		MessageDigest m = MessageDigest.getInstance("MD5");
+        String passExam = "111111";
+        m.update(passExam.getBytes(), 0, passExam.length());
+        BigInteger newPass = new BigInteger(1,m.digest());
+        System.out.println("newPass: "+ String.format("%1$032x", newPass)); 
 	}
 }

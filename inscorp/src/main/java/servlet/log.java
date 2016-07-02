@@ -4,6 +4,9 @@
 package servlet;
 
 import java.io.IOException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -52,8 +55,19 @@ public class log extends HttpServlet {
 		String username = request.getParameter("userName");
 		String password = request.getParameter("password");
 	
+		MessageDigest m;
+		BigInteger passEncrypt = null;
 		try {
-			if(new InsurerDAOImpl().isUser(username, password)) {
+			m = MessageDigest.getInstance("MD5");
+			m.update(password.getBytes(), 0, password.length());
+			passEncrypt = new BigInteger(1,m.digest());
+		    System.out.println(String.format("%1$032x", passEncrypt));  
+		} catch (NoSuchAlgorithmException e1) {
+			e1.printStackTrace();
+		} 
+		
+		try {
+			if(new InsurerDAOImpl().isUser(username, String.format("%1$032x", passEncrypt))) {
 				try {
 					if(new InsurerDAOImpl().searchUserName(username).getRole().equals("admin")) {
 						Cookie loginCookie = new Cookie("user", username);

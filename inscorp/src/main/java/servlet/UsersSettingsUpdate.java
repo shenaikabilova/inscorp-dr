@@ -1,6 +1,9 @@
 package servlet;
 
 import java.io.IOException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -56,13 +59,24 @@ public class UsersSettingsUpdate extends HttpServlet {
 		
 		SendMail sendMail = new SendMail();
 		
+		MessageDigest m;
+		BigInteger passEncrypt = null;
+		try {
+			m = MessageDigest.getInstance("MD5");
+			m.update(pass1.getBytes(), 0, pass1.length());
+			passEncrypt = new BigInteger(1,m.digest());
+		    System.out.println(String.format("%1$032x", passEncrypt));  
+		} catch (NoSuchAlgorithmException e1) {
+			e1.printStackTrace();
+		}
+		
 		if(pass1.equals(pass2)) {
 			InsurerDAO updateUserSettings = new InsurerDAOImpl();
 			
 			try {
 				if(new InsurerDAOImpl().searchUserName(userID).getRole().equals("admin")){
 					try {
-						updateUserSettings.update(new Insurer(userID, userName, userFamily, userEmail, pass1, "admin"));
+						updateUserSettings.update(new Insurer(userID, userName, userFamily, userEmail, String.format("%1$032x", passEncrypt), "admin"));
 					} catch (InsCorpErrorException e) {
 						request.setAttribute("errmsg", e.toString());
 						RequestDispatcher view = request.getRequestDispatcher("/AdminPanelErors.jsp");
@@ -83,7 +97,7 @@ public class UsersSettingsUpdate extends HttpServlet {
 			try {
 				if(new InsurerDAOImpl().searchUserName(userID).getRole().equals("user")){
 					try {
-						updateUserSettings.update(new Insurer(userID, userName, userFamily, userEmail, pass1, "user"));
+						updateUserSettings.update(new Insurer(userID, userName, userFamily, userEmail, String.format("%1$032x", passEncrypt), "user"));
 					} catch (InsCorpErrorException e) {
 						request.setAttribute("errmsg", e.toString());
 						RequestDispatcher view = request.getRequestDispatcher("/InsurerErrors.jsp");

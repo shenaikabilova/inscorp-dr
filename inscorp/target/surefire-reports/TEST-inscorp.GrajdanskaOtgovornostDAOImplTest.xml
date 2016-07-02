@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="6" failures="0" name="inscorp.GrajdanskaOtgovornostDAOImplTest" time="1.562" errors="0" skipped="0">
+<testsuite tests="6" failures="0" name="inscorp.GrajdanskaOtgovornostDAOImplTest" time="1.481" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_40\jre\bin"/>
@@ -63,10 +63,10 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="inscorp.GrajdanskaOtgovornostDAOImplTest" name="testSearchGOByInsurer" time="0.141"/>
-  <testcase classname="inscorp.GrajdanskaOtgovornostDAOImplTest" name="testListAllGO" time="0.265"/>
-  <testcase classname="inscorp.GrajdanskaOtgovornostDAOImplTest" name="testInsertGO" time="0.469"/>
-  <testcase classname="inscorp.GrajdanskaOtgovornostDAOImplTest" name="testDeleteGO" time="0.125"/>
-  <testcase classname="inscorp.GrajdanskaOtgovornostDAOImplTest" name="testSearchGO" time="0.234"/>
-  <testcase classname="inscorp.GrajdanskaOtgovornostDAOImplTest" name="testUpdateGO" time="0.328"/>
+  <testcase classname="inscorp.GrajdanskaOtgovornostDAOImplTest" name="testSearchGOByInsurer" time="0.15"/>
+  <testcase classname="inscorp.GrajdanskaOtgovornostDAOImplTest" name="testListAllGO" time="0.288"/>
+  <testcase classname="inscorp.GrajdanskaOtgovornostDAOImplTest" name="testInsertGO" time="0.443"/>
+  <testcase classname="inscorp.GrajdanskaOtgovornostDAOImplTest" name="testDeleteGO" time="0.126"/>
+  <testcase classname="inscorp.GrajdanskaOtgovornostDAOImplTest" name="testSearchGO" time="0.214"/>
+  <testcase classname="inscorp.GrajdanskaOtgovornostDAOImplTest" name="testUpdateGO" time="0.26"/>
 </testsuite>

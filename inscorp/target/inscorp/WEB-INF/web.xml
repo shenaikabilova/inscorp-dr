@@ -4,6 +4,16 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>AdminPanelLogin</servlet-name>
+  	<display-name>AdminPanelLogin</display-name>
+  	<description></description>
+  	<servlet-class>net.codejava.AdminPanelLogin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AdminPanelLogin</servlet-name>
+  	<url-pattern>/AdminPanelLogin</url-pattern>
+  </servlet-mapping>
   <welcome-file-list>
   	<welcome-file>login.jsp</welcome-file>
   </welcome-file-list>

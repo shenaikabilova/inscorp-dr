@@ -11,5 +11,5 @@ function onLoad() {
 	}
 	sum();
 	
-	document.getElementById('policaN').value=Math.floor(Math.random()*999999);
+//	document.getElementById('policaN').value=Math.floor(Math.random()*999999);
 }

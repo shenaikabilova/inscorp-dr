@@ -35,7 +35,7 @@
 						<li><a href="adminPanelDeleteUser.jsp">Изтрий</a></li>
 					</ul>
 				</li>
-				<li><a href="logout">Изход</a></li>
+				<li><a href="AdminLogout">Изход</a></li>
 			</ul>
 		</div>
 		

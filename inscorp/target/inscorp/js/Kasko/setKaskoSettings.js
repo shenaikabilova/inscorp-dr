@@ -15,5 +15,5 @@ function addList(){
 //    	selectVehicleEngine.add(option, 0);
 //    }
     
-	document.getElementById('insurenceID').value=Math.floor(Math.random()*999999);
+//	document.getElementById('insurenceID').value=Math.floor(Math.random()*999999);
  }

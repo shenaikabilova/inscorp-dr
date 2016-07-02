@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="6" failures="0" name="inscorp.InsurerDAOImplTest" time="0.391" errors="0" skipped="0">
+<testsuite tests="6" failures="0" name="inscorp.InsurerDAOImplTest" time="0.41" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_40\jre\bin"/>
@@ -63,10 +63,10 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="inscorp.InsurerDAOImplTest" name="testListAll" time="0"/>
-  <testcase classname="inscorp.InsurerDAOImplTest" name="testSearchUserName" time="0.094"/>
-  <testcase classname="inscorp.InsurerDAOImplTest" name="testDelete" time="0.062"/>
-  <testcase classname="inscorp.InsurerDAOImplTest" name="testInsert" time="0.078"/>
-  <testcase classname="inscorp.InsurerDAOImplTest" name="testIsUser" time="0.016"/>
-  <testcase classname="inscorp.InsurerDAOImplTest" name="testUpdate" time="0.141"/>
+  <testcase classname="inscorp.InsurerDAOImplTest" name="testListAll" time="0.002"/>
+  <testcase classname="inscorp.InsurerDAOImplTest" name="testSearchUserName" time="0.196"/>
+  <testcase classname="inscorp.InsurerDAOImplTest" name="testDelete" time="0.068"/>
+  <testcase classname="inscorp.InsurerDAOImplTest" name="testInsert" time="0.071"/>
+  <testcase classname="inscorp.InsurerDAOImplTest" name="testIsUser" time="0.006"/>
+  <testcase classname="inscorp.InsurerDAOImplTest" name="testUpdate" time="0.067"/>
 </testsuite>

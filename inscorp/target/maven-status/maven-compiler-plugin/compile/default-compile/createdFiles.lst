@@ -1,4 +1,5 @@
 servlet\InsurerAddNewKasko.class
+servlet\log.class
 servlet\AdminPanelAddInsurer.class
 dao_jdbc\VehicleBrandDAOImpl.class
 dao_jdbc\VehicleTypeDAOImpl.class
@@ -11,8 +12,10 @@ dao_api\KaskoDAO.class
 dao_api\VehicleTypeDAO.class
 dao_api\VehicleBrandDAO.class
 model\Country.class
+servlet\AdminLogin.class
 servlet\GoUpdateSearch.class
 dao_api\VehicleColorDAO.class
+servlet\AdminLogout.class
 model\GrajdanskaOtgovornost.class
 model\Insurer.class
 model\VehicleColor.class

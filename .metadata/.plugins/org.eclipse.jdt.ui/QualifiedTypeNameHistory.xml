@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="javax.servlet.ServletContext"/>
-<fullyQualifiedTypeName name="javax.xml.ws.http.HTTPException"/>
 <fullyQualifiedTypeName name="java.lang.Float"/>
 <fullyQualifiedTypeName name="javax.servlet.ServletException"/>
 <fullyQualifiedTypeName name="servlet.InsurerAddNewKasko"/>
@@ -20,12 +18,9 @@
 <fullyQualifiedTypeName name="org.apache.naming.factory.SendMailFactory"/>
 <fullyQualifiedTypeName name="servlet.SendMail"/>
 <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
-<fullyQualifiedTypeName name="dao_api.InsurerDAO"/>
 <fullyQualifiedTypeName name="inscorp.InsurerDAOImplTest"/>
-<fullyQualifiedTypeName name="dao_jdbc.InsurerDAOImpl"/>
 <fullyQualifiedTypeName name="org.junit.BeforeClass"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="model.Insurer"/>
 <fullyQualifiedTypeName name="dao_api.InsurerTypeDAO"/>
 <fullyQualifiedTypeName name="inscorp.InsurerTypeDAOImplTest"/>
 <fullyQualifiedTypeName name="dao_jdbc.InsurerTypeDAOImpl"/>
@@ -49,7 +44,6 @@
 <fullyQualifiedTypeName name="java.lang.ClassNotFoundException"/>
 <fullyQualifiedTypeName name="Exceptions.InsCorpErrorException"/>
 <fullyQualifiedTypeName name="java.lang.NullPointerException"/>
-<fullyQualifiedTypeName name="javax.servlet.annotation.WebServlet"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
@@ -60,4 +54,10 @@
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="model.GrajdanskaOtgovornost"/>
 <fullyQualifiedTypeName name="org.junit.Assert"/>
+<fullyQualifiedTypeName name="javax.servlet.annotation.WebServlet"/>
+<fullyQualifiedTypeName name="java.security.MessageDigest"/>
+<fullyQualifiedTypeName name="model.Insurer"/>
+<fullyQualifiedTypeName name="dao_api.InsurerDAO"/>
+<fullyQualifiedTypeName name="dao_jdbc.InsurerDAOImpl"/>
+<fullyQualifiedTypeName name="java.math.BigInteger"/>
 </qualifiedTypeNameHistroy>

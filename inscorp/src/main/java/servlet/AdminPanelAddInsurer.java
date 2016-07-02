@@ -1,6 +1,9 @@
 package servlet;
 
 import java.io.IOException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -57,10 +60,21 @@ public class AdminPanelAddInsurer extends HttpServlet {
 		
 		SendMail sendMail = new SendMail();
 		
+		MessageDigest m;
+		BigInteger passEncrypt = null;
+		try {
+			m = MessageDigest.getInstance("MD5");
+			m.update(insurerPass1.getBytes(), 0, insurerPass1.length());
+			passEncrypt = new BigInteger(1,m.digest());
+		    System.out.println(String.format("%1$032x", passEncrypt));  
+		} catch (NoSuchAlgorithmException e1) {
+			e1.printStackTrace();
+		}
+		
 		if (insurerPass1.equals(insurerPass2)) {
 			InsurerDAO addInsurer = new InsurerDAOImpl();
 			try {
-				addInsurer.insert(new Insurer(insurerID, insurerFirstName, insurerLastName, insurerEmail, insurerPass1));
+				addInsurer.insert(new Insurer(insurerID, insurerFirstName, insurerLastName, insurerEmail, String.format("%1$032x", passEncrypt)));
 			} catch (InsCorpErrorException e) {
 				request.setAttribute("errmsg", e.getMessage());
 				RequestDispatcher view = request.getRequestDispatcher("AdminPanelErrors.jsp");

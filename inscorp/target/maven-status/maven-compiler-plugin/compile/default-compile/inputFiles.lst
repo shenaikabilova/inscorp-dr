@@ -17,6 +17,7 @@ D:\TU\DiplomnaRabota\inscorp-dr\inscorp\src\main\java\model\Country.java
 D:\TU\DiplomnaRabota\inscorp-dr\inscorp\src\main\java\servlet\AdminPanelAddInsurer.java
 D:\TU\DiplomnaRabota\inscorp-dr\inscorp\src\main\java\model\InsurerType.java
 D:\TU\DiplomnaRabota\inscorp-dr\inscorp\src\main\java\model\VehicleColor.java
+D:\TU\DiplomnaRabota\inscorp-dr\inscorp\src\main\java\servlet\AdminLogout.java
 D:\TU\DiplomnaRabota\inscorp-dr\inscorp\src\main\java\dao_api\VehicleColorDAO.java
 D:\TU\DiplomnaRabota\inscorp-dr\inscorp\src\main\java\model\GrajdanskaOtgovornost.java
 D:\TU\DiplomnaRabota\inscorp-dr\inscorp\src\main\java\dao_jdbc\InsurerDAOImpl.java
@@ -25,6 +26,7 @@ D:\TU\DiplomnaRabota\inscorp-dr\inscorp\src\main\java\dao_jdbc\VehicleColorDAOIm
 D:\TU\DiplomnaRabota\inscorp-dr\inscorp\src\main\java\model\Insurer.java
 D:\TU\DiplomnaRabota\inscorp-dr\inscorp\src\main\java\dao_api\CountryDAO.java
 D:\TU\DiplomnaRabota\inscorp-dr\inscorp\src\main\java\servlet\AdminPanelSearchUser.java
+D:\TU\DiplomnaRabota\inscorp-dr\inscorp\src\main\java\servlet\log.java
 D:\TU\DiplomnaRabota\inscorp-dr\inscorp\src\main\java\servlet\UsersSettingsUpdate.java
 D:\TU\DiplomnaRabota\inscorp-dr\inscorp\src\main\java\Exceptions\InsCorpErrorException.java
 D:\TU\DiplomnaRabota\inscorp-dr\inscorp\src\main\java\model\Kasko.java
@@ -37,6 +39,7 @@ D:\TU\DiplomnaRabota\inscorp-dr\inscorp\src\main\java\servlet\InsurerAddNewKasko
 D:\TU\DiplomnaRabota\inscorp-dr\inscorp\src\main\java\dao_api\GrajdanskaOtgovornostDAO.java
 D:\TU\DiplomnaRabota\inscorp-dr\inscorp\src\main\java\dao_jdbc\GrajdanskaOtgovornostDAOImpl.java
 D:\TU\DiplomnaRabota\inscorp-dr\inscorp\src\main\java\dao_jdbc\VehicleTypeDAOImpl.java
+D:\TU\DiplomnaRabota\inscorp-dr\inscorp\src\main\java\servlet\AdminLogin.java
 D:\TU\DiplomnaRabota\inscorp-dr\inscorp\src\main\java\servlet\GoUpdateSearch.java
 D:\TU\DiplomnaRabota\inscorp-dr\inscorp\src\main\java\servlet\AdminPanelDeleteUser.java
 D:\TU\DiplomnaRabota\inscorp-dr\inscorp\src\main\java\servlet\InsurerAddNewGO.java
