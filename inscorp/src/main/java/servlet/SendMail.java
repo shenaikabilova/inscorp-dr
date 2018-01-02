@@ -23,8 +23,8 @@ public class SendMail {
 	 * @param email string field contains email
 	 */
 	public void sendMail (String user, String pass, String email) {
-		final String userName = "shenaikabilova93@gmail.com";
-		final String password = "sheni412";
+		final String userName = "meil;
+		final String password = "pass";
 		
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
@@ -44,8 +44,8 @@ public class SendMail {
             message.setFrom(new InternetAddress(email));
             message.setRecipients(Message.RecipientType.TO,
                 InternetAddress.parse(email));
-            message.setSubject("Успешна регистрация!");
-            message.setText("Потребителско име: " + user + ". Парола: " + pass);
+            message.setSubject("Г“Г±ГЇГҐГёГ­Г  Г°ГҐГЈГЁГ±ГІГ°Г Г¶ГЁГї!");
+            message.setText("ГЏГ®ГІГ°ГҐГЎГЁГІГҐГ«Г±ГЄГ® ГЁГ¬ГҐ: " + user + ". ГЏГ Г°Г®Г«Г : " + pass);
 
             Transport.send(message);
 
